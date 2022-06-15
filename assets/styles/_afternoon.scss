@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
-$wild-color: #ff6c71;
-$light: #fffbfb;
+$blue-color: #040B24;
+$pink-color: #F20089;
+$grey-color : #707070;
+$grey-light : #f8f9fa;
+$white-pur-color : #FFFFFF;
+$black-pur-color : #000000;
 
 * {
     box-sizing: border-box;
@@ -8,8 +12,14 @@ $light: #fffbfb;
 
 body {
     margin:0;
-    background-color: $wild-color;
-    color: $light;
+    background-color: $grey-light;
+    color: $black-pur-color;
+}
+
+/* NAVBAR */
+
+.navbar-afternoon{
+    background-color: $pink-color;
 }
 
 
