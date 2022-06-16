@@ -19,7 +19,7 @@ class Disponibility
     private string $disponibility;
 
     #[ORM\ManyToMany(targetEntity: Candidate::class, mappedBy: 'disponibilities')]
-    private ArrayCollection $candidates;
+    private Collection $candidates;
 
     public function __construct()
     {

@@ -19,7 +19,7 @@ class Experience
     private string $name;
 
     #[ORM\OneToMany(mappedBy: 'experience', targetEntity: Candidate::class)]
-    private ArrayCollection $candidates;
+    private Collection $candidates;
 
     public function __construct()
     {

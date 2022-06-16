@@ -4,10 +4,13 @@ namespace App\Entity;
 
 use App\Repository\AdminRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: AdminRepository::class)]
-class Admin
+class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -26,14 +29,14 @@ class Admin
     #[ORM\Column(type: 'string', nullable: false)]
     private string $password;
 
-    #[ORM\Column(type: 'string')]
+    #[ORM\Column(type: 'string', unique: true)]
     private string $email;
 
-    #[ORM\Column(type: 'json')]
-    private array $roles = [];
+    #[ORM\Column(type: 'string')]
+    private array $roles;
 
     #[ORM\OneToMany(mappedBy: 'admin', targetEntity: Candidate::class)]
-    private ArrayCollection $candidates;
+    private Collection $candidates;
 
     public function __construct()
     {
@@ -81,7 +84,7 @@ class Admin
         return $this;
     }
 
-    public function getCandidates(): ArrayCollection
+    public function getCandidates(): Collection
     {
         return $this->candidates;
     }
@@ -90,7 +93,7 @@ class Admin
     {
         if (!$this->candidates->contains($candidate)) {
             $this->candidates[] = $candidate;
-            $candidate->setAdmin($this);
+            $candidate->setValidated($this);
         }
 
         return $this;
@@ -100,8 +103,8 @@ class Admin
     {
         if ($this->candidates->removeElement($candidate)) {
             // set the owning side to null (unless already changed)
-            if ($candidate->getAdmin() === $this) {
-                $candidate->setAdmin(null);
+            if ($candidate->getValidated() === $this) {
+                $candidate->setValidated(null);
             }
         }
 
@@ -115,14 +118,10 @@ class Admin
 
     public function getRoles(): array
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+        return $this->roles;
     }
 
-    public function setRoles(array $roles): self
+    public function setRole(array $roles): self
     {
         $this->roles = $roles;
 
@@ -151,5 +150,10 @@ class Admin
         $this->email = $email;
 
         return $this;
+    }
+
+    public function eraseCredentials(): array
+    {
+        return [];
     }
 }

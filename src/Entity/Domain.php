@@ -19,7 +19,7 @@ class Domain
     private string $domaineName;
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'domains')]
-    private ArrayCollection $users;
+    private Collection $users;
 
     public function __construct()
     {

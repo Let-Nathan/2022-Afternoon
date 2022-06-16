@@ -19,7 +19,7 @@ class Skill
     private string $skillName;
 
     #[ORM\ManyToMany(targetEntity: Candidate::class, mappedBy: 'skills')]
-    private ArrayCollection $candidates;
+    private Collection $candidates;
 
     public function __construct()
     {

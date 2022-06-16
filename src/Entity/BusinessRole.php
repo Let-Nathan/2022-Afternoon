@@ -19,7 +19,7 @@ class BusinessRole
     private string $businessRoleName;
 
     #[ORM\OneToMany(mappedBy: 'businessRole', targetEntity: Candidate::class)]
-    private ArrayCollection $candidates;
+    private Collection $candidates;
 
     public function __construct()
     {

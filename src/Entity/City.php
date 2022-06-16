@@ -19,7 +19,7 @@ class City
     private string $name;
 
     #[ORM\OneToMany(mappedBy: 'city', targetEntity: User::class)]
-    private ArrayCollection $users;
+    private Collection $users;
 
     public function __construct()
     {

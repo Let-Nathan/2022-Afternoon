@@ -6,9 +6,11 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -24,7 +26,7 @@ class User
     #[ORM\Column(type: 'string', length: 255)]
     private string $phone;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255, unique: true)]
     private string $email;
 
     #[ORM\ManyToOne(targetEntity: City::class, inversedBy: 'users')]
@@ -35,10 +37,10 @@ class User
     private string $compagny;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Candidate::class, orphanRemoval: true)]
-    private ArrayCollection $candidates;
+    private Collection $candidates;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Consultation::class)]
-    private ArrayCollection $consultations;
+    private Collection $consultations;
 
     #[ORM\Column(type: 'string')]
     private string $password;
@@ -100,6 +102,11 @@ class User
         $this->email = $email;
 
         return $this;
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
     }
 
     public function getCity(): ?City
@@ -198,5 +205,15 @@ class User
         $this->password = $password;
 
         return $this;
+    }
+
+    public function eraseCredentials(): array
+    {
+        return [];
+    }
+
+    public function getRoles(): array
+    {
+        return [];
     }
 }

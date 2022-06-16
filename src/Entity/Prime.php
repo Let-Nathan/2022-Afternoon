@@ -22,7 +22,7 @@ class Prime
     private string $afternoonPrime;
 
     #[ORM\OneToMany(mappedBy: 'prime', targetEntity: Candidate::class)]
-    private ArrayCollection $candidates;
+    private Collection $candidates;
 
     #[ORM\OneToOne(mappedBy: 'prime', targetEntity: Consultation::class, cascade: ['persist', 'remove'])]
     private Consultation $consultation;

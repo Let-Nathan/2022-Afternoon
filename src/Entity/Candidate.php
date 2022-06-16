@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CandidateRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -53,49 +54,49 @@ class Candidate
     private Experience $experience;
 
     #[ORM\ManyToMany(targetEntity: Skill::class, inversedBy: 'candidates')]
-    private ArrayCollection $skills;
+    private Collection $skills;
 
     #[ORM\ManyToMany(targetEntity: Domain::class, inversedBy: 'users')]
-    private ArrayCollection $domains;
+    private Collection $domains;
 
     #[ORM\ManyToOne(targetEntity: Prime::class, inversedBy: 'candidates')]
     private Prime $prime;
 
     #[ORM\ManyToMany(targetEntity: Disponibility::class, inversedBy: 'candidates')]
-    private ArrayCollection $disponibilities;
+    private Collection $disponibilities;
 
     #[ORM\ManyToOne(targetEntity: BusinessRole::class, inversedBy: 'candidates')]
     private BusinessRole $businessRole;
 
     #[ORM\ManyToMany(targetEntity: Mobility::class, inversedBy: 'candidates')]
-    private ArrayCollection $mobilities;
+    private Collection $mobilities;
 
     #[ORM\Column(type: 'boolean')]
-    private bool $validateSheet;
+    private bool $validateSheet = false;
 
     #[ORM\Column(type: 'string', length: 2500, nullable: true)]
     private string $observation;
 
     #[ORM\Column(type: 'datetime')]
-    private \DateTime $createdAt;
+    private DateTime $createdAt;
 
     #[ORM\Column(type: 'boolean')]
-    private bool $archived;
+    private bool $archived = false;
 
     #[ORM\ManyToOne(targetEntity: Admin::class, inversedBy: 'candidates')]
-    private Admin $admin;
+    private Admin $validatedBy;
 
     #[ORM\Column(type: 'boolean')]
-    private bool $isVisible;
+    private bool $isVisible = false;
 
     #[ORM\OneToMany(mappedBy: 'candidat', targetEntity: Consultation::class)]
-    private ArrayCollection $consultations;
+    private Collection $consultations;
 
     #[ORM\Column(type: 'boolean')]
     private bool $gender;
 
     #[ORM\Column(type: 'datetime')]
-    private \DateTime $expirationDate;
+    private DateTime $expirationDate;
 
     public function __construct()
     {
@@ -104,6 +105,7 @@ class Candidate
         $this->mobilities = new ArrayCollection();
         $this->consultations = new ArrayCollection();
         $this->domains = new ArrayCollection();
+        $this->createdAt = new DateTime();
     }
 
     public function getId(): ?int
@@ -387,12 +389,12 @@ class Candidate
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTime
+    public function getCreatedAt(): ?DateTime
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTime $createdAt): self
+    public function setCreatedAt(DateTime $createdAt): self
     {
         $this->createdAt = $createdAt;
 
@@ -411,14 +413,14 @@ class Candidate
         return $this;
     }
 
-    public function getAdmin(): ?Admin
+    public function getValidated(): ?Admin
     {
-        return $this->admin;
+        return $this->validatedBy;
     }
 
-    public function setAdmin(?Admin $admin): self
+    public function setValidated(?Admin $admin): self
     {
-        $this->admin = $admin;
+        $this->validatedBy = $admin;
 
         return $this;
     }
@@ -462,11 +464,11 @@ class Candidate
 
         return $this;
     }
-    public function getExpirationDate(): ?\DateTime
+    public function getExpirationDate(): ?DateTime
     {
         return $this->expirationDate;
     }
-    public function setExpirationDate(\DateTime $expirationDate): self
+    public function setExpirationDate(DateTime $expirationDate): self
     {
         $this->expirationDate = $expirationDate;
         return $this;

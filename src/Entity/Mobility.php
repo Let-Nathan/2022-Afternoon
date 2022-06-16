@@ -19,13 +19,13 @@ class Mobility
     private string $label;
 
     #[ORM\Column(type: 'integer', nullable: true)]
-    private int $parentId;
+    private ?int $parentId;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private string $zipCode;
+    private ?string $zipCode;
 
     #[ORM\ManyToMany(targetEntity: Candidate::class, mappedBy: 'mobilities')]
-    private ArrayCollection $candidates;
+    private Collection $candidates;
 
     public function __construct()
     {
