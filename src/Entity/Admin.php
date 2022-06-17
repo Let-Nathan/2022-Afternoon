@@ -84,7 +84,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getCandidates(): ArrayCollection
+    public function getCandidates(): Collection
     {
         return $this->candidates;
     }
@@ -116,12 +116,12 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
         return (string) $this->email;
     }
 
-    public function getRoles(): array
+    public function getRoles(): string
     {
         return $this->roles;
     }
 
-    public function setRole(array $roles): self
+    public function setRole(string $roles): self
     {
         $this->roles = $roles;
 
