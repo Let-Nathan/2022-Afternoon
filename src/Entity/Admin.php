@@ -33,7 +33,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     private string $email;
 
     #[ORM\Column(type: 'string')]
-    private string $roles;
+    private string $role;
 
     #[ORM\OneToMany(mappedBy: 'admin', targetEntity: Candidate::class)]
     private Collection $candidates;
