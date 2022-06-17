@@ -413,12 +413,12 @@ class Candidate
         return $this;
     }
 
-    public function getValidated(): ?Admin
+    public function getValidatedBy(): ?Admin
     {
         return $this->validatedBy;
     }
 
-    public function setValidated(?Admin $admin): self
+    public function setValidatedBy(?Admin $admin): self
     {
         $this->validatedBy = $admin;
 

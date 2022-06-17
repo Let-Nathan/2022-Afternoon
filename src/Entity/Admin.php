@@ -33,7 +33,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     private string $email;
 
     #[ORM\Column(type: 'string')]
-    private array $roles;
+    private string $roles;
 
     #[ORM\OneToMany(mappedBy: 'admin', targetEntity: Candidate::class)]
     private Collection $candidates;
@@ -84,7 +84,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getCandidates(): Collection
+    public function getCandidates(): ArrayCollection
     {
         return $this->candidates;
     }
@@ -93,7 +93,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->candidates->contains($candidate)) {
             $this->candidates[] = $candidate;
-            $candidate->setValidated($this);
+            $candidate->setValidatedBy($this);
         }
 
         return $this;
@@ -103,8 +103,8 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->candidates->removeElement($candidate)) {
             // set the owning side to null (unless already changed)
-            if ($candidate->getValidated() === $this) {
-                $candidate->setValidated(null);
+            if ($candidate->getValidatedBy() === $this) {
+                $candidate->setValidatedBy(null);
             }
         }
 
