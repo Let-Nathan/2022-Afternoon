@@ -16,8 +16,9 @@ class FormController extends AbstractController
     {
         $candidate = new Candidate();
         $form = $this->createForm(CandidateType::class, $candidate);
-        return $this->render('form/index.html.twig', [
-            'Candidate' => $form->createView()
+
+        return $this->renderForm('form/index.html.twig', [
+            'form' => $form,
         ]);
     }
 }
