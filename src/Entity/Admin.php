@@ -33,7 +33,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     private string $email;
 
     #[ORM\Column(type: 'string')]
-    private string $roles;
+    private string $role;
 
     #[ORM\OneToMany(mappedBy: 'validatedBy', targetEntity: Candidate::class)]
     private Collection $candidates;
@@ -116,14 +116,14 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
         return (string) $this->email;
     }
 
-    public function getRoles(): array
+    public function getRole(): array
     {
-        return [$this->roles];
+        return [$this->role];
     }
 
-    public function setRole(string $roles): self
+    public function setRole(string $role): self
     {
-        $this->roles = $roles;
+        $this->role = $role;
 
         return $this;
     }
@@ -155,5 +155,10 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     public function eraseCredentials(): array
     {
         return [];
+    }
+
+    public function getRoles(): array
+    {
+        return ['ROLE_ADMIN'];
     }
 }
