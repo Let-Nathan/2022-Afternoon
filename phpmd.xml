@@ -17,6 +17,7 @@
         <exclude name="ExcessivePublicCount" />
         <exclude name="ExcessiveClassComplexity" />
         <exclude name="TooManyFields" />
+        <exclude name="TooManyPublicMethods" />
     </rule>
     <rule ref="rulesets/controversial.xml" >
         <exclude name="Superglobals" />

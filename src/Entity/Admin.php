@@ -35,7 +35,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     private string $role;
 
-    #[ORM\OneToMany(mappedBy: 'admin', targetEntity: Candidate::class)]
+    #[ORM\OneToMany(mappedBy: 'validatedBy', targetEntity: Candidate::class)]
     private Collection $candidates;
 
     public function __construct()
@@ -155,5 +155,10 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     public function eraseCredentials(): array
     {
         return [];
+    }
+
+    public function getRoles(): array
+    {
+        return ['ROLE_ADMIN'];
     }
 }
