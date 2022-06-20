@@ -56,7 +56,7 @@ class Candidate
     #[ORM\ManyToMany(targetEntity: Skill::class, inversedBy: 'candidates')]
     private Collection $skills;
 
-    #[ORM\ManyToMany(targetEntity: Domain::class, inversedBy: 'users')]
+    #[ORM\ManyToMany(targetEntity: Domain::class)]
     private Collection $domains;
 
     #[ORM\ManyToOne(targetEntity: Prime::class, inversedBy: 'candidates')]

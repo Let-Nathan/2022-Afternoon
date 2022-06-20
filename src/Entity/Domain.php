@@ -18,13 +18,6 @@ class Domain
     #[ORM\Column(type: 'string', length: 255)]
     private string $domaineName;
 
-    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'domains')]
-    private Collection $users;
-
-    public function __construct()
-    {
-        $this->users = new ArrayCollection();
-    }
     public function getId(): ?int
     {
         return $this->id;
@@ -40,10 +33,5 @@ class Domain
         $this->domaineName = $domaineName;
 
         return $this;
-    }
-
-    public function getUsers(): Collection
-    {
-        return $this->users;
     }
 }
