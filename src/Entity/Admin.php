@@ -35,7 +35,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     private string $roles;
 
-    #[ORM\OneToMany(mappedBy: 'admin', targetEntity: Candidate::class)]
+    #[ORM\OneToMany(mappedBy: 'validatedBy', targetEntity: Candidate::class)]
     private Collection $candidates;
 
     public function __construct()

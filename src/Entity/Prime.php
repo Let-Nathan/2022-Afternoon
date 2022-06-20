@@ -24,7 +24,7 @@ class Prime
     #[ORM\OneToMany(mappedBy: 'prime', targetEntity: Candidate::class)]
     private Collection $candidates;
 
-    #[ORM\OneToOne(mappedBy: 'prime', targetEntity: Consultation::class, cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(targetEntity: Consultation::class, cascade: ['persist', 'remove'])]
     private Consultation $consultation;
 
     public function __construct()
