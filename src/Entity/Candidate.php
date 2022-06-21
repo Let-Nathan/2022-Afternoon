@@ -56,7 +56,7 @@ class Candidate
     #[ORM\ManyToMany(targetEntity: Skill::class, inversedBy: 'candidates')]
     private Collection $skills;
 
-    #[ORM\ManyToMany(targetEntity: Domain::class, inversedBy: 'users')]
+    #[ORM\ManyToMany(targetEntity: Domain::class)]
     private Collection $domains;
 
     #[ORM\ManyToOne(targetEntity: Prime::class, inversedBy: 'candidates')]
@@ -269,30 +269,6 @@ class Candidate
         return $this;
     }
 
-    /**
-     * @return Collection<int, Skill>
-     */
-    public function getCandidateId(): Collection
-    {
-        return $this->skills;
-    }
-
-    public function addCandidateId(Skill $skill): self
-    {
-        if (!$this->skills->contains($skill)) {
-            $this->skills[] = $skill;
-        }
-
-        return $this;
-    }
-
-    public function removeCandidateId(Skill $skill): self
-    {
-        $this->skills->removeElement($skill);
-
-        return $this;
-    }
-
     public function getPrime(): ?Prime
     {
         return $this->prime;
@@ -471,6 +447,48 @@ class Candidate
     public function setExpirationDate(DateTime $expirationDate): self
     {
         $this->expirationDate = $expirationDate;
+        return $this;
+    }
+
+    public function getSkills(): Collection
+    {
+        return $this->skills;
+    }
+
+    public function addSkills(Skill $skill): self
+    {
+        if (!$this->skills->contains($skill)) {
+            $this->skills[] = $skill;
+        }
+
+        return $this;
+    }
+
+    public function removeSkills(Skill $skill): self
+    {
+        $this->skills->removeElement($skill);
+
+        return $this;
+    }
+
+    public function getDomains(): Collection
+    {
+        return $this->domains;
+    }
+
+    public function addDomains(Domain $domain): self
+    {
+        if (!$this->domains->contains($domain)) {
+            $this->domains[] = $domain;
+        }
+
+        return $this;
+    }
+
+    public function removeDomains(Domain $domain): self
+    {
+        $this->domains->removeElement($domain);
+
         return $this;
     }
 }
