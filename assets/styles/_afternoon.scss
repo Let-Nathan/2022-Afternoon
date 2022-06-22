@@ -1,9 +1,11 @@
-$primary: #040B24;
-$pink-color: #F20089;
-$grey-color : #707070;
-$grey-light : #f8f9fa;
-$white-pur-color : #FFFFFF;
-$black-pur-color : #000000;
+:root{
+    --bs-blue: #040B24;
+    --bs-pink: #F20089;
+    --bs-grey : #707070;
+    --bs-grey-light : #f8f9fa;
+    --bs-white : #FFFFFF;
+    --bs-black: #000000;
+}
 
 * {
     box-sizing: border-box;
