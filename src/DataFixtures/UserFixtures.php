@@ -38,7 +38,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             'azerty'
         ]
     ];
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         foreach (self::USER as $value) {
             $user = new User();

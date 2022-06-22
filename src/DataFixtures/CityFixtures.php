@@ -14,7 +14,7 @@ class CityFixtures extends Fixture
         'Bordeaux'
     ];
 
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         foreach (self::CITY as $value) {
             $city = new City();

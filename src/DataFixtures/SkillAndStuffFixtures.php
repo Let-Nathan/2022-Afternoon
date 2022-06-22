@@ -29,7 +29,7 @@ class SkillAndStuffFixtures extends Fixture
         'Laravel'
     ];
 
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         foreach (self::SKILL as $name) {
             $skill = new Skill();

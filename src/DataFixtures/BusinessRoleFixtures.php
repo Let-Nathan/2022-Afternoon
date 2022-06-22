@@ -18,11 +18,7 @@ class BusinessRoleFixtures extends Fixture
         'Data-scientist'
     ];
 
-    /**
-     * @TODO Check this, add ref dosnt work may cause bug with candidate.
-     *
-     */
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         foreach (self::BUSINESS_ROLE as $name) {
             $role = new BusinessRole();

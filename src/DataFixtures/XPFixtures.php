@@ -16,7 +16,7 @@ class XPFixtures extends Fixture
         'More than five years',
     ];
 
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         foreach (self::XP as $name) {
             $xpCand = new Experience();

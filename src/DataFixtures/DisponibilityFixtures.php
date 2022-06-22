@@ -17,7 +17,7 @@ class DisponibilityFixtures extends Fixture
     /**
      * @TODO add reference
      */
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         foreach (self::DISP as $value) {
             $disp = new Disponibility();
