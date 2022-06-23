@@ -1,13 +1,15 @@
 {% extends 'layout-2cols.html.twig' %}
 
-{# ... #}
-
-{% block body %}
+{% block leftBlock %}
     {% if error %}
         <div class="text-white">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
+
     <h1>Login Admin</h1>
+
+    <div class="d-flex">
+
     <p>* champs obligatoires</p>
 
     <form action="{{ path('app_login') }}" method="post">
@@ -29,4 +31,5 @@
         <p>Pas encore de compte ? S'inscrire</p>
 
     </form>
+    </div>
 {% endblock %}
