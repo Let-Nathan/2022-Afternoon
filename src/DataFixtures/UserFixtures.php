@@ -6,6 +6,7 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -38,6 +39,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             'azerty'
         ]
     ];
+
     public function load(ObjectManager $manager): void
     {
         foreach (self::USER as $value) {
