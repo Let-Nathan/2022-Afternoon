@@ -53,7 +53,7 @@ class Candidate
     #[ORM\ManyToOne(targetEntity: Experience::class, inversedBy: 'candidates')]
     private Experience $experience;
 
-    #[ORM\ManyToMany(targetEntity: Skill::class, inversedBy: 'candidates')]
+    #[ORM\ManyToMany(targetEntity: Skill::class)]
     private Collection $skills;
 
     #[ORM\ManyToMany(targetEntity: Domain::class)]
