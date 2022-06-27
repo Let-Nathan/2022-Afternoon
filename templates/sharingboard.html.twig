@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    {#    <div class="border-end">#}
+    {#            <p class="h2 text-dark d-flex justify-content-center mb-4">Filtres</p>#}
+    {#        <div class="d-flex">#}
+    {#            <div class="filter container-fluid">#}
+    {#                <div class="row-cols-3">#}
+    {#                    <div class="d-flex row">#}
+    {#                    <input type="text" class="rounded p-2 pt-2 mb-3" placeholder="Acheteur" aria-label="Username">#}
+    {#                    <input type="text" class="rounded p-2 mb-3" placeholder="Acheteur" aria-label="Username">#}
+    {#                    <input type="text" class="rounded p-2 mb-3" placeholder="Acheteur" aria-label="Username">#}
+    {#                    <input type="text" class="rounded p-2 mb-3" placeholder="Acheteur" aria-label="Username">#}
+    {#                    <input type="text" class="rounded p-2 mb-3" placeholder="Acheteur" aria-label="Username">#}
+    {#                    <input type="text" class="rounded p-2 mb-3" placeholder="Acheteur" aria-label="Username">#}
+    {#                    <input type="text" class="rounded p-2 mb-3" placeholder="Acheteur" aria-label="Username">#}
+    {#                    <input type="text" class="undefined-ATM rounded p-2 mb-3" placeholder="Acheteur" aria-label="Username">#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#        </div>#}
+    {#    </div>#}
+    {#    </div>#}
+
+    {#    <div class="container container-fluid ">#}
+    {#        <div class="d-flex col-md-12">#}
+    {#            <div class="col-4 d-flex flex-column">#}
+    {#                <div class="d-flex flex-column border-end">#}
+    {#                    <p class="h2 text-dark d-flex justify-content-center mb-4">Filtres</p>#}
+    {#                    <div class="filter d-flex flex-column align-items-center">#}
+    {#                        <input type="text" class="col-7 rounded p-2 pt-2 mb-3" placeholder="Acheteur" aria-label="Username">#}
+    {#                        <input type="text" class="col-7 rounded p-2 mb-3" placeholder="Acheteur" aria-label="Username">#}
+    {#                        <input type="text" class="col-7 rounded p-2 mb-3" placeholder="Acheteur" aria-label="Username">#}
+    {#                        <input type="text" class="col-7 rounded p-2 mb-3" placeholder="Acheteur" aria-label="Username">#}
+    {#                        <input type="text" class="col-7 rounded p-2 mb-3" placeholder="Acheteur" aria-label="Username">#}
+    {#                        <input type="text" class="col-7 rounded p-2 mb-3" placeholder="Acheteur" aria-label="Username">#}
+    {#                        <input type="text" class="col-7 rounded p-2 mb-3" placeholder="Acheteur" aria-label="Username">#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#            <div class="col-8">#}
+    {#                <p class="ps-5 h2 text-dark mb-4">Partages</p>#}
+    {#                <div class="container-fluid">#}
+    {#                    <div class="col-lg-6 mbr-col-md-10">#}
+    {#                        <div class="wrap">#}
+    {#                            <div class="ico-wrap">#}
+    {#                                <span class="mbr-iconfont fa-volume-up fa"></span>#}
+    {#                            </div>#}
+    {#                            <div class="text-wrap vcenter">#}
+    {#                                <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Stay <span>Successful</span></h2>#}
+    {#                                <p class="mbr-fonts-style text1  display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                    <div class="well">#}
+    {#                        <table class="table d-flex flex-column">#}
+    {#                            <thead>#}
+    {#                            <tr>#}
+    {#                                <th>First Name</th>#}
+    {#                                <th>Last Name</th>#}
+    {#                                <th>Username</th>#}
+    {#                                <th style="width: 36px;"></th>#}
+    {#                            </tr>#}
+    {#                            </thead>#}
+    {#                            <tbody>#}
+    {#                            <tr class="d-flex justify-content-between">#}
+    {#                                <td>Acheteur</td>#}
+    {#                                <td>Vendeur</td>#}
+    {#                                <td>Commission Afternoon</td>#}
+    {#                            </tr>#}
+    {#                            <tr></tr>#}
+    {#                            <tr>#}
+    {#                                <td>Date de création</td>#}
+    {#                                <td>Date de relance</td>#}
+    {#                                <td>Relancé</td>#}
+    {#                                <td>#}
+    {#                                    <a href="user.html"><i class="icon-pencil"></i></a>#}
+    {#                                    <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>#}
+    {#                                </td>#}
+    {#                            </tr>#}
+    {#                        </table>#}
+    {#                    </div>#}
+    {#                    <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">#}
+    {#                        <div class="modal-header">#}
+    {#                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>#}
+    {#                            <h3 id="myModalLabel">Delete Confirmation</h3>#}
+    {#                        </div>#}
+    {#                        <div class="modal-body">#}
+    {#                            <p class="error-text">Are you sure you want to delete the user?</p>#}
+    {#                        </div>#}
+    {#                        <div class="modal-footer">#}
+    {#                            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>#}
+    {#                            <button class="btn btn-danger" data-dismiss="modal">Delete</button>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+
+    {#        </div>#}
+{% endblock %}
