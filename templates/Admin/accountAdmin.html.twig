@@ -10,7 +10,6 @@
                 <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th></th>
                         <th>
                             Prénom
                         </th>
@@ -27,6 +26,21 @@
                             Modifier
                         </th>
                     </tr>
+
+                    {#  {%  for admin in admin %}#}
+
+                    {{ program.title }}
+                    <tbody>
+                    <tr>
+                        <td>{{ admin.firstname }}</td>
+                        <td>{{ admin.lastname }}</td>
+                        <td>{{ admin.email }}</td>
+                        <td>Nb fiches</td>
+                        <td>Modifier</td>
+
+                    </tr>
+                    </tbody>
+
                 </table>
 
             </div>
