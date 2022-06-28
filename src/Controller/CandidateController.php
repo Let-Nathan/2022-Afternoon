@@ -9,10 +9,16 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Candidate;
 use App\Form\CandidateType;
 
-class FormController extends AbstractController
+class CandidateController extends AbstractController
 {
-    #[Route('/form', name: 'app_form')]
+    #[Route('/form', name: 'index')]
     public function index(): Response
+    {
+        return $this->render('candidate/candidate_depose.html.twig');
+    }
+
+    #[Route('/form/CV', name: 'CV')]
+    public function CV(): Response
     {
         $candidate = new Candidate();
         $form = $this->createForm(CandidateType::class, $candidate);
