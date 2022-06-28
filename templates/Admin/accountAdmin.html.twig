@@ -27,16 +27,15 @@
                         </th>
                     </tr>
 
-                    {#  {%  for admin in admin %}#}
-
-                    {{ program.title }}
+                    {%  for admin in admin %}
                     <tbody>
                     <tr>
                         <td>{{ admin.firstname }}</td>
                         <td>{{ admin.lastname }}</td>
                         <td>{{ admin.email }}</td>
                         <td>Nb fiches</td>
-                        <td>Modifier</td>
+                        <td><a href="#">Modifier</a></td>
+                        {%  endfor %}
 
                     </tr>
                     </tbody>
@@ -46,7 +45,5 @@
             </div>
         </div>
     </div>
-
-
 
 {% endblock %}
