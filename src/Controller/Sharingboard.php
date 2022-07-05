@@ -2,31 +2,40 @@
 
 namespace App\Controller;
 
+use App\Entity\Candidate;
+use App\Entity\User;
+use App\Form\SearchSharingType;
+use App\Repository\CandidateRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
-use Symfony\Component\Serializer\SerializerInterface;
 
+#[Route('/sharingboard', name: 'app_sharingboard')]
 class Sharingboard extends AbstractController
 {
-    #[Route('/sharingboard', name: 'app_sharingboard')]
-    public function sharingboard(UserRepository $user): Response
+    /**
+     * @TODO Gérer cette merde
+     */
+    #[Route('/', name: 'app_sharingboard_index')]
+    public function index(CandidateRepository $candidateRepository, Request $request): Response
     {
-        return $this->render('sharingboard.html.twig', [
-            'users' => $user->findBy([], ['id' => 'DESC'], 8)
-        ]);
-    }
+        $form = $this->createForm(SearchSharingType::class, null, ['method' => 'GET']);
 
-    #[Route('/api', name: 'api_index')]
-    public function api(UserRepository $user, SerializerInterface $serializer): JsonResponse
-    {
-        $users = $user->findAll();
-        return $this->json(
-            $users
-        );
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            return $this->render('SharingBoard/sharingboard.html.twig', [
+                'form' => $form->createView()
+            ]);
+        }
+        return $this->render('SharingBoard/sharingboard.html.twig', [
+            'candidates' => $candidateRepository->findAll(),
+            'form' => $form->createView(),
+
+        ]);
     }
 }

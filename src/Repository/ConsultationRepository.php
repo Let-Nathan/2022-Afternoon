@@ -39,6 +39,34 @@ class ConsultationRepository extends ServiceEntityRepository
         }
     }
 
+    public function statusRefused(): array
+    {
+        $queryBuilder = $this->createQueryBuilder('c')
+            ->select('count(c.status)')
+            ->where('c.status = :search')
+            ->setParameter('search', 'Refused')
+            ->getQuery();
+        return $queryBuilder->getResult();
+    }
+    public function statusPresent(): array
+    {
+        $queryBuilder = $this->createQueryBuilder('c')
+            ->select('count(c.status)')
+            ->where('c.status = :search')
+            ->setParameter('search', 'Present')
+            ->getQuery();
+        return $queryBuilder->getResult();
+    }
+    public function statusJobInteview(): array
+    {
+        $queryBuilder = $this->createQueryBuilder('c')
+            ->select('count(c.status)')
+            ->where('c.status = :search')
+            ->setParameter('search', 'Job interview')
+            ->getQuery();
+        return $queryBuilder->getResult();
+    }
+
 //    /**
 //     * @return Consultation[] Returns an array of Consultation objects
 //     */

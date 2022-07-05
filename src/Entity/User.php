@@ -47,8 +47,8 @@ class User
 
     public function __construct()
     {
-        $this->candidates = new ArrayCollection();
         $this->consultations = new ArrayCollection();
+        $this->candidates = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -128,10 +128,7 @@ class User
         return $this;
     }
 
-    /**
-     * @return Collection<int, Candidate>
-     */
-    public function getCandidates(): Collection
+    public function getCandidates(): ?Collection
     {
         return $this->candidates;
     }
@@ -158,10 +155,7 @@ class User
         return $this;
     }
 
-    /**
-     * @return Collection<int, Consultation>
-     */
-    public function getConsultations(): Collection
+    public function getConsultations(): ?Collection
     {
         return $this->consultations;
     }

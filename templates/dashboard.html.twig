@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+
     <p class="h1 my-3 text-dark m-3">Dashboard</p>
     <div class="col-md-12 col-12">
         <div class="card flex-md-row mb-4 box-shadow h-md-250 col-12">
@@ -22,9 +23,9 @@
                    <tbody>
                        <tr>
                            <th class="text-nowrap" scope="row">Partages</th>
-                           <td><code></code></td>
-                           <td><code></code></td>
-                           <td><code></code></td>
+                           <td><code> {% for key, value in present %}{% for countPresent in value %}{{ countPresent}}{% endfor%}{% endfor%}</code></td>
+                           <td><code>{% for key, value in refused %}{% for countRefused in value %}{{ countRefused}}{% endfor%}{% endfor%}</code></td>
+                           <td><code>{% for key, value in countShare %}{% for countShare in value %} {{countShare}} {% endfor%}{% endfor%}</code></td>
                        </tr>
                    </tbody>
                    <thead>
@@ -81,8 +82,12 @@
                             <tbody>
                                 <tr>
                                     <th class="text-nowrap" scope="row">Candidat</th>
-                                    <td><code></code></td>
-                                    <td><code></code></td>
+                                    <td>
+                                        <code></code>
+                                    </td>
+                                    <td>
+                                        <code></code>
+                                    </td>
                                 </tr>
                             </tbody>
                             <thead>
@@ -113,7 +118,7 @@
                                         Consultés<br>
                                     </th>
                                     <th class="text-center">
-                                        Partagés<br>
+                                        Montant des fiches<br>
                                     </th>
                                 </tr>
                             </thead>
@@ -129,7 +134,7 @@
                         <table class="table table-bordered table-striped">
                             <tbody>
                                 <tr>
-                                    <th class="text-nowrap" scope="row"> test</th>
+                                    <th class="text-nowrap" scope="row"></th>
                                     <td>
                                     </td>
                                 </tr>

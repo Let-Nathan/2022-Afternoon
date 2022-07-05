@@ -89,7 +89,7 @@ class Candidate
     #[ORM\Column(type: 'boolean')]
     private bool $isVisible = false;
 
-    #[ORM\OneToMany(mappedBy: 'candidat', targetEntity: Consultation::class)]
+    #[ORM\OneToMany(mappedBy: 'candidate', targetEntity: Consultation::class)]
     private Collection $consultations;
 
     #[ORM\Column(type: 'boolean')]
@@ -113,12 +113,11 @@ class Candidate
         return $this->id;
     }
 
-    public function getUser(): ?User
+    public function getUser(): User
     {
         return $this->user;
     }
-
-    public function setUser(?User $user): self
+    public function setUser(User $user): self
     {
         $this->user = $user;
 

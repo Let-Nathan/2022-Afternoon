@@ -11,7 +11,7 @@ use Faker\Factory;
 class CandidateFixtures extends Fixture implements DependentFixtureInterface
 {
     private const CANDIDATE = [
-        "candidat1" => [
+        "candidate1" => [
             "https://cdn-images.zety.fr/pages/cv_developpeur_web_zety_fr_4.jpg",
             "linkedin.com/jane",
             true,
@@ -22,9 +22,10 @@ class CandidateFixtures extends Fixture implements DependentFixtureInterface
             'Node Js',
             'One years',
             'Now',
-            'Front-End'
+            'Front-End',
+
         ],
-        "candidat2" => [
+        "candidate2" => [
             "https://cdn-images.zety.fr/pages/cv_developpeur_web_zety_fr_4.jpg",
             "linkedin.com/jane",
             true,
@@ -37,7 +38,7 @@ class CandidateFixtures extends Fixture implements DependentFixtureInterface
             'After three month',
             'Analyst'
         ],
-        "candidat3" => [
+        "candidate3" => [
             "https://cdn-images.zety.fr/pages/cv_developpeur_web_zety_fr_4.jpg",
             "linkedin.com/jane",
             true,
@@ -57,7 +58,7 @@ class CandidateFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();
-        foreach (self::CANDIDATE as $value) {
+        foreach (self::CANDIDATE as $key => $value) {
             $candidate = new Candidate();
             $candidate->setCuriculumVitae($value[0]);
             $candidate->setFirstName($faker->firstName);
@@ -81,6 +82,7 @@ class CandidateFixtures extends Fixture implements DependentFixtureInterface
             $candidate->setExperience($this->getReference('name_' . $value[8]));
             $candidate->addDisponibilities($this->getReference('disponibility_' . $value[9]));
             $candidate->setBusinessRole($this->getReference('business_role_' . $value[10]));
+            $this->addReference('user_' . $key, $candidate);
             $manager->persist($candidate);
             $manager->flush();
         }

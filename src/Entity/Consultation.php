@@ -14,7 +14,7 @@ class Consultation
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: Candidate::class, inversedBy: 'consultations')]
-    private Candidate $candidat;
+    private Candidate $candidate;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'consultations')]
     private User $user;
@@ -22,10 +22,10 @@ class Consultation
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private string $status;
 
-    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    #[ORM\Column(type: 'datetime', nullable: true)]
     private \DateTime $createdAt;
 
-    #[ORM\Column(type: 'datetime_immutable')]
+    #[ORM\Column(type: 'datetime')]
     private \DateTime $relanceDate;
 
     public function getId(): ?int
@@ -33,14 +33,14 @@ class Consultation
         return $this->id;
     }
 
-    public function getCandidat(): ?Candidate
+    public function getCandidate(): ?Candidate
     {
-        return $this->candidat;
+        return $this->candidate;
     }
 
-    public function setCandidat(?Candidate $candidat): self
+    public function setCandidate(?Candidate $candidate): self
     {
-        $this->candidat = $candidat;
+        $this->candidate = $candidate;
 
         return $this;
     }
