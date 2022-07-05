@@ -28,15 +28,14 @@
                     </tr>
 
                     {%  for admin in admins %}
-                    <tbody>
+                    <tbody>s
                     <tr>
                         <td>{{ admin.firstname }}</td>
                         <td>{{ admin.lastname }}</td>
                         <td>{{ admin.email }}</td>
                         <td>Nb fiches</td>
-                        <td><a href="#">Modifier</a></td>
+                        <td><a href="/admin/{{ admin.id }}/edit'">Modifier</a></td>
                         {%  endfor %}
-
                     </tr>
                     </tbody>
 
