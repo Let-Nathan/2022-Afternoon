@@ -33,7 +33,7 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('Admin/accountAdmin.html.twig');
         }
 
-        return $this->renderForm('admin/new.html.twig', [
+        return $this->renderForm('Admin/new.html.twig', [
             'form' => $form,
         ]);
     }
