@@ -15,9 +15,7 @@ class AdminType extends AbstractType
             ->add('lastName')
             ->add('firstName')
             ->add('email')
-            ->add('phone')
             ->add('role')
-            ->add('candidates')
         ;
     }
 
