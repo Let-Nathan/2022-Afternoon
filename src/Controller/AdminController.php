@@ -14,10 +14,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminController extends AbstractController
 {
     #[Route('/admin', name: 'account_admin')]
-    public function dashboard(AdminRepository $admin): Response
+    public function dashboard(AdminRepository $adminRepository): Response
     {
         return $this->render('Admin/accountAdmin.html.twig', [
-            'admin' => $admin->findBy(['id' => 'ASC'])
+            'admins' => $adminRepository->findAll(),
         ]);
     }
 
@@ -49,7 +49,7 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('/admin', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('account_admin');
         }
 
         return $this->renderForm('Admin/edit.html.twig', [
