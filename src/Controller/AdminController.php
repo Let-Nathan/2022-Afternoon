@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Admin;
 use App\Form\AdminType;
 use App\Repository\AdminRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -38,31 +39,22 @@ class AdminController extends AbstractController
         ]);
     }
 
-    /*
-
-    #[Route('/programs/{slug}/edit', name: 'edit_programs', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Program $program, EntityManagerInterface $entityManager): Response
+    #[Route('/admin/{id}/edit', name: 'edit_admin', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Admin $admin, EntityManagerInterface $entityManager): Response
     {
 
-        if (!($this->getUser() == $program->getOwner())) {
-            // If not the owner, throws a 403 Access Denied exception
-            throw new AccessDeniedException('Only the owner can edit the program!');
-        }
-
-        $form = $this->createForm(ProgramType::class, $program);
+        $form = $this->createForm(AdminType::class, $admin);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('program_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('/admin', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('program/edit.html.twig', [
-            'program' => $program,
+        return $this->renderForm('Admin/edit.html.twig', [
+            'admin' => $admin,
             'form' => $form,
         ]);
     }
-
-    */
 }
