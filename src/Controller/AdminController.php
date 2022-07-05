@@ -31,7 +31,7 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $adminRepository->add($admin, true);
 
-            return $this->redirectToRoute('Admin/accountAdmin.html.twig');
+            return $this->redirectToRoute('account_admin');
         }
 
         return $this->renderForm('Admin/new.html.twig', [
