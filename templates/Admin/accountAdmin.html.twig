@@ -27,16 +27,15 @@
                         </th>
                     </tr>
 
-                    {%  for admin in admin %}
+                    {%  for admin in admins %}
                     <tbody>
                     <tr>
                         <td>{{ admin.firstname }}</td>
                         <td>{{ admin.lastname }}</td>
                         <td>{{ admin.email }}</td>
                         <td>Nb fiches</td>
-                        <td><a href="#">Modifier</a></td>
+                        <td><a href="{{ path('edit_admin', {id: admin.id}) }}">Modifier</a></td>
                         {%  endfor %}
-
                     </tr>
                     </tbody>
 
