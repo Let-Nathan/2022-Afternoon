@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends AbstractController
@@ -22,13 +23,17 @@ class AdminController extends AbstractController
     }
 
     #[Route('/admin/new', name: 'admin_new')]
-    public function new(Request $request, AdminRepository $adminRepository): Response
+    public function new(Request $request, AdminRepository $adminRepository, UserPasswordHasherInterface $userPasswordHasher): Response
     {
         $admin = new Admin();
         $form = $this->createForm(AdminType::class, $admin);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $password = $form->get('password')->getData();
+            $hash = $userPasswordHasher->hashPassword($admin, $password);
+            $admin->setPassword($hash);
+
             $adminRepository->add($admin, true);
 
             return $this->redirectToRoute('account_admin');
@@ -40,13 +45,19 @@ class AdminController extends AbstractController
     }
 
     #[Route('/admin/{id}/edit', name: 'edit_admin', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Admin $admin, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Admin $admin, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher): Response
     {
-
         $form = $this->createForm(AdminType::class, $admin);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $password = $form->get('password')->getData();
+
+            if ($password) {
+                $hash = $userPasswordHasher->hashPassword($admin, $password);
+                $admin->setPassword($hash);
+            }
+
             $entityManager->flush();
 
             return $this->redirectToRoute('account_admin');
