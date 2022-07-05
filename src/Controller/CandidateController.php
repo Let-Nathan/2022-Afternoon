@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\PostType;
+use App\Repository\CandidateRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,9 +13,12 @@ use App\Form\CandidateType;
 class CandidateController extends AbstractController
 {
     #[Route('/form', name: 'index')]
-    public function index(): Response
+    public function index(CandidateRepository $candidates): Response
     {
-        return $this->render('candidate/candidate_depose.html.twig');
+
+        return $this->render('candidate/candidate_depose.html.twig', [
+            'candidates' => $candidates->findAll(),
+        ]);
     }
 
     #[Route('/form/CV', name: 'CV')]

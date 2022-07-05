@@ -116,9 +116,9 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
         return (string) $this->email;
     }
 
-    public function getRole(): array
+    public function getRole(): string
     {
-        return [$this->role];
+        return $this->role;
     }
 
     public function setRole(string $role): self
@@ -152,13 +152,12 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function eraseCredentials(): array
+    public function eraseCredentials(): void
     {
-        return [];
     }
 
     public function getRoles(): array
     {
-        return ['ROLE_ADMIN'];
+        return [$this->role];
     }
 }
