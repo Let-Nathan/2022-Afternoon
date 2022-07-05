@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DashboardController extends AbstractController
 {
-    #[Route('/dashboard', name: 'app_dashboard')]
+    #[Route('/', name: 'app_dashboard')]
     public function dashboard(UserRepository $user): Response
     {
         return $this->render('dashboard.html.twig', [
