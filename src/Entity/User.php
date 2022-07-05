@@ -160,7 +160,7 @@ class User
         return $this->consultations;
     }
 
-    public function addConsultation(Consultation $consultation): self
+    public function addConsultations(Consultation $consultation): self
     {
         if (!$this->consultations->contains($consultation)) {
             $this->consultations[] = $consultation;
@@ -170,7 +170,7 @@ class User
         return $this;
     }
 
-    public function removeConsultation(Consultation $consultation): self
+    public function removeConsultations(Consultation $consultation): self
     {
         if ($this->consultations->removeElement($consultation)) {
             // set the owning side to null (unless already changed)
