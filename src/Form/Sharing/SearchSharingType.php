@@ -25,7 +25,7 @@ class SearchSharingType extends AbstractType
             ->add('creationDate', DateType::class)
             ->add('dateRelance', DateType::class)
             ->add('sharingState', TextType::class)
-            ->add('endDate',DateType::class)
+            ->add('endDate', DateType::class)
             ->add('send', SubmitType::class);
     }
     public function configureOptions(OptionsResolver $resolver): void
