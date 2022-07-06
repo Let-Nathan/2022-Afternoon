@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block title %} SharingBoard {% endblock %}
+{% block body %}
+        <div class="container container-fluid">
+                <p class="h2 text-dark mb-4 d-flex justify-content-center">Filters</p>
+
+                    {% include('SharingBoard/_search.html.twig') %}
+        </div>
+        <div class="container container-fluid">
+            {% for user in candidates %}
+                {{ dump(user) }}
+            {% endfor %}
+        </div>
+{% endblock %}
