@@ -2,14 +2,11 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Candidate;
 use App\Entity\Consultation;
-use App\Entity\Status;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
-use DateTimeImmutable;
 
 class ConsultationFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -20,7 +17,7 @@ class ConsultationFixtures extends Fixture implements DependentFixtureInterface
         ],
         'candidate2' => [
             'Cathy',
-            'Present'
+            'Accepted'
         ],
         'candidate3' => [
             'Marc',
@@ -43,7 +40,7 @@ class ConsultationFixtures extends Fixture implements DependentFixtureInterface
         }
         $manager->flush();
     }
-    public function getDependencies()
+    public function getDependencies(): array
     {
         return [
             UserFixtures::class,

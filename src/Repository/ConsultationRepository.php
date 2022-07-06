@@ -48,7 +48,7 @@ class ConsultationRepository extends ServiceEntityRepository
             ->getQuery();
         return $queryBuilder->getResult();
     }
-    public function statusPresent(): array
+    public function statusAccepted(): array
     {
         $queryBuilder = $this->createQueryBuilder('c')
             ->select('count(c.status)')

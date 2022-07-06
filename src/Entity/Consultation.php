@@ -9,8 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: ConsultationRepository::class)]
 class Consultation
 {
-
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
@@ -22,7 +20,7 @@ class Consultation
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'consultations')]
     private User $user;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true )]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private string $status;
 
     #[ORM\Column(type: 'datetime', nullable: true)]

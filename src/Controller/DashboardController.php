@@ -16,16 +16,22 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DashboardController extends AbstractController
 {
+    /**
+     * @TODO Sommes balance & dues
+     * @TODO Montant des fiches
+     */
     #[Route('/dashboard', name: 'app_dashboard')]
     public function dashboard(
         CandidateRepository $candidateRepository,
         ConsultationRepository $cRepo,
+        UserRepository $userRepository,
     ): Response {
         return $this->render('dashboard.html.twig', [
             'countShare' => $candidateRepository->countIsVisible(),
-            'consultation' => $cRepo->findBy([], ['id' => 'DESC']),
+            // 'consultation' => $cRepo->findBy([], ['id' => 'DESC']),
+            'users' => $userRepository->findAll(),
             'refused' => $cRepo->statusRefused(),
-            'present' => $cRepo->statusPresent(),
+            'accepted' => $cRepo->statusAccepted(),
             'jobInterview' => $cRepo->statusJobInteview(),
         ]);
     }
