@@ -26,7 +26,7 @@ class ConsultationFixtures extends Fixture implements DependentFixtureInterface
         ]
     ];
 
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();
         foreach (self::CONSULTATION as $key => $value) {
