@@ -5,7 +5,6 @@ namespace App\Form\Sharing;
 use Doctrine\DBAL\Types\DateType;
 use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
