@@ -3,12 +3,12 @@
 {% block body %}
         <div class="container container-fluid">
                 <p class="h2 text-dark mb-4 d-flex justify-content-center">Filters</p>
-
-                    {% include('SharingBoard/_search.html.twig') %}
+            {{ form(form) }}
+            <div class="btn btn-primary" type="submit">blabla</div>
         </div>
         <div class="container container-fluid">
             {% for user in candidates %}
-                {{ dump(user) }}
+
             {% endfor %}
         </div>
 {% endblock %}

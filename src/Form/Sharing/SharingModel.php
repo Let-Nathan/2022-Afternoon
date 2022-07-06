@@ -7,7 +7,7 @@ class SharingModel
     private string|null $buyer = null;
     private string|null $seller = null;
     private string|null $candidateName = null;
-    private string|null $dateCreation = null;
+    private string|null $creationDate = null;
     private \DateTime|null $dateRelance = null;
     private string|null $sharingState = null;
     private \DateTime|null $endDate = null;
@@ -40,13 +40,13 @@ class SharingModel
     {
         $this->candidateName = $candidateName;
     }
-    public function getDateCreation(): ?string
+    public function getCreationDate(): ?string
     {
-        return $this->dateCreation;
+        return $this->creationDate;
     }
-    public function setDateCreation(?string $dateCreation): void
+    public function setCreationDate(?string $dateCreation): void
     {
-        $this->dateCreation = $dateCreation;
+        $this->creationDate = $dateCreation;
     }
     public function getDateRelance(): ?\DateTime
     {
