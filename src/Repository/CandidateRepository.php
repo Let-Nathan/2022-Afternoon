@@ -39,13 +39,15 @@ class CandidateRepository extends ServiceEntityRepository
         }
     }
 
-    public function countIsVisible(): array
+    public function countIsVisible(): int
     {
-        $queryBuilder = $this->createQueryBuilder('c')
-        ->select('count(c.isVisible)')
-        ->getQuery();
-        return $queryBuilder->getResult();
+        return $this->createQueryBuilder('c')
+        ->select('count(c.id)')
+        ->where('c.isVisible = :visible')
+        ->setParameter('visible', true)
+        ->getQuery()->getSingleScalarResult();
     }
+
 
 //    /**
 //     * @return Candidate[] Returns an array of Candidate objects

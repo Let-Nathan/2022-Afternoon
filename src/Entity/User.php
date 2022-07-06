@@ -155,9 +155,16 @@ class User
         return $this;
     }
 
-    public function getConsultations(): ?Collection
+    public function getConsultations(): Collection
     {
         return $this->consultations;
+    }
+
+    public function getConsultationsByStatus(string $status): Collection
+    {
+        return $this->consultations->filter(function (Consultation $consultation) use ($status): bool {
+            return $consultation->getStatus() === $status;
+        });
     }
 
     public function addConsultations(Consultation $consultation): self
