@@ -28,9 +28,9 @@
                    <tbody>
                        <tr>
                            <th class="text-nowrap" scope="row">Partages</th>
-                           <td><code class="d-flex justify-content-center"> {% for key, value in accepted %}{% for countAccepted in value %}{{ countAccepted}}{% endfor%}{% endfor%}</code></td>
-                           <td><code class="d-flex justify-content-center">{% for key, value in refused %}{% for countRefused in value %}{{ countRefused}}{% endfor%}{% endfor%}</code></td>
-                           <td><code class="d-flex justify-content-center">{% for key, value in countShare %}{% for countShare in value %} {{countShare}} {% endfor%}{% endfor%}</code></td>
+                           <td><code class="d-flex justify-content-center">{{ countNbrAccepted }}</code></td>
+                           <td><code class="d-flex justify-content-center">{{ countNbrRefused }}</code></td>
+                           <td><code class="d-flex justify-content-center">{{ countNbrShare }}</code></td>
                        </tr>
                    </tbody>
                    <thead>
@@ -98,20 +98,12 @@
                                     <td>
 
                                         <code class="d-flex justify-content-center">
-                                            {% for consultation in user.consultations %}
-                                                {{ consultation.candidate|length }}
-                                            {% endfor %}
+                                            {{ user.getConsultationsByStatus('Job Interview') | length }}
                                         </code>
                                     </td>
                                     <td>
                                         <code class="d-flex justify-content-center">
-                                            {% for consultation in user.consultations %}
-                                                {% if consultation.status == "Accepted" %}
-                                                {{ consultation.candidate|length }}
-                                                {% else %}
-                                                   {{ 0 }}
-                                                {% endif %}
-                                            {% endfor %}
+                                            {{ user.getConsultationsByStatus('Recruit') | length }}
                                         </code>
                                     </td>
                                 </tr>
@@ -158,23 +150,18 @@
                                     <th class="text-nowrap" scope="row">Fiches</th>
                                     <td>
                                         <code class="d-flex justify-content-center">
-                                            {% for candidate in user.candidates %}
-                                                {{ candidate|length }}
-                                              {% endfor %}
+                                                {{ user.candidates|length }}
                                         </code>
                                     </td>
                                     <td>
                                         <code class="d-flex justify-content-center">
-                                            {% for consultation in user.consultations %}
-                                                {{ consultation.candidate|length }}
-                                            {% endfor %}
+                                                {{ user.consultations|length }}
                                         </code>
                                     </td>
                                     <td><code></code></td>
                                 </tr>
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             <div class="border-bottom w-25"></div>

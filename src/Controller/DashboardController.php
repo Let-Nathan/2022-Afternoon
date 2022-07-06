@@ -26,13 +26,13 @@ class DashboardController extends AbstractController
         ConsultationRepository $cRepo,
         UserRepository $userRepository,
     ): Response {
+
         return $this->render('dashboard.html.twig', [
-            'countShare' => $candidateRepository->countIsVisible(),
-            // 'consultation' => $cRepo->findBy([], ['id' => 'DESC']),
+            'countNbrShare' => $candidateRepository->countIsVisible(),
             'users' => $userRepository->findAll(),
-            'refused' => $cRepo->statusRefused(),
-            'accepted' => $cRepo->statusAccepted(),
-            'jobInterview' => $cRepo->statusJobInteview(),
+            'countNbrRefused' => $cRepo->statusRefused(),
+            'countNbrAccepted' => $cRepo->statusAccepted(),
+            'countNbrJobInterview' => $cRepo->statusJobInteview(),
         ]);
     }
 }
