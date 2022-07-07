@@ -22,5 +22,7 @@
         "watch": "encore dev --watch",
         "build": "encore production --progress"
     },
-    "dependencies": {}
+    "dependencies": {
+        "pyloncss": "^0.1.1"
+    }
 }
