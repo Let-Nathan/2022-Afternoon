@@ -19,14 +19,52 @@ class SearchSharingType extends AbstractType
          * @TODO Status & Creation date verify
          */
         $builder
-            ->add('buyer', TextType::class)
-            ->add('seller', TextType::class)
-            ->add('candidateName', TextType::class)
-            ->add('creationDate', DateType::class)
-            ->add('dateRelance', DateType::class)
-            ->add('sharingState', TextType::class)
-            ->add('endDate', DateType::class)
-            ->add('send', SubmitType::class);
+            ->add('buyer', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Acheteur',
+                    'class' => 'm-0'
+                ],
+            ])
+            ->add('seller', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Vendeur',
+                    'class' => 'm-0'
+                ],
+            ])
+            ->add('candidateName', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Nom du candidat',
+                    'class' => 'm-0'
+                ],
+            ])
+            ->add('creationDate', DateType::class, [
+                'attr' => [
+                    'class' => 'm-0 p-0 col-sm-8'
+                ],
+            ])
+            ->add('dateRelance', DateType::class, [
+                'attr' => [
+                    'class' => 'm-0 p-0 col-sm-8'
+                ],
+            ])
+            ->add('sharingState', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Candidate name',
+                    'class' => 'm-0'
+                ],
+            ])
+            ->add('endDate', DateType::class, [
+                'attr' => [
+                    'placeholder' => 'Candidate name',
+                    'class' => 'm-0'
+                ],
+            ])
+            ->add('send', SubmitType::class, [
+                'attr' => [
+                    'placeholder' => 'Candidate name',
+                    'class' => 'btn btn-primary'
+                ],
+            ]);
     }
     public function configureOptions(OptionsResolver $resolver): void
     {
