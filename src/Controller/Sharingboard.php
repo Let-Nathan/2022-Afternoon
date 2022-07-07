@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/sharingboard', name: 'app_sharingboard')]
+#[Route('/sharingboard'git br, name: 'app_sharingboard')]
 class Sharingboard extends AbstractController
 {
     /**
