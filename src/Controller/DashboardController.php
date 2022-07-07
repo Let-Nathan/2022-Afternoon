@@ -2,14 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Consultation;
-use App\Entity\User;
 use App\Repository\CandidateRepository;
 use App\Repository\ConsultationRepository;
 use App\Repository\UserRepository;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
