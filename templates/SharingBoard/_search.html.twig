@@ -1,5 +1,18 @@
+<div class="col-lg-10">
+{{ form_start(form, {'attr':
+        {'class': 'vstack justify-content-center gap-2'}}) }}
 
-        {{form_start(form) }}
-            {{ form_row(form) }}
-        {{ form_end(form) }}
-
+                {{ form_widget(form.seller, {'attr':
+                    {'class': 'w-100 rounded-2'}}) }}
+                {{ form_widget(form.buyer) }}
+                {{ form_widget(form.candidateName) }}
+                {{ form_widget(form.sharingState) }}
+                {{ form_widget(form.creationDate) }}
+                {{ form_widget(form.dateRelance) }}
+                {{ form_widget(form.endDate) }}
+                <div class="hstack justify-content-center">
+                    {{ form_widget(form.send, {'attr':
+                        {'class': 'hstack justify-content-center btn btn-primary m-0 p-1 rounded-2 col-10 col-lg-5'}}) }}
+                </div>
+    {{ form_end(form) }}
+</div>
