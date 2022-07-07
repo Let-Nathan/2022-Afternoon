@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Form\Sharing\SearchSharingType;
-use App\Form\Sharing\SharingModel;
+use App\Form\Sharing\FilterType;
+use App\Form\Sharing\FilterModel;
 use App\Repository\CandidateRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,19 +14,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class Sharingboard extends AbstractController
 {
     /**
-     * @TODO Form & Model search consultation
+     * @TODO Query
      */
     #[Route('/', name: 'app_sharingboard_index')]
     public function index(CandidateRepository $candidateRepository, Request $request): Response
     {
-        // New object to get data before performing custom query
-
-        $form = $this->createForm(SearchSharingType::class, new SharingModel(), ['method' => 'GET']);
+        $form = $this->createForm(FilterType::class, new FilterModel(), ['method' => 'GET']);
         var_dump($form->isSubmitted());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $form->getData();
             return $this->renderForm('SharingBoard/sharingboard.html.twig');
         }
 

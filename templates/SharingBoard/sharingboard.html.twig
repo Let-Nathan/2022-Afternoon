@@ -2,15 +2,17 @@
 {% block title %} SharingBoard {% endblock %}
 {% block body %}
     <div class="container-fluid vstack justify-content-around col-12">
-        <div class="container vstack justify-content-end col-5 m-0 p-0">
-            <p class="h2 text-dark mb-4 d-flex justify-content-center">Filters</p>
-            {{ include('SharingBoard/_search.html.twig') }}
-        </div>
-        <div class="container vstack col-5">
-            <p class="h2 text-dark mb-4 d-flex justify-content-center">Partages</p>
-            {% for user in candidates %}
-                <p class="text-black">{{ user.firstname }}</p>
-            {% endfor %}
+        <div class="row">
+            <div class="container vstack justify-content-end col-5 m-0 p-0">
+                <p class="h2 text-dark mb-4 d-flex justify-content-center">Filters</p>
+                {{ include('SharingBoard/_search.html.twig') }}
+            </div>
+            <div class="container vstack col-5">
+                <p class="h2 text-dark mb-4 d-flex justify-content-center">Partages</p>
+                {% for user in candidates %}
+                    <p class="text-black">{{ user.firstname }}</p>
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}

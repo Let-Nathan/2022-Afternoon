@@ -2,12 +2,12 @@
 
 namespace App\Form\Sharing;
 
-class SharingModel
+class FilterModel
 {
     private string|null $buyer = null;
     private string|null $seller = null;
     private string|null $candidateName = null;
-    private string|null $creationDate = null;
+    private \DateTime|null $creationDate = null;
     private \DateTime|null $dateRelance = null;
     private string|null $sharingState = null;
     private \DateTime|null $endDate = null;
@@ -40,11 +40,11 @@ class SharingModel
     {
         $this->candidateName = $candidateName;
     }
-    public function getCreationDate(): ?string
+    public function getCreationDate(): ?\DateTime
     {
         return $this->creationDate;
     }
-    public function setCreationDate(?string $dateCreation): void
+    public function setCreationDate(?\DateTime $dateCreation): void
     {
         $this->creationDate = $dateCreation;
     }

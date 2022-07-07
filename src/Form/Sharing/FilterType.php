@@ -2,7 +2,7 @@
 
 namespace App\Form\Sharing;
 
-use App\Form\Sharing\SharingModel;
+use App\Form\Sharing\FilterModel;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\AbstractType;
@@ -11,12 +11,17 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class SearchSharingType extends AbstractType
+class FilterType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         /**
-         * @TODO Status & Creation date verify
+         * @TODO
+         *          All field = auto completion
+         *          Status = select option ?
+         *          Date Relance = date picker
+         *          Date Fin = //
+         *          Date Crea = //
          */
         $builder
             ->add('buyer', TextType::class, [
@@ -49,7 +54,7 @@ class SearchSharingType extends AbstractType
             ])
             ->add('sharingState', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Candidate name',
+                    'placeholder' => 'Status',
                     'class' => 'm-0'
                 ],
             ])
@@ -69,7 +74,7 @@ class SearchSharingType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => SharingModel::class,
+            'data_class' => FilterModel::class,
         ]);
     }
 }
