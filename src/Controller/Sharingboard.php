@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Form\Sharing\FilterType;
 use App\Form\Sharing\FilterModel;
+use App\Form\Sharing\FilterType;
 use App\Repository\CandidateRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,8 +19,8 @@ class Sharingboard extends AbstractController
     #[Route('/', name: 'app_sharingboard_index')]
     public function index(CandidateRepository $candidateRepository, Request $request): Response
     {
-        $form = $this->createForm(FilterType::class, new FilterModel(), ['method' => 'GET']);
-        var_dump($form->isSubmitted());
+        $filterModel = new FilterModel();
+        $form = $this->createForm(FilterType::class, $filterModel, ['method' => 'GET']);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
