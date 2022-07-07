@@ -20,6 +20,9 @@
         {% endblock %}
     </head>
     <body>
+        <header class="col-12">
+            {%  include('Components/_navbar.html.twig') %}
+        </header>
         {% block body %}{% endblock %}
     </body>
 
