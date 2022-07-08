@@ -68,4 +68,16 @@ class AdminController extends AbstractController
             'form' => $form,
         ]);
     }
+
+    #[Route('/admin{id}', name: 'account_admin_delete', methods: ['POST'])]
+    public function delete(Admin $admin, Request $request, EntityManagerInterface $entityManager): Response
+    {
+
+        if ($this->isCsrfTokenValid('delete' . $admin->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($admin);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('account_admin', [], Response::HTTP_SEE_OTHER);
+    }
 }
