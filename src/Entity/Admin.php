@@ -43,6 +43,11 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
         $this->candidates = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getId();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

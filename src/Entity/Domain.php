@@ -18,6 +18,11 @@ class Domain
     #[ORM\Column(type: 'string', length: 255)]
     private string $domaineName;
 
+    public function __toString()
+    {
+        return $this->getId();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

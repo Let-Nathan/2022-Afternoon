@@ -18,6 +18,11 @@ class Skill
     #[ORM\Column(type: 'string', length: 255)]
     private string $skillName;
 
+    public function __toString()
+    {
+        return $this->getId();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
