@@ -28,26 +28,12 @@ class FilterType extends AbstractType
         $builder
 
             ->add('buyer', TextType::class, [
-//                'class' => Consultation::class,
-//                'choice_label' => 'firstName',
                 'required' => false,
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'Acheteur'
                 ]
                 ])
-
-                    //SVG
-//              ->add('buyer', EntityType::class, [
-//                'class' => Consultation::class,
-//                'choice_label' => 'firstName',
-//                'required' => false,
-//                'label' => false,
-//                'autocomplete' => true,
-//////                'choices' => function (ConsultationRepository $consultationRepository) {
-//////                    return $consultationRepository->searchWithFilter();
-////                }
-//            ]),
             ->add('seller', TextType::class, [
                 'required' => false,
                 'label' => false,
