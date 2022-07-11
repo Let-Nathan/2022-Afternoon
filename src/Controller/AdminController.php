@@ -3,11 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Admin;
-use App\Entity\Candidate;
 use App\Form\AdminType;
-use App\Form\CandidateType;
 use App\Repository\AdminRepository;
-use App\Repository\CandidateRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
