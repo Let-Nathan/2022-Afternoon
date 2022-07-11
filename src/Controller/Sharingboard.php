@@ -20,20 +20,29 @@ class Sharingboard extends AbstractController
      * @TODO Query
      */
     #[Route('/', name: 'app_sharingboard_index')]
-    public function index(UserRepository $userRepository, Request $request, ConsultationRepository $consultationRepository): Response
+    public function index(Request $request, ConsultationRepository $consultationRep): Response
     {
         $filterModel = new FilterModel();
         $form = $this->createForm(FilterType::class, $filterModel);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $consultations = $consultationRepository->searchWithFilter($form->getData());
+            $consultations = $consultationRep->searchWithFilter($form->getData());
         } else {
-            $consultations = $consultationRepository->findAll();
+            $consultations = $consultationRep->findAll();
         }
 
         return $this->renderForm('SharingBoard/sharingboard.html.twig', [
             'consultations' => $consultations,
             'form' => $form,
         ]);
+    }
+
+    // Delete consultation //
+    #[Route('/delete/{id}', name: 'app_sharingboard_delete')]
+    public function delete(Consultation $consultation, ConsultationRepository $consultationRep): Response
+    {
+        $consultationRep->remove($consultation, true);
+        $this->addFlash('alert-success', 'La consultation à bien été supprimée');
+        return $this->redirectToRoute('app_sharingboard_index');
     }
 }

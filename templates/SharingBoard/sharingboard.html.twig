@@ -17,26 +17,34 @@
                     <!-- Search result container --->
                     {% for consultation in consultations %}
                         <div class="container-fluid d-flex justify-content-center ">
-                            <div class="row hstack align-items-center col-12 rounded-3 border mb-2">
-                                    <div class="vstack col-6 d-flex justify-content-around">
-                                       <div class="vstack">
+                            <div class="row col-12 rounded-3 border mb-2">
+
+                                    <div class="container-fluid d-flex col-lg-12 col-12">
+
+                                        <div class="flex-column col-3">
                                             <p class="text-black mt-2 m-0 p-0" data-bs-toggle="tooltip" title="Utilisateur"> {{ consultation.user.firstname }} ~  {{ consultation.user.lastname }}</p>
                                             <p class="text-muted"> {{ consultation.user.email }}</p>
-                                       </div>
-                                       <div class="vstack">
                                             <p class="text-black m-0 p-0" data-bs-toggle="tooltip" title="Candidat"> {{ consultation.candidate.firstName }} ~ {{ consultation.candidate.lastName}}  </p>
                                             <p class="text-muted"> {{ consultation.candidate.email }}</p>
                                        </div>
+
+                                        <div class="dates col-3 vstack align-items-center mt-4">
+                                            <p class="text-black m-0 p-0" data-bs-toggle="tooltip" title="Vendeur"> {{ consultation.candidate.user.firstname }} ~ {{ consultation.candidate.user.lastName }} </p>
+                                            <p class="text-muted m-0 p-0" data-bs-toggle="tooltip" title="Email vendeur"> {{ consultation.candidate.user.email }} </p>
+                                        </div>
+
+                                        <div class="dates col-3 vstack align-items-end gap-4 mt-4">
+                                            <p class="text-black m-0 p-0" data-bs-toggle="tooltip" title="Date de consultation"> {{ consultation.createdAt|date('d-m-Y') }} </p>
+                                            <p class="text-black" data-bs-toggle="tooltip" title="Date de relance"> {{ consultation.relanceDate|date('d-m-Y') }} </p>
+                                        </div>
+
+                                        <div class="remove-consultation vstack align-items-end col-2">
+                                            <a href="{{ path('app_sharingboard_delete', {id: consultation.id }) }}">
+                                                <i class="bi bi-x-square"></i>
+                                            </a>
+                                        </div>
+
                                     </div>
-                                <div class="dates col-4 vstack align-items-end gap-2 mt-2">
-                                    <p class="text-black m-0 p-0" data-bs-toggle="tooltip" title="Date de consultation"> {{ consultation.createdAt|date('d-m-Y') }} </p>
-                                    <p class="text-black" data-bs-toggle="tooltip" title="Date de relance"> {{ consultation.relanceDate|date('d-m-Y') }} </p>
-                                </div>
-                                <div class="remove-consultation vstack align-items-end col-2">
-                                    <a href="#">
-                                        <i class="bi bi-x-square"></i>
-                                    </a>
-                                </div>
                             </div>
                         </div>
                 {% endfor %}
