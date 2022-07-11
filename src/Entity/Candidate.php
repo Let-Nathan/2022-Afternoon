@@ -18,7 +18,7 @@ class Candidate
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'candidates')]
     #[ORM\JoinColumn(nullable: false)]
-    private User $user;
+    private ?User $user;
 
     #[ORM\Column(type: 'string', length: 2500)]
     private string $curiculumVitae;
@@ -89,7 +89,7 @@ class Candidate
     #[ORM\Column(type: 'boolean')]
     private bool $isVisible = false;
 
-    #[ORM\OneToMany(mappedBy: 'candidat', targetEntity: Consultation::class)]
+    #[ORM\OneToMany(mappedBy: 'candidate', targetEntity: Consultation::class)]
     private Collection $consultations;
 
     #[ORM\Column(type: 'boolean')]
@@ -113,11 +113,10 @@ class Candidate
         return $this->id;
     }
 
-    public function getUser(): ?User
+    public function getUser(): User
     {
         return $this->user;
     }
-
     public function setUser(?User $user): self
     {
         $this->user = $user;
@@ -424,7 +423,7 @@ class Candidate
     {
         if (!$this->consultations->contains($consultation)) {
             $this->consultations[] = $consultation;
-            $consultation->setCandidat($this);
+            $consultation->setCandidate($this);
         }
 
         return $this;
@@ -433,8 +432,8 @@ class Candidate
     {
         if ($this->consultations->removeElement($consultation)) {
             // set the owning side to null (unless already changed)
-            if ($consultation->getCandidat() === $this) {
-                $consultation->setCandidat(null);
+            if ($consultation->getCandidate() === $this) {
+                $consultation->setCandidate(null);
             }
         }
 

@@ -39,6 +39,14 @@ class CandidateRepository extends ServiceEntityRepository
         }
     }
 
+    public function countIsVisible(): int
+    {
+        return $this->createQueryBuilder('c')
+        ->select('count(c.id)')
+        ->where('c.isVisible = :visible')
+        ->setParameter('visible', true)
+        ->getQuery()->getSingleScalarResult();
+    }
 
 
 //    /**

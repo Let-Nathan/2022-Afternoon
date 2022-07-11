@@ -47,8 +47,8 @@ class User
 
     public function __construct()
     {
-        $this->candidates = new ArrayCollection();
         $this->consultations = new ArrayCollection();
+        $this->candidates = new ArrayCollection();
     }
 
     public function __toString()
@@ -133,10 +133,7 @@ class User
         return $this;
     }
 
-    /**
-     * @return Collection<int, Candidate>
-     */
-    public function getCandidates(): Collection
+    public function getCandidates(): ?Collection
     {
         return $this->candidates;
     }
@@ -163,15 +160,19 @@ class User
         return $this;
     }
 
-    /**
-     * @return Collection<int, Consultation>
-     */
     public function getConsultations(): Collection
     {
         return $this->consultations;
     }
 
-    public function addConsultation(Consultation $consultation): self
+    public function getConsultationsByStatus(string $status): Collection
+    {
+        return $this->consultations->filter(function (Consultation $consultation) use ($status): bool {
+            return $consultation->getStatus() === $status;
+        });
+    }
+
+    public function addConsultations(Consultation $consultation): self
     {
         if (!$this->consultations->contains($consultation)) {
             $this->consultations[] = $consultation;
@@ -181,7 +182,7 @@ class User
         return $this;
     }
 
-    public function removeConsultation(Consultation $consultation): self
+    public function removeConsultations(Consultation $consultation): self
     {
         if ($this->consultations->removeElement($consultation)) {
             // set the owning side to null (unless already changed)
