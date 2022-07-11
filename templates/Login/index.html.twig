@@ -5,19 +5,22 @@
         <div class="text-white">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
+    <div class="d-flex vstack justify-content-around">
 
     <h1>Login Admin</h1>
 
-    <div class="d-flex">
-
     <p>* champs obligatoires</p>
 
-    <form action="{{ path('app_login') }}" method="post">
-        <label class="text-white" for="username">Email *</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+        <div class="d-flex vstack justify-content-around">
+        <div action="{{ path('app_login') }}" method="post">
+        <label class="text" for="username">Email *</label>
+        </div>
 
-        <label class="text-white" for="password">Mot de passe *</label>
+            <div class="d-flex vstack justify-content-around">
+                <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+        <label class="text" for="password">Mot de passe *</label>
         <input type="password" id="password" name="_password"/>
+            </div>
 
         <p>Mot de passe oublié ?</p>
 

@@ -1,19 +1,35 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-{% block body %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+
+    <title>{% block title %}Afternoon{% endblock %}</title>
+</head>
+
+<body>
 
     <div class="container-fluid bg-light p-0">
         <div class="container">
             <div class="row">
-                <div class="col col-6 bg-primary">
+                <div class="col col-6">
                     {% block leftBlock %}{% endblock %}
                 </div>
 
-                <div class="col bg-success">
+                <div class="col">
                     {% block rightBlock %}{% endblock %}
                 </div>
             </div>
         </div>
     </div>
 
-{% endblock %}
+</body>
+</html>
