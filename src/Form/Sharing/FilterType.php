@@ -44,7 +44,6 @@ class FilterType extends AbstractType
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'Nom du candidat',
-                    'class' => 'm-0'
                 ],
             ])
             ->add('creationDate', DateType::class, [
@@ -52,9 +51,6 @@ class FilterType extends AbstractType
                 'label_attr' => ['class' => 'ser-only'],
                 'required' => false,
                 'widget' => 'single_text',
-                'attr' => [
-                    'class' => 'm-0 p-0 col-sm-8'
-                ],
             ])
             ->add('dateRelance', DateType::class, [
                 //Maybe
@@ -62,13 +58,10 @@ class FilterType extends AbstractType
                 'label_attr' => ['class' => 'ser-only'],
                 'required' => false,
                 'widget' => 'single_text',
-                'attr' => [
-                    'class' => 'm-0 p-0 col-sm-8'
-                ],
             ])
-            ->add('sharingState', ChoiceType::class, [
+            ->add('status', ChoiceType::class, [
                 'required' => false,
-                'placeholder' => false,
+                'placeholder' => 'Choix du du status',
                 'choices' => [
                     'Consultation' => [
                         'Accepted' => 'accepted',
@@ -78,7 +71,6 @@ class FilterType extends AbstractType
                 ],
                 'attr' => [
                     'placeholder' => 'Status',
-                    'class' => 'm-0'
                 ],
             ])
             ->add('endDate', DateType::class, [
@@ -86,9 +78,6 @@ class FilterType extends AbstractType
                     'label_attr' => ['class' => 'ser-only'],
                     'required' => false,
                     'widget' => 'single_text',
-                    'attr' => [
-                        'class' => 'm-0 p-0 col-sm-8'
-                    ],
             ])
             ->add('send', SubmitType::class);
     }
@@ -96,6 +85,8 @@ class FilterType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => FilterModel::class,
+            'method' => 'GET',
+            'csrf_protection' => false,
         ]);
     }
 }

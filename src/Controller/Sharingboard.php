@@ -23,16 +23,16 @@ class Sharingboard extends AbstractController
     public function index(UserRepository $userRepository, Request $request, ConsultationRepository $consultationRepository): Response
     {
         $filterModel = new FilterModel();
-        $form = $this->createForm(FilterType::class, $filterModel, ['method' => 'GET']);
+        $form = $this->createForm(FilterType::class, $filterModel);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            dd($form->getData()->getBuyer());
-//            $consultationRepository->findBy
-            return $this->renderForm('SharingBoard/sharingboard.html.twig');
+            $consultations = $consultationRepository->searchWithFilter($form->getData());
+        } else {
+            $consultations = $consultationRepository->findAll();
         }
 
         return $this->renderForm('SharingBoard/sharingboard.html.twig', [
-            'users' => $userRepository->findAll(),
+            'consultations' => $consultations,
             'form' => $form,
         ]);
     }

@@ -3,8 +3,12 @@
 namespace App\Repository;
 
 use App\Entity\Consultation;
+use App\Entity\User;
+use App\Form\Sharing\FilterModel;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Persistence\ManagerRegistry;
+use phpDocumentor\Reflection\Types\Collection;
 
 /**
  * @extends ServiceEntityRepository<Consultation>
@@ -62,6 +66,47 @@ class ConsultationRepository extends ServiceEntityRepository
             ->where('c.status = :search')
             ->setParameter('search', 'Job interview')
             ->getQuery()->getSingleScalarResult();
+    }
+
+    public function searchWithFilter(FilterModel $filterModel): array
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        //Filter on buyer
+        if ($filterModel->getBuyer()) {
+            $qb->join('c.user', 'u')
+                ->where('u.firstName LIKE :seller')
+                ->orWhere('u.lastName LIKE :seller')
+                ->setParameter('seller', '%' . $filterModel->getBuyer() . '%');
+        }
+
+        //Filter Seller
+
+
+        //  Filter on candidate name    //
+        if ($filterModel->getCandidateName()) {
+            $qb->join('c.candidate', 'ca')
+                ->andWhere('ca.firstName LIKE :candidate')
+                ->orWhere('ca.lastName LIKE :candidate')
+                ->setParameter('candidate', '%' . $filterModel->getCandidateName() . '%');
+        }
+        //  Filter on status choice   //
+        if ($filterModel->getStatus()) {
+            $qb->andWhere('c.status LIKE :status')
+                ->setParameter('status', '%' . $filterModel->getStatus() . '%');
+        }
+        //  Filter on relance Date  //
+        if ($filterModel->getDateRelance()) {
+            $qb->andWhere('c.relanceDate LIKE :relanceDate')
+                ->setParameter('relanceDate', '%' . $filterModel->getDateRelance()->format('Y-m-d') . '%');
+        }
+        //  Filter on creation date //
+        if ($filterModel->getCreationDate()) {
+            $qb->andWhere('c.createdAt LIKE :creationDate')
+                ->setParameter('creationDate', '%' . $filterModel->getCreationDate()->format('Y-m-d') . '%');
+        }
+
+        return $qb->getQuery()->getResult();
     }
 
 //    /**

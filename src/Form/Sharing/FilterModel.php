@@ -9,7 +9,7 @@ class FilterModel
     private string|null $candidateName = null;
     private \DateTime|null $creationDate = null;
     private \DateTime|null $dateRelance = null;
-    private string|null $sharingState = null;
+    private string|null $status = null;
     private \DateTime|null $endDate = null;
 
     public function getBuyer(): ?string
@@ -56,13 +56,13 @@ class FilterModel
     {
         $this->dateRelance = $dateRelance;
     }
-    public function getSharingState(): ?string
+    public function getStatus(): ?string
     {
-        return $this->sharingState;
+        return $this->status;
     }
-    public function setSharingState(?string $sharingState): void
+    public function setStatus(?string $status): void
     {
-        $this->sharingState = $sharingState;
+        $this->status = $status;
     }
     public function getEndDate(): ?\DateTime
     {

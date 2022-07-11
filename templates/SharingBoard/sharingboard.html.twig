@@ -5,29 +5,42 @@
         <div class="row gap-4">
 
                 <!-- Filter container -->
-                <div class="vstack align-items-center m-0 p-0 col-lg-4">
+                <div class="vstack align-items-center m-0 p-0 col-lg-2">
                     <p class="h2 text-dark mb-4 hstack justify-content-center">Filters</p>
                     {{ include('SharingBoard/_search.html.twig') }}
                 </div>
-
             <!-- Search container-->
             <div class="col-12 col-lg-6 border-start vstack">
                 <p class="h2 text-dark mb-4 d-flex justify-content-center">Partages</p>
                 <div class="container col-12 d-flex align-items-center flex-column">
 
                     <!-- Search result container --->
-                    {% for user in users %}
+                    {% for consultation in consultations %}
                         <div class="container-fluid d-flex justify-content-center ">
                             <div class="row hstack align-items-center col-12 rounded-3 border mb-2">
-                                <p class="text-black">{{ user.firstname }}</p>
-                                <div class="col-lg-4">
+                                    <div class="vstack col-6 d-flex justify-content-around">
+                                       <div class="vstack">
+                                            <p class="text-black mt-2 m-0 p-0" data-bs-toggle="tooltip" title="Utilisateur"> {{ consultation.user.firstname }} ~  {{ consultation.user.lastname }}</p>
+                                            <p class="text-muted"> {{ consultation.user.email }}</p>
+                                       </div>
+                                       <div class="vstack">
+                                            <p class="text-black m-0 p-0" data-bs-toggle="tooltip" title="Candidat"> {{ consultation.candidate.firstName }} ~ {{ consultation.candidate.lastName}}  </p>
+                                            <p class="text-muted"> {{ consultation.candidate.email }}</p>
+                                       </div>
+                                    </div>
+                                <div class="dates col-4 vstack align-items-end gap-2 mt-2">
+                                    <p class="text-black m-0 p-0" data-bs-toggle="tooltip" title="Date de consultation"> {{ consultation.createdAt|date('d-m-Y') }} </p>
+                                    <p class="text-black" data-bs-toggle="tooltip" title="Date de relance"> {{ consultation.relanceDate|date('d-m-Y') }} </p>
+                                </div>
+                                <div class="remove-consultation vstack align-items-end col-2">
+                                    <a href="#">
+                                        <i class="bi bi-x-square"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                 {% endfor %}
-
                 </div>
             </div>
         </div>
-    </div>
 {% endblock %}
