@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/sharingboard')]
-class Sharingboard extends AbstractController
+class SharingController extends AbstractController
 {
     /**
      * @TODO Query
@@ -27,8 +27,9 @@ class Sharingboard extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $consultations = $consultationRep->searchWithFilter($form->getData());
+            //if empty result ?
         } else {
-            $consultations = $consultationRep->findAll();
+            $consultations = $consultationRep->findBy([], ['id' => 'DESC']);
         }
 
         return $this->renderForm('SharingBoard/sharingboard.html.twig', [

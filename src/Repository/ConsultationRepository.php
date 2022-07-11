@@ -68,10 +68,23 @@ class ConsultationRepository extends ServiceEntityRepository
             ->getQuery()->getSingleScalarResult();
     }
 
+//    public function searchBuyer(): array
+//    {
+//        $qb = $this->createQueryBuilder('c');
+//
+//        //Filter on buyer
+//        if ($filterModel->getBuyer()) {
+//            $qb->join('c.user', 'u')
+//                ->where('u.firstName LIKE :seller')
+//                ->orWhere('u.lastName LIKE :seller')
+//                ->setParameter('seller', '%' . $filterModel->getBuyer() . '%');
+//        }
+//    }
+
     public function searchWithFilter(FilterModel $filterModel): array
     {
         $qb = $this->createQueryBuilder('c');
-
+//
         //Filter on buyer
         if ($filterModel->getBuyer()) {
             $qb->join('c.user', 'u')

@@ -2,6 +2,11 @@
 
 namespace App\Form\Sharing;
 
+use App\Entity\Consultation;
+use App\Entity\User;
+use App\Repository\ConsultationRepository;
+use App\Repository\UserRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
@@ -18,19 +23,31 @@ class FilterType extends AbstractType
         /**
          * @TODO
          *          All field = auto completion
-         *          Status = select option ?
-         *          Date filter = Display on field, on click : 'date creation', 'date end' ... ?
+         *          Date filter = Add label
          */
         $builder
 
             ->add('buyer', TextType::class, [
+//                'class' => Consultation::class,
+//                'choice_label' => 'firstName',
                 'required' => false,
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Acheteur',
-                    'class' => 'm-0'
-                ],
-            ])
+                    'placeholder' => 'Acheteur'
+                ]
+                ])
+
+                    //SVG
+//              ->add('buyer', EntityType::class, [
+//                'class' => Consultation::class,
+//                'choice_label' => 'firstName',
+//                'required' => false,
+//                'label' => false,
+//                'autocomplete' => true,
+//////                'choices' => function (ConsultationRepository $consultationRepository) {
+//////                    return $consultationRepository->searchWithFilter();
+////                }
+//            ]),
             ->add('seller', TextType::class, [
                 'required' => false,
                 'label' => false,
