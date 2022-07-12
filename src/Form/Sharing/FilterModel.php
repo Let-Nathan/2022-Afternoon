@@ -17,10 +17,7 @@ class FilterModel
     private ?string $status = null;
     private ?\DateTime $endDate = null;
 
-//    public function getBuyer(): ?User
-//    {
-//        return $this->buyer;
-//    }
+
     public function getBuyer(): ?string
     {
         return $this->buyer;
