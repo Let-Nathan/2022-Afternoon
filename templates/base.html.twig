@@ -23,6 +23,7 @@
         <header class="col-12 mb-5">
             {%  include('Components/_navbar.html.twig') %}
         </header>
+        {% include('Components/_flashMessages.html.twig') %}
         {% block body %}{% endblock %}
     </body>
 

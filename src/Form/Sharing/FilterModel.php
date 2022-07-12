@@ -4,13 +4,14 @@ namespace App\Form\Sharing;
 
 class FilterModel
 {
-    private string|null $buyer = null;
-    private string|null $seller = null;
-    private string|null $candidateName = null;
-    private \DateTime|null $creationDate = null;
-    private \DateTime|null $dateRelance = null;
-    private string|null $sharingState = null;
-    private \DateTime|null $endDate = null;
+    private ?string $buyer = null;
+    private ?string $seller = null;
+    private ?string $candidateName = null;
+    private ?\DateTime $creationDate = null;
+    private ?\DateTime $dateRelance = null;
+    private ?string $status = null;
+    private ?\DateTime $endDate = null;
+
 
     public function getBuyer(): ?string
     {
@@ -56,13 +57,13 @@ class FilterModel
     {
         $this->dateRelance = $dateRelance;
     }
-    public function getSharingState(): ?string
+    public function getStatus(): ?string
     {
-        return $this->sharingState;
+        return $this->status;
     }
-    public function setSharingState(?string $sharingState): void
+    public function setStatus(?string $status): void
     {
-        $this->sharingState = $sharingState;
+        $this->status = $status;
     }
     public function getEndDate(): ?\DateTime
     {

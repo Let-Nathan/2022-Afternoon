@@ -858,7 +858,7 @@
     "@babel/types" "^7.4.4"
     "esutils" "^2.0.2"
 
-"@babel/runtime@^7.8.4":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.8.4":
   "integrity" "sha512-YMQvx/6nKEaucl0MY56mwIG483xk8SDNdlUwb2Ts6FUpr7fm85DxEmsY18LXBNhcTz6tO6JwZV8w1W06v8UKeg=="
   "resolved" "https://registry.npmjs.org/@babel/runtime/-/runtime-7.18.0.tgz"
   "version" "7.18.0"
@@ -997,6 +997,11 @@
     "error-stack-parser" "^2.0.0"
     "string-width" "^4.2.3"
 
+"@orchidjs/sifter@^0.9.2":
+  "integrity" "sha512-8eR1aNWPhDt+cqOevGUajriiZbMzs6nGGdErUjSr99vMAxwMBRztnJu72OT8M7emyHTVjBB8BPjj4rJIoXQgKA=="
+  "resolved" "https://registry.npmjs.org/@orchidjs/sifter/-/sifter-0.9.2.tgz"
+  "version" "0.9.2"
+
 "@popperjs/core@^2.10.2":
   "integrity" "sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw=="
   "resolved" "https://registry.npmjs.org/@popperjs/core/-/core-2.11.5.tgz"
@@ -1011,6 +1016,10 @@
     "acorn" "^8.0.5"
     "loader-utils" "^2.0.0"
     "schema-utils" "^3.0.0"
+
+"@symfony/ux-autocomplete@file:vendor/symfony/ux-autocomplete/assets":
+  "resolved" "file:vendor/symfony/ux-autocomplete/assets"
+  "version" "1.0.0"
 
 "@symfony/webpack-encore@^1.7.0":
   "integrity" "sha512-ZOsOqaZNP3BSQuISAsyH/Jv5+rDxbM4Wf6IsKo1y5Cm9BFIS2dPLsqDZfMbi6G2HdAHm88JqX/HGwxE73eADEw=="
@@ -3045,6 +3054,29 @@
   dependencies:
     "websocket-driver" ">=0.5.1"
 
+"fetch-mock-jest@^1.5.1":
+  "integrity" "sha512-+utwzP8C+Pax1GSka3nFXILWMY3Er2L+s090FOgqVNrNCPp0fDqgXnAHAJf12PLHi0z4PhcTaZNTz8e7K3fjqQ=="
+  "resolved" "https://registry.npmjs.org/fetch-mock-jest/-/fetch-mock-jest-1.5.1.tgz"
+  "version" "1.5.1"
+  dependencies:
+    "fetch-mock" "^9.11.0"
+
+"fetch-mock@^9.11.0":
+  "integrity" "sha512-PG1XUv+x7iag5p/iNHD4/jdpxL9FtVSqRMUQhPab4hVDt80T1MH5ehzVrL2IdXO9Q2iBggArFvPqjUbHFuI58Q=="
+  "resolved" "https://registry.npmjs.org/fetch-mock/-/fetch-mock-9.11.0.tgz"
+  "version" "9.11.0"
+  dependencies:
+    "@babel/core" "^7.0.0"
+    "@babel/runtime" "^7.0.0"
+    "core-js" "^3.0.0"
+    "debug" "^4.1.1"
+    "glob-to-regexp" "^0.4.0"
+    "is-subset" "^0.1.1"
+    "lodash.isequal" "^4.5.0"
+    "path-to-regexp" "^2.2.1"
+    "querystring" "^0.2.0"
+    "whatwg-url" "^6.5.0"
+
 "file-entry-cache@^6.0.1":
   "integrity" "sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg=="
   "resolved" "https://registry.npmjs.org/file-entry-cache/-/file-entry-cache-6.0.1.tgz"
@@ -3313,7 +3345,7 @@
     "to-absolute-glob" "^2.0.0"
     "unique-stream" "^2.0.2"
 
-"glob-to-regexp@^0.4.1":
+"glob-to-regexp@^0.4.0", "glob-to-regexp@^0.4.1":
   "integrity" "sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw=="
   "resolved" "https://registry.npmjs.org/glob-to-regexp/-/glob-to-regexp-0.4.1.tgz"
   "version" "0.4.1"
@@ -3901,6 +3933,11 @@
   "resolved" "https://registry.npmjs.org/is-stream/-/is-stream-2.0.1.tgz"
   "version" "2.0.1"
 
+"is-subset@^0.1.1":
+  "integrity" "sha512-6Ybun0IkarhmEqxXCNw/C0bna6Zb/TkfUX9UbwJtK6ObwAVCxmAP308WWTHviM/zAqXk05cdhYsUsZeGQh99iw=="
+  "resolved" "https://registry.npmjs.org/is-subset/-/is-subset-0.1.1.tgz"
+  "version" "0.1.1"
+
 "is-unc-path@^1.0.0":
   "integrity" "sha512-mrGpVd0fs7WWLfVsStvgF6iEJnbjDFZh9/emhRDcGWTduTfNHd9CHeUwH3gYIjdbwo4On6hunkztwOaAw0yllQ=="
   "resolved" "https://registry.npmjs.org/is-unc-path/-/is-unc-path-1.0.0.tgz"
@@ -4179,6 +4216,11 @@
   "integrity" "sha1-gteb/zCmfEAF/9XiUVMArZyk168= sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow=="
   "resolved" "https://registry.npmjs.org/lodash.debounce/-/lodash.debounce-4.0.8.tgz"
   "version" "4.0.8"
+
+"lodash.isequal@^4.5.0":
+  "integrity" "sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ=="
+  "resolved" "https://registry.npmjs.org/lodash.isequal/-/lodash.isequal-4.5.0.tgz"
+  "version" "4.5.0"
 
 "lodash.memoize@^4.1.2":
   "integrity" "sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4= sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag=="
@@ -4817,6 +4859,11 @@
   dependencies:
     "path-root-regex" "^0.1.0"
 
+"path-to-regexp@^2.2.1":
+  "integrity" "sha512-G6zHoVqC6GGTQkZwF4lkuEyMbVOjoBKAEybQUypI1WTkqinCOrq2x6U2+phkJ1XsEMTy4LjtwPI7HW+NVrRR2w=="
+  "resolved" "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-2.4.0.tgz"
+  "version" "2.4.0"
+
 "path-to-regexp@0.1.7":
   "integrity" "sha1-32BBeABfUi8V60SQ5yR6G/qmf4w= sha512-5DFkuoqlv1uYQKxy8omFBeJPQcdoE07Kv2sferDCrAq1ohOU+MSDswDIbnx3YAM60qIOnYa53wBhXW0EbMonrQ=="
   "resolved" "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-0.1.7.tgz"
@@ -5204,6 +5251,11 @@
   "version" "6.10.3"
   dependencies:
     "side-channel" "^1.0.4"
+
+"querystring@^0.2.0":
+  "integrity" "sha512-wkvS7mL/JMugcup3/rMitHmd9ecIGd2lhFhK9N3UUQ450h66d1r3Y9nvXzQAW1Lq+wyx61k/1pfKS5KuKiyEbg=="
+  "resolved" "https://registry.npmjs.org/querystring/-/querystring-0.2.1.tgz"
+  "version" "0.2.1"
 
 "randombytes@^2.1.0":
   "integrity" "sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ=="
@@ -6378,6 +6430,13 @@
   "resolved" "https://registry.npmjs.org/toidentifier/-/toidentifier-1.0.1.tgz"
   "version" "1.0.1"
 
+"tom-select@^2.0.1":
+  "integrity" "sha512-NtE8kACBlMv4QaDakYfnXtEAgM/AVmM7Hw5FNQmij0uwgRgyXC/2kpNJPD1AdT5q/l6mUNkTnInQpTmrwX/tWQ=="
+  "resolved" "https://registry.npmjs.org/tom-select/-/tom-select-2.1.0.tgz"
+  "version" "2.1.0"
+  dependencies:
+    "@orchidjs/sifter" "^0.9.2"
+
 "tr46@^1.0.1":
   "integrity" "sha1-qLE/1r/SSJUZZ0zN5VujaTtwbQk= sha512-dTpowEjclQ7Kgx5SdBkqRzVhERQXov8/l9Ft9dVM9fmg0W0KQSVaXX9T4i6twCPNtYiZM53lpSSUAwJbFPOHxA=="
   "resolved" "https://registry.npmjs.org/tr46/-/tr46-1.0.1.tgz"
@@ -6775,6 +6834,15 @@
   "integrity" "sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg=="
   "resolved" "https://registry.npmjs.org/websocket-extensions/-/websocket-extensions-0.1.4.tgz"
   "version" "0.1.4"
+
+"whatwg-url@^6.5.0":
+  "integrity" "sha512-rhRZRqx/TLJQWUpQ6bmrt2UV4f0HCQ463yQuONJqC6fO2VoEb1pTYddbe59SkYq87aoM5A3bdhMZiUiVws+fzQ=="
+  "resolved" "https://registry.npmjs.org/whatwg-url/-/whatwg-url-6.5.0.tgz"
+  "version" "6.5.0"
+  dependencies:
+    "lodash.sortby" "^4.7.0"
+    "tr46" "^1.0.1"
+    "webidl-conversions" "^4.0.2"
 
 "whatwg-url@^7.0.0":
   "integrity" "sha512-WUu7Rg1DroM7oQvGWfOiAK21n74Gg+T4elXEQYkOhtyLeWiJFoOGLXPKI/9gzIie9CtwVLm8wtw6YJdKyxSjeg=="
