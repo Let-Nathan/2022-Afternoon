@@ -2,11 +2,6 @@
 
 namespace App\Form\Sharing;
 
-use App\Entity\User;
-use Doctrine\Common\Collections\ArrayCollection;
-use phpDocumentor\Reflection\Types\Collection;
-use Symfony\Config\TwigExtra\StringConfig;
-
 class FilterModel
 {
     private ?string $buyer = null;

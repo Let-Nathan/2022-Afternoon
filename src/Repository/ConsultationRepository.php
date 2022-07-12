@@ -88,8 +88,7 @@ class ConsultationRepository extends ServiceEntityRepository
         //Filter on buyer
         if ($filterModel->getBuyer()) {
             $qb->join('c.user', 'u')
-                ->where('u.firstName LIKE :seller')
-                ->orWhere('u.lastName LIKE :seller')
+                ->where('u.firstName LIKE :seller OR u.lastName LIKE :seller')
                 ->setParameter('seller', '%' . $filterModel->getBuyer() . '%');
         }
 
@@ -99,8 +98,7 @@ class ConsultationRepository extends ServiceEntityRepository
         //  Filter on candidate name    //
         if ($filterModel->getCandidateName()) {
             $qb->join('c.candidate', 'ca')
-                ->andWhere('ca.firstName LIKE :candidate')
-                ->orWhere('ca.lastName LIKE :candidate')
+                ->andWhere('ca.firstName LIKE :candidate OR ca.lastName LIKE :candidate')
                 ->setParameter('candidate', '%' . $filterModel->getCandidateName() . '%');
         }
         //  Filter on status choice   //
