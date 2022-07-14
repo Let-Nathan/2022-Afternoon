@@ -2,29 +2,56 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" type="image/png" href="{{ asset('build/images/LOGO_WILD_CODE_SCHOOL.7f855493.png') }}"/>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-        <title>
-            {% block title %}Afternoon{% endblock %}
-        </title>
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_script_tags('app') }}
+
+        <title>{% block title %}Afternoon{% endblock %}</title>
+
     </head>
     <body>
-        <header class="col-12 mb-5">
-            {%  include('Components/_navbar.html.twig') %}
-        </header>
-        {% include('Components/_flashMessages.html.twig') %}
-        {% block body %}{% endblock %}
+        {% block header %}
+            <header class="mb-5">
+                {%  include('Components/_navbar.html.twig') %}
+            </header>
+        {% endblock %}
+        {% set flashMessages = app.flashes %}
+        {% if flashMessages %}
+            <div class="container">
+                {% for label, messages in flashMessages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% block body %}
+            <div class="container">
+                {% if block('h1') is defined %}
+                    <h1 class="mb-5">{{ block('h1') }}</h1>
+                {% endif %}
+
+                {% block content %}{% endblock %}
+            </div>
+        {% endblock %}
+        <script>
+            // Demande une confirmation pour suivre le lien s'il a une propriété data-confirm
+            const confirmLinks = document.querySelectorAll('[data-confirm]');
+            confirmLinks.forEach(function (elem) {
+                elem.addEventListener('click', function(e) {
+                    if (!confirm('Confirmer ?')) {
+                        e.preventDefault();
+                    }
+                });
+            });
+        </script>
     </body>
 
 </html>

@@ -1,35 +1,24 @@
-{% extends 'layout-2cols.html.twig' %}
+{% extends 'layout-2maxicols.html.twig' %}
 
 {% block leftBlock %}
+
     {% if error %}
-        <div class="text-white">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
+    <h1 class="my-5">Se connecter</h1>
 
-    <h1>Login Admin</h1>
+    <div class="">
+        <form action="{{ path('app_login') }}" method="post">
 
-    <div class="d-flex">
+            <input type="text" class="form-control mb-4" id="username" name="_username" value="{{ last_username }}" placeholder="E-mail"/>
+            <input type="password" class="form-control mb-3" id="password" name="_password" placeholder="Password"/>
 
-    <p>* champs obligatoires</p>
+            <p class="text-end"><a href="#">Mot de passe oublié ?</a></p>
 
-    <form action="{{ path('app_login') }}" method="post">
-        <label class="text-white" for="username">Email *</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-        <label class="text-white" for="password">Mot de passe *</label>
-        <input type="password" id="password" name="_password"/>
-
-        <p>Mot de passe oublié ?</p>
-
-
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-        {# If you want to control the URL the user is redirected to on success
-        <input type="hidden" name="_target_path" value="/account"/> #}
-
-        <button class="btn btn-outline-info" type="submit">Se connecter</button>
-        <p>Pas encore de compte ? S'inscrire</p>
-
-    </form>
+            <button class="btn btn-primary btn-block my-4" type="submit">Se connecter</button>
+        </form>
     </div>
 {% endblock %}
