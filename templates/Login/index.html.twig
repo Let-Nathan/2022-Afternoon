@@ -2,34 +2,23 @@
 
 {% block leftBlock %}
 
-    <div class="d-flex vstack justify-content-around">
-        {% if error %}
-            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
 
-        <h1>Login Admin</h1>
+    <h1 class="my-5">Se connecter</h1>
 
-        <p>* champs obligatoires</p>
+    <div class="">
+        <form action="{{ path('app_login') }}" method="post">
 
-        <div class="d-flex vstack justify-content-around">
-            <form action="{{ path('app_login') }}" method="post">
-                <div class="d-flex vstack justify-content-around">
-                    <label class="text" for="username">Email *</label>
-                    <input type="text" id="username" name="_username" value="{{ last_username }}"/>
-                    <label class="text" for="password">Mot de passe *</label>
-                    <input type="password" id="password" name="_password"/>
-                </div>
+            <input type="text" class="form-control mb-4" id="username" name="_username" value="{{ last_username }}" placeholder="E-mail"/>
+            <input type="password" class="form-control mb-3" id="password" name="_password" placeholder="Password"/>
 
-                <p>Mot de passe oublié ?</p>
+            <p class="text-end"><a href="#">Mot de passe oublié ?</a></p>
 
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-                {# If you want to control the URL the user is redirected to on success
-                <input type="hidden" name="_target_path" value="/account"/> #}
-
-                <button class="btn btn-outline-info" type="submit">Se connecter</button>
-
-            </form>
-        </div>
+            <button class="btn btn-primary btn-block my-4" type="submit">Se connecter</button>
+        </form>
     </div>
 {% endblock %}
