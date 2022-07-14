@@ -1,48 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block h1 %}Comptes administrateurs{% endblock %}
 
-    <p class="h1 my-3 text-dark m-3">Comptes utilisateurs administrateurs</p>
-
-    <div class="col-md-12 col-12">
-        <div class="card flex-md-row mb-4 box-shadow h-md-250 col-12">
-            <div class="card-body d-flex flex-column align-items-start">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                        <th>
-                            Prénom
-                        </th>
-                        <th>
-                            Nom
-                        </th>
-                        <th>
-                            Mail
-                        </th>
-                        <th>
-                            Nombre de fiches créées à régler
-                        </th>
-                        <th>
-                            Modifier
-                        </th>
-                    </tr>
-
-                    {%  for admin in admins %}
-                    <tbody>
-                    <tr>
-                        <td>{{ admin.firstname }}</td>
-                        <td>{{ admin.lastname }}</td>
-                        <td>{{ admin.email }}</td>
-                        <td>Nb fiches</td>
-                        <td><a href="{{ path('edit_admin', {id: admin.id}) }}">Modifier</a></td>
-                        {%  endfor %}
-                    </tr>
-                    </tbody>
-
-                </table>
-
-            </div>
+{% block content %}
+        <div class="mb-4">
+            <a class="btn btn-primary" href="{{ path('admin_new') }}">Ajouter un admin</a>
         </div>
-    </div>
 
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Mail</th>
+                    <th>Nombre de fiches créées à régler</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {%  for admin in admins %}
+                <tr>
+                    <td>{{ admin.firstname }}</td>
+                    <td>{{ admin.lastname }}</td>
+                    <td>{{ admin.email }}</td>
+                    <td>Nb fiches</td>
+                    <td>
+                        <a class="btn btn-secondary btn-sm" href="{{ path('edit_admin', {id: admin.id}) }}">Modifier</a>
+                        <a class="btn btn-danger btn-sm" data-confirm href="{{ path('account_admin_delete', {id: admin.id}) }}">Supprimer</a>
+                    </td>
+                </tr>
+            {%  endfor %}
+
+            </tbody>
+        </table>
 {% endblock %}

@@ -60,6 +60,8 @@ class AdminController extends AbstractController
 
             $entityManager->flush();
 
+            $this->addFlash('success', 'Compte modifié');
+
             return $this->redirectToRoute('account_admin');
         }
 
@@ -67,5 +69,17 @@ class AdminController extends AbstractController
             'admin' => $admin,
             'form' => $form,
         ]);
+    }
+
+    // TODO isGranted
+    #[Route('/admin/{id}/delete', name: 'account_admin_delete')]
+    public function delete(Admin $admin, EntityManagerInterface $entityManager): Response
+    {
+        $entityManager->remove($admin);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Compte supprimé');
+
+        return $this->redirectToRoute('account_admin', [], Response::HTTP_SEE_OTHER);
     }
 }

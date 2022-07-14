@@ -1,14 +1,10 @@
-{% extends 'layout-3cols.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}New admin{% endblock %}
+{% block title %}Ajouter un compte admin{% endblock %}
+{% block h1 %}Ajouter un compte admin{% endblock %}
 
-{% block middleBLock %}
-    <h1>Nouveau profil admin</h1>
-
+{% block content %}
     {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+        {{ form_widget(form) }}
     {{ form_end(form) }}
-
-    <a href="{{ path('account_admin') }}">Annuler</a>
 {% endblock %}
