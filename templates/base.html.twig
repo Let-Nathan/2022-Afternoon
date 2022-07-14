@@ -19,11 +19,39 @@
         <header class="mb-5">
             {%  include('Components/_navbar.html.twig') %}
         </header>
+        {% set flashMessages = app.flashes %}
+        {% if flashMessages %}
+            <div class="container">
+                {% for label, messages in flashMessages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        {% endif %}
+
         {% block body %}
             <div class="container">
+                {% if block('h1') is defined %}
+                    <h1 class="mb-5">{{ block('h1') }}</h1>
+                {% endif %}
+
                 {% block content %}{% endblock %}
             </div>
         {% endblock %}
+        <script>
+            // Demande une confirmation pour suivre le lien s'il a une propriété data-confirm
+            const confirmLinks = document.querySelectorAll('[data-confirm]');
+            confirmLinks.forEach(function (elem) {
+                elem.addEventListener('click', function(e) {
+                    if (!confirm('Confirmer ?')) {
+                        e.preventDefault();
+                    }
+                });
+            });
+        </script>
     </body>
 
 </html>

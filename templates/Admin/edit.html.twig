@@ -1,27 +1,14 @@
-{% extends 'layout-3cols.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Modifier un admin{% endblock %}
+{% block h1 %}Modifier un admin{% endblock %}
 
-{% block middleBLock %}
-    <h1>Modifier le profil admin</h1>
+{% block content %}
 
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-
-    <div>
-        <p>Total des fiches créées</p>
-        <p>Nombre de fiches créées à régler</p>
-    </div>
-
-    <div class="d-flex hstack justify-content-around">
-        <a href="{{ path('account_admin') }}">Annuler</a>
-
-        <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
-        {{ form_end(form) }}
-    </div>
+    {{ form(form) }}
 
     <div class="d-flex hstack mt-3 justify-content-center">
-        <a href="{{ path('account_admin_delete') }}">Supprimer le compte</a>
+       {#<a href="{{ path('remove_admin') }}">Supprimer le compte</a> #}
     </div>
 
 
