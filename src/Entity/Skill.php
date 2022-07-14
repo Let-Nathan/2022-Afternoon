@@ -23,7 +23,7 @@ class Skill
         return $this->id;
     }
 
-    public function getSkillsName(): ?string
+    public function getSkillName(): ?string
     {
         return $this->skillName;
     }

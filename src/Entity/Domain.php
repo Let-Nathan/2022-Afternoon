@@ -23,7 +23,7 @@ class Domain
         return $this->id;
     }
 
-    public function getDomainesName(): ?string
+    public function getDomaineName(): ?string
     {
         return $this->domaineName;
     }

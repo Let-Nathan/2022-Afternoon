@@ -3,133 +3,103 @@
 {% block title %}Candidate Form{% endblock %}
 {% block h1 %}Créer un candidat{% endblock %}
 
+{# pour enlever les labels (sinon ça laisse un espace) #}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
 {% block content %}
 <div class="row">
     <div class="mx-auto col-6">
-        <form>
+        {{ form_start(form) }}
             <div class="row">
                 <div class="col">
-                    {% if not candidate.firstname %}
-                        <input type="text" class="form-control" placeholder="Prénom">
-                    {% endif %}
-                        <input type="text" class="form-control" placeholder="Prénom" value="{{ candidate.firstname }}">
+                    {{ form_row(form.firstName) }}
                 </div>
                 <div class="col">
-                    {% if not candidate.lastname %}
-                        <input type="text" class="form-control" placeholder="Nom">
-                    {% endif %}
-                        <input type="text" class="form-control" placeholder="Nom" value="{{ candidate.lastname }}">
+                    {{ form_row(form.lastName) }}
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    {% if not candidate.phone %}
-                        <input type="text" class="form-control" placeholder="Tél">
-                    {% endif %}
-                        <input type="text" class="form-control" placeholder="Tél" value="{{ candidate.phone }}">
+                    {{ form_row(form.phone) }}
                 </div>
                 <div class="col">
-                    {% if not candidate.email %}
-                        <input type="text" class="form-control" placeholder="Mail">
-                    {% endif %}
-                        <input type="text" class="form-control" placeholder="Mail" value="{{ candidate.email }}">
+                    {{ form_row(form.email) }}
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    {% if not candidate.city %}
-                        <input type="text" class="form-control" placeholder="Ville">
-                    {% endif %}
-                        <input type="text" class="form-control" placeholder="Ville" value="{{ candidate.city }}">
+                    {{ form_row(form.city) }}
                 </div>
                 <div class="col">
-                    {% if not candidate.linkedin %}
-                        <input type="text" class="form-control" placeholder="LinkedIn">
-                    {% endif %}
-                        <input type="text" class="form-control" placeholder="LinkedIn" value="{{ candidate.linkedin }}">
+                    {{ form_row(form.linkedin) }}
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    {% if candidate.gender == 0 %}
-                        <input type="text" class="form-control" placeholder="Genre" value="Homme">
-                    {% elseif candidate.gender == 1 %}
-                        <input type="text" class="form-control" placeholder="Genre" value="Femme">
-                    {% elseif candidate.gender is empty %}
-                        <input type="text" class="form-control" placeholder="Genre">
-                    {% endif %}
+                    {{ form_row(form.gender) }}
                 </div>
                 <div class="col">
-                    {% if candidate.experience.name is empty %}
-                        <input type="text" class="form-control" placeholder="Expérience">
-                    {% else %}
-                        <input type="text" class="form-control" placeholder="Expérience" value="{{ candidate.experience.name }}">
-                    {% endif %}
-                </div>
-            </div>
-            <div class="row">
-{#                    <div class="col">#}
-{#                        {% if candidate.prime is empty %}#}
-{#                            <input type="text" class="form-control" placeholder="Montant prime">#}
-{#                        {% endif %}#}
-{#                            <input type="text" class="form-control" placeholder="Montant prime" value="{{ candidate.prime.prime }}">#}
-{#                    </div>#}
-{#                    <div class="col">#}
-{#                        {% if candidate.domain is empty %}#}
-{#                            <input type="text" class="form-control" placeholder="Domaine">#}
-{#                        {% endif %}#}
-{#                            <input type="text" class="form-control" placeholder="Domaine" value="{{ candidate.domain }}">#}
-{#                    </div>#}
-            </div>
-            <div class="row">
-                <div class="col">
-                    {% if not candidate.firstname %}
-                        <input type="text" class="form-control" placeholder="Disponibilité">
-                    {% endif %}
-                        <input type="text" class="form-control" placeholder="Disponibilité" value="{{ candidate.firstname }}">
-                </div>
-                <div class="col">
-                    {% if not candidate.firstname %}
-                        <input type="text" class="form-control" placeholder="Rôle">
-                    {% endif %}
-                        <input type="text" class="form-control" placeholder="Rôle" value="{{ candidate.firstname }}">
+                    {{ form_row(form.experience) }}
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    {% if not candidate.firstname %}
-                        <input type="text" class="form-control" placeholder="Mobilité">
-                    {% endif %}
-                        <input type="text" class="form-control" placeholder="Mobilité" value="{{ candidate.firstname }}">
+                    prime TODO
                 </div>
                 <div class="col">
-                    {% if not candidate.firstname %}
-                        <input type="text" class="form-control" placeholder="Compétences">
-                    {% endif %}
-                        <input type="text" class="form-control" placeholder="Compétences" value="{{ candidate.firstname }}">
+                    {{ form_row(form.domains) }}
                 </div>
             </div>
             <div class="row">
-                <div class="col-6">
-                    {% if not candidate.firstname %}
-                        <input type="text" class="form-control" placeholder="Vendeur">
-                    {% endif %}
-                        <input type="text" class="form-control" placeholder="Vendeur" value="{{ candidate.firstname }}">
-                </div>
-            </div><div class="row">
                 <div class="col">
-                    <a href="#" class="btn btn-primary">Créer la fiche candidat</a>
+                    {{ form_row(form.disponibilities) }}
                 </div>
                 <div class="col">
-                    <a href="#" class="btn btn-danger">Réinitialiser</a>
+                    {{ form_row(form.businessRole) }}
                 </div>
             </div>
-        </form>
+            <div class="row">
+                <div class="col">
+                    mobility TODO
+                </div>
+                <div class="col">
+                    {{ form_row(form.skills) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.telework) }}
+                </div>
+                <div class="col">
+                    {{ form_widget(form.vehicle) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.salary) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.observation) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.archived) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.expirationDate) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">Valider la fiche</button>
+                </div>
+            </div>
+        {{ form_end(form) }}
     </div>
 
     <div class="col-6">
         <img width="100%" src={{ candidate.curiculumVitae }}/>
     </div>
-
 </div>
 {% endblock %}
