@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-use App\Form\PostType;
 use App\Repository\CandidateRepository;
-use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,23 +11,21 @@ use App\Form\CandidateType;
 
 class CandidateController extends AbstractController
 {
-    #[Route('/form', name: 'index')]
+    #[Route('/candidates', name: 'candidate_index')]
     public function index(CandidateRepository $candidates): Response
     {
-
-        return $this->render('candidate/candidate_depose.html.twig', [
+        return $this->render('candidate/index.html.twig', [
             'candidates' => $candidates->findAll(),
         ]);
     }
 
-    #[Route('/form/CV/{id}', name: 'CV')]
-    public function CV(CandidateRepository $candidates, int $id): Response
+    #[Route('/candidates/{id}/cv', name: 'candidate_CV')]
+    public function edit(CandidateRepository $candidates, Candidate $candidate): Response
     {
-        $candidate = new Candidate();
-        $form = $this->createForm(CandidateType::class, $candidate);
+        // $form = $this->createForm(CandidateType::class, $candidate);
 
-        return $this->render('form/index.html.twig', [
-            'candidates' => $candidates->find($id),
+        return $this->render('candidate/cv.html.twig', [
+            'candidate' => $candidate,
         ]);
     }
 }
