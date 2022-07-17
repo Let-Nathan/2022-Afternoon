@@ -15,7 +15,7 @@ class CandidateController extends AbstractController
     #[Route('/candidates', name: 'candidate_index')]
     public function index(CandidateRepository $candidates): Response
     {
-        return $this->render('candidate/index.html.twig', [
+        return $this->render('Candidate/index.html.twig', [
             'candidates' => $candidates->findAll(),
         ]);
     }
@@ -35,7 +35,7 @@ class CandidateController extends AbstractController
             return $this->redirectToRoute('candidate_index');
         }
 
-        return $this->renderForm('candidate/cv.html.twig', [
+        return $this->renderForm('Candidate/cv.html.twig', [
             'candidate' => $candidate,
             'form' => $form,
         ]);
