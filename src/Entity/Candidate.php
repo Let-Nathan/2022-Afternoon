@@ -60,7 +60,7 @@ class Candidate
     private Collection $domains;
 
     #[ORM\ManyToOne(targetEntity: Prime::class, inversedBy: 'candidates')]
-    private Prime $prime;
+    private ?Prime $prime;
 
     #[ORM\ManyToMany(targetEntity: Disponibility::class, inversedBy: 'candidates')]
     private Collection $disponibilities;

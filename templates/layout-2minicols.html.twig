@@ -3,20 +3,13 @@
 {% block body %}
 
     <div class="container-fluid bg-light p-0">
-
-    {# {% include 'components/_header.html.twig' %} #}
-
         <div class="container">
             <div class="row">
-                <div class="col col-3 bg-primary">
+                <div class="col col-4 bg-primary">
                     {% block leftBlock %}{% endblock %}
                 </div>
 
-                <div class="col bg-success col-6 ">
-                    {% block middleBLock %}{% endblock %}
-                </div>
-
-                <div class="col bg-col-3 bg-secondary">
+                <div class="col bg-success">
                     {% block rightBlock %}{% endblock %}
                 </div>
             </div>

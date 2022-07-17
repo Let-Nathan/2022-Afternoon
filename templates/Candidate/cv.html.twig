@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Candidate Form{% endblock %}
+{% block h1 %}Créer un candidat{% endblock %}
+
+{# pour enlever les labels (sinon ça laisse un espace) #}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block content %}
+<div class="row">
+    <div class="mx-auto col-6">
+        {{ form_start(form) }}
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.firstName) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.lastName) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.phone) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.email) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.city) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.linkedin) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.gender) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.experience) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    prime TODO
+                </div>
+                <div class="col">
+                    {{ form_row(form.domains) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.disponibilities) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.businessRole) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    mobility TODO
+                </div>
+                <div class="col">
+                    {{ form_row(form.skills) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.telework) }}
+                </div>
+                <div class="col">
+                    {{ form_widget(form.vehicle) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.salary) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.observation) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.archived) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.expirationDate) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">Valider la fiche</button>
+                </div>
+            </div>
+        {{ form_end(form) }}
+    </div>
+
+    <div class="col-6">
+        <img width="100%" src={{ candidate.curiculumVitae }}/>
+    </div>
+</div>
+{% endblock %}
