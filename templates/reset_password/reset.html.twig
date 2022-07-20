@@ -1,0 +1,15 @@
+{% extends 'layout-2maxicols.html.twig' %}
+
+{% block title %}Reset your password{% endblock %}
+
+{% block h1 %}Mot de passe oublié{% endblock %}
+
+{% block leftBlock %}
+    <h1 class="my-5">Mot de passe oublié</h1>
+
+    {{ form_start(resetForm) }}
+        {{ form_row(resetForm.plainPassword) }}
+        <button class="btn btn-primary">Valider</button>
+    {{ form_end(resetForm) }}
+
+{% endblock %}

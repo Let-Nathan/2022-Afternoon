@@ -35,6 +35,7 @@ security:
     access_control:
         # page login : accès public
         - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/reset-password, roles: PUBLIC_ACCESS }
 
         # tout le reste : need user connecté
         - { path: ^/, roles: ROLE_ADMIN }
