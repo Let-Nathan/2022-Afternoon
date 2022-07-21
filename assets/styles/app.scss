@@ -2,27 +2,27 @@
 @import "~bootstrap/scss/bootstrap";
 
 
-nav {
+nav.nav-afternoon {
     background-color: #040B24;
 }
 
-.nav-link {
+.nav-afternoon .nav-link {
     color: #DDDDDD;
 }
 
-.navbar-brand {
+.nav-afternoon .navbar-brand {
     color: #DDDDDD;
 }
 
-.button {
+.btn-afternoon {
     background-color: #F20089;
 }
 
-.login {
+.bg-blue-afternoon {
     background-color: #040B24;
 }
 
-img {
+img.login {
     width: 1000px;
     height: 900px;
     object-fit: cover;
