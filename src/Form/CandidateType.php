@@ -7,7 +7,6 @@ use App\Entity\Candidate;
 use App\Entity\Disponibility;
 use App\Entity\Domain;
 use App\Entity\Experience;
-use App\Entity\Prime;
 use App\Entity\Skill;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -15,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -64,7 +64,7 @@ class CandidateType extends AbstractType
                     'class' => 'form-floating mb-3',
                 ],
             ])
-            ->add('city', TextType::class, [ // TODO
+            ->add('city', TextType::class, [
                 'label' => 'Ville',
                 'attr' => [
                     'placeholder' => 'Ville',
@@ -97,7 +97,7 @@ class CandidateType extends AbstractType
                 ],
                 'required' => false,
             ])
-            ->add('salary', TextType::class, [ // TODO
+                ->add('salary', NumberType::class, [
                 'label' => 'Salaire',
                 'attr' => [
                     'placeholder' => 'Salaire',
@@ -125,8 +125,9 @@ class CandidateType extends AbstractType
                 ],
                 'required' => false,
             ])
-            ->add('gender', ChoiceType::class, [ // TODO
+            ->add('gender', ChoiceType::class, [
                 'label' => 'Genre',
+                'placeholder' => 'Genre',
                 'choices' => [
                     'Homme' => true,
                     'Femme' => false,
@@ -166,11 +167,16 @@ class CandidateType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
             ])
-            /*->add('prime', EntityType::class, [
-                'label' => false,
-                'class' => Prime::class,
-                'choice_label' => 'prime'
-            ])*/ // TODO
+            ->add('prime', NumberType::class, [
+                'label' => 'Prime',
+                'attr' => [
+                    'placeholder' => 'Prime',
+                ],
+                'row_attr' => [
+                    'class' => 'form-floating mb-3',
+                ],
+                'required' => false,
+            ])
             ->add('disponibilities', EntityType::class, [
                 'label' => 'Disponibilités',
                 'class' => Disponibility::class,
