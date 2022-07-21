@@ -6,7 +6,7 @@
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <h1 class="my-5">Se connecter</h1>
+    <h1 class="my-5 text-light">Connexion Admin</h1>
 
     <div class="">
         <form action="{{ path('app_login') }}" method="post">
@@ -18,7 +18,7 @@
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-            <button class="btn btn-primary btn-block my-4" type="submit">Se connecter</button>
+            <button class="button btn btn-outline-white btn-block my-4 link-light" type="submit">Se connecter</button>
         </form>
     </div>
 {% endblock %}

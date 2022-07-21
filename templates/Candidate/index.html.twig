@@ -12,7 +12,7 @@
                         Par {{ candidate.user.firstname }} {{ candidate.user.lastname }} de {{ candidate.user.compagny }}
                 </td>
                 <td>
-                    <a class="btn btn-secondary btn-sm" href="{{ path('candidate_CV', {id: candidate.id}) }}">CV</a>
+                    <a class="button btn btn-outline-light btn-block link-white" href="{{ path('candidate_CV', {id: candidate.id}) }}">CV</a>
                 </td>
             </tr>
         {% endfor %}
