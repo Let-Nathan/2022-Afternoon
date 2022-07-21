@@ -2,12 +2,14 @@
 
 namespace App\Form;
 
+use App\Entity\Admin;
 use App\Entity\BusinessRole;
 use App\Entity\Candidate;
 use App\Entity\Disponibility;
 use App\Entity\Domain;
 use App\Entity\Experience;
 use App\Entity\Skill;
+use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -51,17 +53,11 @@ class CandidateType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Tel',
                 ],
-                'row_attr' => [
-                    'class' => 'form-floating mb-3',
-                ],
             ])
             ->add('email', EmailType::class, [
                 'label' => 'E-mail',
                 'attr' => [
-                    'placeholder' => 'E-mail',
-                ],
-                'row_attr' => [
-                    'class' => 'form-floating mb-3',
+                    'placeholder' => 'Mail',
                 ],
             ])
             ->add('city', TextType::class, [
@@ -69,17 +65,12 @@ class CandidateType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Ville',
                 ],
-                'row_attr' => [
-                    'class' => 'form-floating mb-3',
-                ],
+
             ])
             ->add('linkedin', UrlType::class, [
                 'label' => 'URL Linkedin',
                 'attr' => [
                     'placeholder' => 'URL Linkedin',
-                ],
-                'row_attr' => [
-                    'class' => 'form-floating mb-3',
                 ],
                 'required' => false,
             ])
@@ -102,19 +93,19 @@ class CandidateType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Salaire',
                 ],
-                'row_attr' => [
-                    'class' => 'form-floating mb-3',
-                ],
                 'required' => false,
             ])
-            // ->add('validateSheet') ?
+             ->add('validateSheet', ChoiceType::class, [
+                 'label' => 'Fiche validée ?',
+                 'choices' => [
+                     'Oui' => true,
+                     'Non' => false,
+                 ]
+             ])
             ->add('observation', TextareaType::class, [
                 'label' => 'Observations',
                 'attr' => [
                     'placeholder' => 'Observations',
-                ],
-                'row_attr' => [
-                    'class' => 'form-floating mb-3',
                 ],
                 'required' => false,
             ])
@@ -129,28 +120,19 @@ class CandidateType extends AbstractType
                 'label' => 'Genre',
                 'placeholder' => 'Genre',
                 'choices' => [
-                    'Homme' => true,
-                    'Femme' => false,
+                    'Masculin' => true,
+                    'Féminin' => false,
                 ],
                 'attr' => [
                     'placeholder' => 'Genre',
                 ],
-                'row_attr' => [
-                    'class' => 'form-floating mb-3',
-                ],
-            ])
-            ->add('expirationDate', DateType::class, [
-                'label' => 'Date d\'expiration',
             ])
             ->add('experience', EntityType::class, [
                 'label' => 'Expérience',
                 'class' => Experience::class,
                 'choice_label' => 'name',
                 'attr' => [
-                    'placeholder' => 'Expérience',
-                ],
-                'row_attr' => [
-                    'class' => 'form-floating mb-3',
+                    'placeholder' => 'Nombre d\'années d\'expérience',
                 ],
             ])
             ->add('skills', EntityType::class, [
@@ -164,24 +146,21 @@ class CandidateType extends AbstractType
                 'label' => 'Domaines',
                 'class' => Domain::class,
                 'choice_label' => 'domaineName',
-                'multiple' => true,
-                'expanded' => true,
+                'multiple' => false,
+                'expanded' => false,
             ])
             ->add('prime', NumberType::class, [
                 'label' => 'Prime',
                 'attr' => [
                     'placeholder' => 'Prime',
                 ],
-                'row_attr' => [
-                    'class' => 'form-floating mb-3',
-                ],
                 'required' => false,
             ])
             ->add('disponibilities', EntityType::class, [
                 'label' => 'Disponibilités',
                 'class' => Disponibility::class,
-                'multiple' => true,
-                'expanded' => true,
+                'multiple' => false,
+                'expanded' => false,
                 'choice_label' => 'disponibility',
             ])
             ->add('businessRole', EntityType::class, [
@@ -191,12 +170,33 @@ class CandidateType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Rôle',
                 ],
-                'row_attr' => [
-                    'class' => 'form-floating mb-3',
-                ],
             ])
-            // ->add('mobilities') // TODO
-        ;
+            ->add('user', EntityType::class, [
+                'label' => 'Vendeur',
+                'class' => User::class,
+                'choice_label' => 'email',
+                'attr' => [
+                    'placeholder' => 'Email du vendeur',
+                ],
+                'expanded' => false,
+                'multiple' => false,
+            ])
+            ->add('validatedBy', EntityType::class, [
+                'label' => 'Admin',
+                'class' => Admin::class,
+                'choice_label' => 'firstName',
+                'attr' => [
+                    'placeholder' => 'Fiche validé par :'
+                ]
+            ]);
+            /**
+             * @Todo invisible data
+             */
+//            ->add('expirationDate', DateType::class, [
+//                'label' => 'Date d\'expiration',
+//            ])
+
+            // ->add('mobilities')
     }
 
     public function configureOptions(OptionsResolver $resolver): void

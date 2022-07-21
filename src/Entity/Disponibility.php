@@ -18,7 +18,7 @@ class Disponibility
     #[ORM\Column(type: 'string', length: 255)]
     private string $disponibility;
 
-    #[ORM\ManyToMany(targetEntity: Candidate::class, mappedBy: 'disponibilities')]
+    #[ORM\OneToMany(mappedBy: 'disponibilities', targetEntity: Candidate::class)]
     private Collection $candidates;
 
     public function __construct()

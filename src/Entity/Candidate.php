@@ -56,13 +56,13 @@ class Candidate
     #[ORM\ManyToMany(targetEntity: Skill::class)]
     private Collection $skills;
 
-    #[ORM\ManyToMany(targetEntity: Domain::class)]
+    #[ORM\ManyToOne(targetEntity: Domain::class)]
     private Collection $domains;
 
     #[ORM\Column(type: 'float', nullable: true)]
     private ?float $prime;
 
-    #[ORM\ManyToMany(targetEntity: Disponibility::class, inversedBy: 'candidates')]
+    #[ORM\ManyToOne(targetEntity: Disponibility::class, inversedBy: 'candidates')]
     private Collection $disponibilities;
 
     #[ORM\ManyToOne(targetEntity: BusinessRole::class, inversedBy: 'candidates')]
