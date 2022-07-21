@@ -47,8 +47,8 @@ class Candidate
     #[ORM\Column(type: 'boolean', nullable: true)]
     private bool $vehicle;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private string $salary;
+    #[ORM\Column(type: 'float', length: 255)]
+    private float $salary;
 
     #[ORM\ManyToOne(targetEntity: Experience::class, inversedBy: 'candidates')]
     private Experience $experience;
@@ -59,8 +59,8 @@ class Candidate
     #[ORM\ManyToMany(targetEntity: Domain::class)]
     private Collection $domains;
 
-    #[ORM\ManyToOne(targetEntity: Prime::class, inversedBy: 'candidates')]
-    private ?Prime $prime;
+    #[ORM\Column(type: 'float', nullable: true)]
+    private ?float $prime;
 
     #[ORM\ManyToMany(targetEntity: Disponibility::class, inversedBy: 'candidates')]
     private Collection $disponibilities;
@@ -92,8 +92,8 @@ class Candidate
     #[ORM\OneToMany(mappedBy: 'candidate', targetEntity: Consultation::class)]
     private Collection $consultations;
 
-    #[ORM\Column(type: 'boolean')]
-    private bool $gender;
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private ?bool $gender;
 
     #[ORM\Column(type: 'datetime')]
     private DateTime $expirationDate;
@@ -232,12 +232,12 @@ class Candidate
         return $this;
     }
 
-    public function getSalary(): ?string
+    public function getSalary(): ?float
     {
         return $this->salary;
     }
 
-    public function setSalary(string $salary): self
+    public function setSalary(float $salary): self
     {
         $this->salary = $salary;
 
@@ -268,12 +268,12 @@ class Candidate
         return $this;
     }
 
-    public function getPrime(): ?Prime
+    public function getPrime(): ?float
     {
         return $this->prime;
     }
 
-    public function setPrime(?Prime $prime): self
+    public function setPrime(?float $prime): self
     {
         $this->prime = $prime;
 
