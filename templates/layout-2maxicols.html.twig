@@ -3,17 +3,16 @@
 {% block header %}{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col my-5">
-                <div class="p-5">
-                    {% block leftBlock %}{% endblock %}
-                </div>
-            </div>
-
-            <div class="col">
-                [IMAGE]
+<div class="container-fluid">
+    <div class="bg-blue-afternoon row">
+        <div class="col my-5">
+            <div class="p-5">
+                {% block leftBlock %}{% endblock %}
             </div>
         </div>
+        <div class="col">
+            <img class="login" src="https://getaround-assets.gumlet.io/images/shared/cities/FR/location-voiture-bordeaux-getaround.jpg?auto=format%2Ccompress&dpr=1"/>
+        </div>
     </div>
+</div>
 {% endblock %}
