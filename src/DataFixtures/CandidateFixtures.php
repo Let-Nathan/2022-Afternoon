@@ -80,7 +80,7 @@ class CandidateFixtures extends Fixture implements DependentFixtureInterface
             $candidate->addSkills($this->getReference('skill_' . $value[7]));
             $candidate->addDomains($this->getReference('domain_' . $value[4]));
             $candidate->setExperience($this->getReference('name_' . $value[8]));
-            $candidate->addDisponibilities($this->getReference('disponibility_' . $value[9]));
+            $candidate->setDisponibilities($this->getReference('disponibility_' . $value[9]));
             $candidate->setBusinessRole($this->getReference('business_role_' . $value[10]));
             $this->addReference('user_' . $key, $candidate);
             $manager->persist($candidate);

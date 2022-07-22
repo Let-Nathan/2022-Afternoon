@@ -10,10 +10,12 @@ use App\Entity\Domain;
 use App\Entity\Experience;
 use App\Entity\Skill;
 use App\Entity\User;
+use Hoa\Compiler\Llk\Rule\Choice;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -29,7 +31,6 @@ class CandidateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            //->add('curiculumVitae')
             ->add('firstName', TextType::class, [
                 'label' => 'Prénom',
                 'attr' => [
@@ -74,19 +75,30 @@ class CandidateType extends AbstractType
                 ],
                 'required' => false,
             ])
-            ->add('telework', CheckboxType::class, [
+            ->add('telework', ChoiceType::class, [
                 'label' => 'Télétravail',
                 'attr' => [
+
                     'class' => 'mb-3',
                 ],
-                'required' => false,
+                'placeholder' => 'Télétravail ?',
+                'choices' => [
+                    'Oui' => true,
+                    'Non' => false,
+                ],
+                'required' => true,
             ])
-            ->add('vehicle', CheckboxType::class, [
+            ->add('vehicle', ChoiceType::class, [
                 'label' => 'Véhiculé',
                 'attr' => [
                     'class' => 'mb-3',
                 ],
-                'required' => false,
+                'placeholder' => 'Candidat véhiculé ?',
+                'choices' => [
+                    'Oui' => true,
+                    'Non' => false,
+                ],
+                'required' => true,
             ])
                 ->add('salary', NumberType::class, [
                 'label' => 'Salaire',
@@ -110,7 +122,7 @@ class CandidateType extends AbstractType
                 'required' => false,
             ])
             ->add('archived', CheckboxType::class, [
-                'label' => 'Archivé',
+                'label' => 'Archiver la fiche',
                 'attr' => [
                     'class' => 'mb-3',
                 ],
@@ -143,11 +155,10 @@ class CandidateType extends AbstractType
                 'expanded' => true,
             ])
             ->add('domains', EntityType::class, [
-                'label' => 'Domaines',
-                'class' => Domain::class,
-                'choice_label' => 'domaineName',
-                'multiple' => false,
-                'expanded' => false,
+                    'class' => Domain::class,
+                    'multiple' => true,
+                    'expanded' => true,
+                    'choice_label' => 'domaineName',
             ])
             ->add('prime', NumberType::class, [
                 'label' => 'Prime',
@@ -198,7 +209,6 @@ class CandidateType extends AbstractType
 
             // ->add('mobilities')
     }
-
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

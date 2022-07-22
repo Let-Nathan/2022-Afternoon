@@ -55,7 +55,7 @@ class Disponibility
     {
         if (!$this->candidates->contains($candidate)) {
             $this->candidates[] = $candidate;
-            $candidate->addDisponibilities($this);
+            $candidate->setDisponibilities($this);
         }
 
         return $this;
@@ -64,7 +64,7 @@ class Disponibility
     public function removeCandidate(Candidate $candidate): self
     {
         if ($this->candidates->removeElement($candidate)) {
-            $candidate->removeDisponibilities($this);
+            $candidate->setDisponibilities($this);
         }
 
         return $this;
