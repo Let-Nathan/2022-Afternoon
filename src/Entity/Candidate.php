@@ -255,7 +255,7 @@ class Candidate
         return $this;
     }
 
-    public function getExperience(): Experience
+    public function getExperience(): ?Experience
     {
         return $this->experience;
     }
