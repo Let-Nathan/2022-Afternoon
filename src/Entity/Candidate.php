@@ -51,19 +51,19 @@ class Candidate
     private float $salary;
 
     #[ORM\ManyToOne(targetEntity: Experience::class, inversedBy: 'candidates')]
-    private Experience $experience;
+    private ?Experience $experience;
 
-    #[ORM\ManyToMany(targetEntity: Skill::class)]
+    #[ORM\ManyToMany(targetEntity: Skill::class, inversedBy: 'candidates')]
     private Collection $skills;
 
-    #[ORM\ManyToMany(targetEntity: Domain::class)]
-    private Collection $domains;
+    #[ORM\ManyToMany(targetEntity: Domain::class, inversedBy: 'candidates')]
+    private ?Collection $domains;
 
     #[ORM\Column(type: 'float', nullable: true)]
     private ?float $prime;
 
-    #[ORM\ManyToMany(targetEntity: Disponibility::class, inversedBy: 'candidates')]
-    private Collection $disponibilities;
+    #[ORM\ManyToOne(targetEntity: Disponibility::class, inversedBy: 'candidates')]
+    private Disponibility $disponibilities;
 
     #[ORM\ManyToOne(targetEntity: BusinessRole::class, inversedBy: 'candidates')]
     private BusinessRole $businessRole;
@@ -101,10 +101,9 @@ class Candidate
     public function __construct()
     {
         $this->skills = new ArrayCollection();
-        $this->disponibilities = new ArrayCollection();
+        $this->domains = new ArrayCollection();
         $this->mobilities = new ArrayCollection();
         $this->consultations = new ArrayCollection();
-        $this->domains = new ArrayCollection();
         $this->createdAt = new DateTime();
     }
 
@@ -260,7 +259,6 @@ class Candidate
     {
         return $this->experience;
     }
-
     public function setExperience(?Experience $experience): self
     {
         $this->experience = $experience;
@@ -280,26 +278,14 @@ class Candidate
         return $this;
     }
 
-    /**
-     * @return Collection<int, Disponibility>
-     */
-    public function getDisponibilities(): Collection
+    public function getDisponibilities(): ?Disponibility
     {
         return $this->disponibilities;
     }
 
-    public function addDisponibilities(Disponibility $disponibilities): self
+    public function setDisponibilities(?Disponibility $disponibilities): self
     {
-        if (!$this->disponibilities->contains($disponibilities)) {
-            $this->disponibilities[] = $disponibilities;
-        }
-
-        return $this;
-    }
-
-    public function removeDisponibilities(Disponibility $disponibilities): self
-    {
-        $this->disponibilities->removeElement($disponibilities);
+        $this->disponibilities = $disponibilities;
 
         return $this;
     }
@@ -436,9 +422,9 @@ class Candidate
                 $consultation->setCandidate(null);
             }
         }
-
         return $this;
     }
+
     public function getExpirationDate(): ?DateTime
     {
         return $this->expirationDate;

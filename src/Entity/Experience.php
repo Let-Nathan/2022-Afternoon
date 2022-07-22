@@ -42,7 +42,6 @@ class Experience
 
         return $this;
     }
-
     /**
      * @return Collection<int, Candidate>
      */

@@ -21,15 +21,13 @@ class CandidateController extends AbstractController
     }
 
     #[Route('/candidates/{id}/cv', name: 'candidate_CV')]
-    public function edit(Request $request, CandidateRepository $candidateRepository, Candidate $candidate): Response
+    public function edit(Request $request, Candidate $candidate, CandidateRepository $candidateRepository): Response
     {
         $form = $this->createForm(CandidateType::class, $candidate);
 
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $candidateRepository->add($candidate, true);
-
             $this->addFlash('success', 'Candidat modifié');
 
             return $this->redirectToRoute('candidate_index');

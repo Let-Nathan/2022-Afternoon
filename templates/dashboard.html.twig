@@ -1,169 +1,168 @@
-{%  extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 {% block content %}
-    <p class="h1 my-3 text-dark m-3 hstack justify-content-center mb-5 mt-5">Dashboard</p>
-    <div class="col-md-12 col-12">
-        <div class="card flex-md-row mb-4 box-shadow h-md-250 col-12">
-            <div class="card-body vstack">
-               <table class="table">
-                   <thead>
-                        <tr>
-                            <th></th>
-                            <th>
-                                <p class="hstack justify-content-center">
-                                    Status présenté
-                                </p>
-                            </th>
-                            <th>
-                                <p class="hstack justify-content-center">
-                                    Status refusé
-                                </p>
-                            </th>
-                            <th>
-                                <p class="hstack justify-content-center">
-                                    Somme total
-                                </p>
-                            </th>
-                        </tr>
-                   </thead>
-                   <tbody>
-                       <tr>
-                           <th class="text-nowrap" scope="row">Partages</th>
-                           <td><code class="d-flex justify-content-center">{{ countNbrAccepted }}</code></td>
-                           <td><code class="d-flex justify-content-center">{{ countNbrRefused }}</code></td>
-                           <td><code class="d-flex justify-content-center">{{ countNbrShare }}</code></td>
-                       </tr>
-                   </tbody>
-                   <thead>
-                       <tr>
-                           <th></th>
-                           <th>
-                               <p class="hstack justify-content-center">
-                                Acheteur due
-                               </p>
-                           </th>
-                           <th>
-                               <p class="hstack justify-content-center">
-                                Vendeur due
-                               </p>
-                           </th>
-                           <th>
-                               <p class="hstack justify-content-center">
-                                total
-                               </p>
-                           </th>
-                       </tr>
-                   </thead>
-                   <tbody>
-                       <tr>
-                           <th class="text-nowrap" scope="row">Sommes</th>
-                           <td><code></code></td>
-                           <td><code></code></td>
-                           <td><code></code></td>
-                       </tr>
-                   </tbody>
-               </table>
+<div class="col-md-12 col-12">
+    <div class="card flex-md-row mb-4 box-shadow h-md-250 col-12">
+        <div class="card-body vstack">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>
+                        <p class="hstack justify-content-center">
+                            Status présenté
+                        </p>
+                    </th>
+                    <th>
+                        <p class="hstack justify-content-center">
+                            Status refusé
+                        </p>
+                    </th>
+                    <th>
+                        <p class="hstack justify-content-center">
+                            Somme total
+                        </p>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th class="text-nowrap" scope="row">Partages</th>
+                    <td><code class="d-flex justify-content-center">{{ countNbrAccepted }}</code></td>
+                    <td><code class="d-flex justify-content-center">{{ countNbrRefused }}</code></td>
+                    <td><code class="d-flex justify-content-center">{{ countNbrShare }}</code></td>
+                </tr>
+                </tbody>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>
+                        <p class="hstack justify-content-center">
+                            Acheteur due
+                        </p>
+                    </th>
+                    <th>
+                        <p class="hstack justify-content-center">
+                            Vendeur due
+                        </p>
+                    </th>
+                    <th>
+                        <p class="hstack justify-content-center">
+                            total
+                        </p>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th class="text-nowrap" scope="row">Sommes</th>
+                    <td><code></code></td>
+                    <td><code></code></td>
+                    <td><code></code></td>
+                </tr>
+                </tbody>
+            </table>
 
-            </div>
         </div>
     </div>
+</div>
 
-    <div class="container container-fluid vstack align-items-center">
+<div class="container container-fluid vstack align-items-center">
     {%  for user in users %}
-        <div class="my-3 p-3 bg-body rounded hstack">
-            <h6 class="border-bottom pb-2 mb-0"></h6>
-            <div class="d-flex text-muted pt-3 col-3">
-                <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
-                <div class="pb-3 mb-0 w-100 container-fluid">
-                    <div class="d-flex justify-content-between flex-column col-4 mb-2">
-                        <strong class="text-gray-dark">{{ user.lastname }} {{ user.firstname }}</strong>
-                        <span class="d-block">@{{ user.compagny }}</span>
-                    </div>
+    <div class="my-3 p-3 bg-body rounded hstack">
+        <h6 class="border-bottom pb-2 mb-0"></h6>
+        <div class="d-flex text-muted pt-3 col-3">
+            <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+            <div class="pb-3 mb-0 w-100 container-fluid">
+                <div class="d-flex justify-content-between flex-column col-4 mb-2">
+                    <strong class="text-gray-dark">{{ user.lastname }} {{ user.firstname }}</strong>
+                    <span class="d-block">@{{ user.compagny }}</span>
                 </div>
             </div>
-                    <div class="w-100 border">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th class="text-center">
-                                        Rencontrés<br>
-                                    <th class="text-center">
-                                        Recrutés<br>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th class="text-nowrap" scope="row">Candidat</th>
-                                    <td>
+        </div>
+        <div class="w-100 border">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th class="text-center">
+                        Rencontrés<br>
+                    <th class="text-center">
+                        Recrutés<br>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th class="text-nowrap" scope="row">Candidat</th>
+                    <td>
 
-                                        <code class="d-flex justify-content-center">
-                                            {{ user.getConsultationsByStatus('Job Interview') | length }}
-                                        </code>
-                                    </td>
-                                    <td>
-                                        <code class="d-flex justify-content-center">
-                                            {{ user.getConsultationsByStatus('Recruit') | length }}
-                                        </code>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th class="text-center">
-                                        Balance<br>
-                                    <th class="text-center">
-                                        Dues<br>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th class="text-nowrap" scope="row">Sommes</th>
-                                    <td>
-                                        <code>
+                        <code class="d-flex justify-content-center">
+                            {{ user.getConsultationsByStatus('Job Interview') | length }}
+                        </code>
+                    </td>
+                    <td>
+                        <code class="d-flex justify-content-center">
+                            {{ user.getConsultationsByStatus('Recruit') | length }}
+                        </code>
+                    </td>
+                </tr>
+                </tbody>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th class="text-center">
+                        Balance<br>
+                    <th class="text-center">
+                        Dues<br>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th class="text-nowrap" scope="row">Sommes</th>
+                    <td>
+                        <code>
 
-                                        </code>
-                                    </td>
-                                    <td><code></code></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th class="text-center">
-                                        Partagés<br>
+                        </code>
+                    </td>
+                    <td><code></code></td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th class="text-center">
+                        Partagés<br>
 
-                                    <th class="text-center">
-                                        Consultés<br>
-                                    </th>
-                                    <th class="text-center">
-                                        Montant des fiches<br>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th class="text-nowrap" scope="row">Fiches</th>
-                                    <td>
-                                        <code class="d-flex justify-content-center">
-                                                {{ user.candidates|length }}
-                                        </code>
-                                    </td>
-                                    <td>
-                                        <code class="d-flex justify-content-center">
-                                                {{ user.consultations|length }}
-                                        </code>
-                                    </td>
-                                    <td><code></code></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-        {% endfor %}
+                    <th class="text-center">
+                        Consultés<br>
+                    </th>
+                    <th class="text-center">
+                        Montant des fiches<br>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th class="text-nowrap" scope="row">Fiches</th>
+                    <td>
+                        <code class="d-flex justify-content-center">
+                            {{ user.candidates|length }}
+                        </code>
+                    </td>
+                    <td>
+                        <code class="d-flex justify-content-center">
+                            {{ user.consultations|length }}
+                        </code>
+                    </td>
+                    <td><code></code></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
+    {%  endfor %}
+</div>
 {% endblock %}
