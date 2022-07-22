@@ -8,12 +8,22 @@
         {% for candidate in candidates %}
             <tr>
                 <td>
-                    Fiche créée le {{ candidate.createdAt.format('d/m/Y') }} <br/>
-                        Par {{ candidate.user.firstname }} {{ candidate.user.lastname }} de {{ candidate.user.compagny }}
+                    <p class="m-0 p-0"> Fiche créée le {{ candidate.createdAt.format('d/m/Y') }}</p>
+                    <div class="d-flex gap-1">
+                       <p> Par
+                           <strong>{{ candidate.user.firstname }} {{ candidate.user.lastname }} </strong>
+                           de
+                       </p>
+                    <p class="text-muted">@{{ candidate.user.compagny }}</p>
+                    </div>
                 </td>
-                <td>
-
-                    <a class="btn btn-afternoon btn-outline-light link-white" href="{{ path('candidate_CV', {id: candidate.id}) }}">CV</a>
+                <td class="vstack gap-1">
+                    <p class="m-0 p-0">Fiche validée :
+                    {{ candidate.validateSheet ? 'Oui' : 'Non' }}</p>
+                </td>
+                <td class="vstack justify-content-end w-100 align-items-end">
+                    <a class="btn btn-afternoon btn-outline-light link-white w-50" href="{{ path('candidate_CV', {id: candidate.id}) }}">CV</a>
+                    <a class="btn btn-afternoon btn-outline-light link-white w-50" href="{{ path('candidate_show', {'id': candidate.id}) }}">Voir fiche</a>
                 </td>
             </tr>
         {% endfor %}

@@ -16,7 +16,7 @@ class CandidateController extends AbstractController
     public function index(CandidateRepository $candidates): Response
     {
         return $this->render('Candidate/index.html.twig', [
-            'candidates' => $candidates->findAll(),
+            'candidates' => $candidates->findBy([], ['validateSheet' => 'ASC']),
         ]);
     }
 
@@ -37,5 +37,22 @@ class CandidateController extends AbstractController
             'candidate' => $candidate,
             'form' => $form,
         ]);
+    }
+    #[Route('/candidates/{id}', name: 'candidate_show', methods: ['GET'])]
+    public function show(Candidate $candidate): Response
+    {
+        return $this->render('candidate/show.html.twig', [
+            'candidate' => $candidate,
+        ]);
+    }
+
+    #[Route('/candidates/delete/{id}', name: 'candidate_delete', methods: ['GET'])]
+    public function delete(Request $request, Candidate $candidate, CandidateRepository $candidateRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $candidate->getId(), $request->request->get('_token'))) {
+            $candidateRepository->remove($candidate, true);
+        }
+
+        return $this->redirectToRoute('app_candidate_index', [], Response::HTTP_SEE_OTHER);
     }
 }
