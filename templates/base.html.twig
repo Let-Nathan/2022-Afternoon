@@ -37,8 +37,17 @@
                 {% if block('h1') is defined %}
                     <h1 class="mb-5">{{ block('h1') }}</h1>
                 {% endif %}
-
-                {% block content %}{% endblock %}
+                <div class="row">
+                    <div class="row-col col-1">
+                        {% block leftContent %}{% endblock %}
+                    </div>
+                    <div class="row-col col">
+                        {% block content %}{% endblock %}
+                    </div>
+                    <div class="row-col col-1">
+                        {% block rightContent %}{% endblock %}
+                    </div>
+                </div>
             </div>
         {% endblock %}
         <script>

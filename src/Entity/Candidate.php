@@ -17,7 +17,7 @@ class Candidate
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'candidates')]
-    #[ORM\JoinColumn(nullable: false)]
+//    #[ORM\JoinColumn(nullable: false)]
     private ?User $user;
 
     #[ORM\Column(type: 'string', length: 2500)]
@@ -59,8 +59,11 @@ class Candidate
     #[ORM\ManyToMany(targetEntity: Domain::class, inversedBy: 'candidates')]
     private ?Collection $domains;
 
-    #[ORM\Column(type: 'float', nullable: true)]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private ?float $prime;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private int $prixFiche;
 
     #[ORM\ManyToOne(targetEntity: Disponibility::class, inversedBy: 'candidates')]
     private Disponibility $disponibilities;
@@ -271,9 +274,10 @@ class Candidate
         return $this->prime;
     }
 
-    public function setPrime(?float $prime): self
+    //Prime = 20% du prix de la fiche candidat
+    public function setPrime(?float $prixFiche): self
     {
-        $this->prime = $prime;
+        $this->prime = $prixFiche * 0.2;
 
         return $this;
     }
@@ -475,5 +479,22 @@ class Candidate
         $this->domains->removeElement($domain);
 
         return $this;
+    }
+
+    public function getPrixFiche(): ?int
+    {
+        return $this->prixFiche;
+    }
+
+    public function setPrixFiche(?int $prixFiche): void
+    {
+        $this->prixFiche = $prixFiche;
+    }
+
+    public function getConsultationsByStatus(string $status): Collection
+    {
+        return $this->consultations->filter(function (Consultation $consultation) use ($status): bool {
+            return $consultation->getStatus() === $status;
+        });
     }
 }
