@@ -17,7 +17,6 @@ class Candidate
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'candidates')]
-//    #[ORM\JoinColumn(nullable: false)]
     private ?User $user;
 
     #[ORM\Column(type: 'string', length: 2500)]
