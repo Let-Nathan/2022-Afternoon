@@ -25,6 +25,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+use function Sodium\add;
 
 class CandidateType extends AbstractType
 {
@@ -199,7 +201,8 @@ class CandidateType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Fiche validé par :'
                 ]
-            ]);
+            ])
+            ->add('images', VichImageType::class);
             /**
              * @Todo invisible data
              */
