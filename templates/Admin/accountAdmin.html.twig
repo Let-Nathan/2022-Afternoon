@@ -4,33 +4,43 @@
 
 {% block content %}
         <div class="mb-4">
+            {%  if is_granted('ROLE_SUPER_ADMIN') %}
             <a class="btn btn-afternoon btn-outline-light link-white" href="{{ path('admin_new') }}">Ajouter un admin</a>
+            {% endif %}
         </div>
 
         <table class="table table-bordered table-striped">
             <thead>
-                <tr>
+                <tr class="text-center">
                     <th>Prénom</th>
                     <th>Nom</th>
                     <th>Mail</th>
                     <th>Nombre de fiches créées à régler</th>
-                    <th></th>
+                    {%  if is_granted('ROLE_SUPER_ADMIN') %}
+                    <th>Action</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
             {%  for admin in admins %}
-                <tr>
-                    <td>{{ admin.firstname }}</td>
-                    <td>{{ admin.lastname }}</td>
-                    <td>{{ admin.email }}</td>
-                    <td>Nb fiches</td>
+                <tr class="text-center">
+                <td>{{ admin.firstname }}</td>
+                <td>{{ admin.lastname }}</td>
+                <td>{{ admin.email }}</td>
+                <td>
+                    {{ admin.candidates|length }}
+                </td>
+                {%  if is_granted('ROLE_SUPER_ADMIN') %}
                     <td>
                         <a class="btn btn-secondary btn-sm" href="{{ path('edit_admin', {id: admin.id}) }}">Modifier</a>
                         <a class="btn btn-danger btn-sm" data-confirm href="{{ path('account_admin_delete', {id: admin.id}) }}">Supprimer</a>
                     </td>
+                {% endif %}
+
                 </tr>
             {%  endfor %}
 
             </tbody>
+
         </table>
 {% endblock %}
