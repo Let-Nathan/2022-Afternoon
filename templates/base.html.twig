@@ -33,20 +33,32 @@
         {% endif %}
 
         {% block body %}
-            <div class="container">
-                {% if block('h1') is defined %}
-                    <h1 class="mb-5">{{ block('h1') }}</h1>
-                {% endif %}
+            <div class="container-fluid w-100">
+                {# Title container #}
                 <div class="row">
-                    <div class="row-col col-1">
+                    <div class="col-1"></div>
+                    <div class="col">
+                        {% if block('h1') is defined %}
+                            <h1 class="mb-5">{{ block('h1') }}</h1>
+                        {% endif %}
+                    </div>
+                </div>
+
+                {# Body container #}
+                <div class="row col-12">
+
+                    <div class="row-col col-1  col-sm-1 col-lg-1 col-md-1">
                         {% block leftContent %}{% endblock %}
                     </div>
-                    <div class="row-col col">
+
+                    <div class="row-col col-10 col-xl-10">
                         {% block content %}{% endblock %}
                     </div>
-                    <div class="row-col col-1">
+
+                    <div class="row-col col-1 col-sm-1 col-lg-1 col-md-1 col-xl-1">
                         {% block rightContent %}{% endblock %}
                     </div>
+
                 </div>
             </div>
         {% endblock %}
