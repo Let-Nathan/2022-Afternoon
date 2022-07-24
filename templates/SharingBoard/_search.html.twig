@@ -11,31 +11,23 @@
                 {{ form_widget(form.status, {'attr':
                     {'class': 'w-100 rounded-2'}}) }}
 
-                <div class="d-flex justify-content-center">
+                {{ form_label(form.creationDate, 'Date de création', {'label_attr':
+                    {'class': 'ser-only col-form-label w-100  m-0 p-0 '}}) }}
+                {{ form_widget(form.creationDate, {'attr':
+                    {'class': 'w-100 rounded-2 text-center'}}) }}
 
-                    <div class="flex-column w-100">
-                        {{ form_label(form.creationDate, 'Date de création', {'label_attr':
-                            {'class': 'ser-only col-form-label w-100 hstack justify-content-center'}}) }}
-                        {{ form_widget(form.creationDate, {'attr':
-                            {'class': 'w-100 rounded-2 hstack justify-content-center'}}) }}
-                    </div>
-                    <div class="flex-column w-100">
-                        {{ form_label(form.dateRelance, 'Date de relance', {'label_attr':
-                            {'class': 'ser-only col-form-label w-100 hstack justify-content-center'}}) }}
-                        {{ form_widget(form.dateRelance, {'attr':
-                            {'class': 'w-100 rounded-2 hstack justify-content-center'}}) }}
-                    </div>
-                </div>
-
-                    {{ form_label(form.endDate, 'Date de fin', {'label_attr':
-                        {'class': 'ser-only col-form-label w-100 hstack justify-content-center'}}) }}
-                    {{ form_widget(form.endDate, {'attr':
-                    {'class': 'w-100 rounded-2 hstack justify-content-center'}}) }}
-
+                {{ form_label(form.dateRelance, 'Date de relance', {'label_attr':
+                    {'class': 'ser-only col-form-label w-100 m-0 p-0 '}}) }}
+                {{ form_widget(form.dateRelance, {'attr':
+                    {'class': 'w-100 rounded-2 text-center'}}) }}
+                {{ form_label(form.endDate, 'Date de fin', {'label_attr':
+                    {'class': 'ser-only col-form-label w-100 m-0 p-0 '}}) }}
+                {{ form_widget(form.endDate, {'attr':
+                {'class': 'w-100 rounded-2 hstack text-center'}}) }}
 
                 <div class="hstack justify-content-center">
                     {{ form_widget(form.send, {'attr':
-                        {'class': 'hstack justify-content-center btn btn-primary m-0 p-1 rounded-2 col-10 col-lg-5'}}) }}
+                        {'class': 'hstack justify-content-center btn btn-primary m-2 p-1 rounded-2 col-10 col-lg-12'}}) }}
                 </div>
     {{ form_end(form) }}
 </div>

@@ -82,7 +82,9 @@ class FilterType extends AbstractType
                     'required' => false,
                     'widget' => 'single_text',
             ])
-            ->add('send', SubmitType::class);
+            ->add('send', SubmitType::class, [
+                'label' => 'Rechercher'
+            ]);
     }
     public function configureOptions(OptionsResolver $resolver): void
     {
