@@ -37,7 +37,7 @@ class User
     private string $compagny;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Candidate::class, orphanRemoval: true)]
-    private Collection $candidates;
+    private ?Collection $candidates;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Consultation::class)]
     private Collection $consultations;

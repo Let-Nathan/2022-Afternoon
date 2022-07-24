@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block h1 %}Nouvelle fiche{% endblock %}
+
+{% block content %}
+
+<div class="w-100 container-fluid vstack align-items-center">
+    <div class="row col-8">
+        {{ include('Candidate/_form.html.twig') }}
+
+    </div>
+    <a href="{{ path('candidate_index') }}">back to list</a>
+</div>
+{% endblock %}

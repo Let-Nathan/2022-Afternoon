@@ -16,7 +16,7 @@ class CandidateController extends AbstractController
     public function index(CandidateRepository $candidates): Response
     {
         return $this->render('Candidate/index.html.twig', [
-            'candidates' => $candidates->findAll(),
+            'candidates' => $candidates->findBy([], ['validateSheet' => 'ASC']),
         ]);
     }
 
@@ -34,6 +34,45 @@ class CandidateController extends AbstractController
         }
 
         return $this->renderForm('Candidate/cv.html.twig', [
+            'candidate' => $candidate,
+            'form' => $form,
+        ]);
+    }
+    #[Route('/candidates/{id}', name: 'candidate_show', methods: ['GET'])]
+    public function show(Candidate $candidate): Response
+    {
+        return $this->render('candidate/show.html.twig', [
+            'candidate' => $candidate,
+        ]);
+    }
+
+    #[Route('/candidates/delete/{id}', name: 'candidate_delete', methods: ['GET'])]
+    public function delete(Request $request, Candidate $candidate, CandidateRepository $candidateRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $candidate->getId(), $request->request->get('_token'))) {
+            $candidateRepository->remove($candidate, true);
+        }
+
+        return $this->redirectToRoute('app_candidate_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+
+    #[Route('/candidate/new', name: 'candidate_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, CandidateRepository $candidateRepository): Response
+    {
+        $candidate = new Candidate();
+        $form = $this->createForm(CandidateType::class, $candidate);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $candidateRepository->add($candidate, true);
+
+            return $this->redirectToRoute('candidate_show', [
+                'id' => $candidate->getId(),
+            ], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('candidate/new.html.twig', [
             'candidate' => $candidate,
             'form' => $form,
         ]);

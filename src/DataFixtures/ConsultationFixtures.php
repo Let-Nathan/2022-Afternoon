@@ -13,15 +13,15 @@ class ConsultationFixtures extends Fixture implements DependentFixtureInterface
     private const CONSULTATION = [
         'candidate1' => [
             'Fred',
-            'Refused',
+            'Refusé',
         ],
         'candidate2' => [
             'Cathy',
-            'Accepted'
+            'Recruté'
         ],
         'candidate3' => [
             'Marc',
-            'Job Interview'
+            'Entretien'
 
         ]
     ];

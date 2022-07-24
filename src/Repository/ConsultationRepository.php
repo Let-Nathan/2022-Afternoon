@@ -43,12 +43,32 @@ class ConsultationRepository extends ServiceEntityRepository
         }
     }
 
-    public function statusRefused(): int
+    /**
+     * Sommes  du prix des fiches due aux vendeur (potential)
+     */
+    public function sumVendeurdue(): ?int
+    {
+            return $this->createQueryBuilder('c')
+                ->join('c.candidate', 'ca')
+                ->select('sum(ca.prixFiche)')
+                ->getQuery()->getSingleScalarResult();
+    }
+
+    /**
+     * Sommes du prix des fiches et de la prime afternoon pour les toutes les consultations (potential)
+     */
+    public function sumAcheteurdue(): int
     {
         return $this->createQueryBuilder('c')
-            ->select('count(c.status)')
-            ->where('c.status = :search')
-            ->setParameter('search', 'Refused')
+            ->join('c.candidate', 'ca')
+            ->select('sum(ca.prixFiche + ca.prime)')
+            ->getQuery()->getSingleScalarResult();
+    }
+    public function sumAfternoonCom(): int
+    {
+        return $this->createQueryBuilder('c')
+            ->join('c.candidate', 'ca')
+            ->select('sum(ca.prime)')
             ->getQuery()->getSingleScalarResult();
     }
     public function statusAccepted(): int
@@ -56,44 +76,36 @@ class ConsultationRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('c')
             ->select('count(c.status)')
             ->where('c.status = :search')
-            ->setParameter('search', 'Present')
+            ->setParameter('search', 'Recruté')
             ->getQuery()->getSingleScalarResult();
     }
-    public function statusJobInteview(): int
+    public function statusRefused(): int
     {
         return $this->createQueryBuilder('c')
             ->select('count(c.status)')
             ->where('c.status = :search')
-            ->setParameter('search', 'Job interview')
+            ->setParameter('search', 'Refus')
             ->getQuery()->getSingleScalarResult();
     }
-
-//    public function searchBuyer(): array
-//    {
-//        $qb = $this->createQueryBuilder('c');
-//
-//        //Filter on buyer
-//        if ($filterModel->getBuyer()) {
-//            $qb->join('c.user', 'u')
-//                ->where('u.firstName LIKE :seller')
-//                ->orWhere('u.lastName LIKE :seller')
-//                ->setParameter('seller', '%' . $filterModel->getBuyer() . '%');
-//        }
-//    }
+    public function statusPresent(): int
+    {
+        return $this->createQueryBuilder('c')
+            ->select('count(c.status)')
+            ->where('c.status = :search')
+            ->setParameter('search', 'Entretien')
+            ->getQuery()->getSingleScalarResult();
+    }
 
     public function searchWithFilter(FilterModel $filterModel): array
     {
         $qb = $this->createQueryBuilder('c');
-//
-        //Filter on buyer
+        //Filter on buyer //
         if ($filterModel->getBuyer()) {
             $qb->join('c.user', 'u')
                 ->where('u.firstName LIKE :seller OR u.lastName LIKE :seller')
                 ->setParameter('seller', '%' . $filterModel->getBuyer() . '%');
         }
-
-        //Filter Seller
-
+        //Todo filter seller //
 
         //  Filter on candidate name    //
         if ($filterModel->getCandidateName()) {
@@ -119,29 +131,4 @@ class ConsultationRepository extends ServiceEntityRepository
 
         return $qb->getQuery()->getResult();
     }
-
-//    /**
-//     * @return Consultation[] Returns an array of Consultation objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Consultation
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }
