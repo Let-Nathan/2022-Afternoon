@@ -67,6 +67,8 @@ class CandidateController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $candidateRepository->add($candidate, true);
 
+            $this->addFlash('success', 'Candidat créé');
+
             return $this->redirectToRoute('candidate_show', [
                 'id' => $candidate->getId(),
             ], Response::HTTP_SEE_OTHER);
