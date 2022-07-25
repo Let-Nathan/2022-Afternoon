@@ -56,7 +56,7 @@ class Candidate
     #[ORM\ManyToMany(targetEntity: Skill::class, inversedBy: 'candidates')]
     private Collection $skills;
 
-    #[ORM\ManyToMany(targetEntity: Domain::class, inversedBy: 'candidates')]
+    #[ORM\ManyToMany(targetEntity: Domain::class)]
     private ?Collection $domains;
 
     #[ORM\Column(type: 'float', nullable: true)]
@@ -75,7 +75,7 @@ class Candidate
     private bool $validateSheet = false;
 
     #[ORM\Column(type: 'string', length: 2500, nullable: true)]
-    private string $observation;
+    private ?string $observation;
 
     #[ORM\Column(type: 'datetime')]
     private DateTime $createdAt;

@@ -24,7 +24,7 @@ class AdminFixtures extends Fixture
             'AfterNoon',
             'azerty',
             'superadmin@gmail.com',
-            'ROLE_SUPERADMIN'
+            'ROLE_SUPER_ADMIN'
         ]
     ];
 

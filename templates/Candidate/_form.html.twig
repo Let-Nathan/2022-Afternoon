@@ -6,25 +6,46 @@
 
         {# Left container #}
         <div class="row-col col-lg-5 vstack gap-1">
+            <div class="form-error">
+                {{ form_errors(form.firstName) }}
+            </div>
             {{ form_label(form.firstName, 'Prénom') }}
             {{ form_widget(form.firstName, {'attr':
                 {'class': 'text-center'}}) }}
+            <div class="form-error">
+                {{ form_errors(form.phone) }}
+            </div>
             {{ form_label(form.phone) }}
             {{ form_widget(form.phone, {'attr':
                 {'class': 'text-center'}}) }}
+            <div class="form-error">
+                {{ form_errors(form.city) }}
+            </div>
             {{ form_label(form.city) }}
             {{ form_widget(form.city, {'attr':
                 {'class': 'text-center'}}) }}
+            <div class="form-error">
+                {{ form_errors(form.gender) }}
+            </div>
             {{ form_label(form.gender) }}
             {{ form_widget(form.gender, {'attr':
                 {'class': 'text-center'}}) }}
+            <div class="form-error">
+                {{ form_errors(form.businessRole) }}
+            </div>
             {{ form_label(form.businessRole, 'Role', {'label_attr':
                 {'class': 'w-100'}}) }}
             {{ form_widget(form.businessRole, {'attr':
                 {'class': 'text-center'}}) }}
+            <div class="form-error">
+                {{ form_errors(form.experience) }}
+            </div>
             {{ form_label(form.experience) }}
             {{ form_widget(form.experience, {'attr':
                 {'class': 'text-center'}}) }}
+            <div class="form-error">
+                {{ form_errors(form.domains) }}
+            </div>
             {{ form_label(form.domains, 'Domains', {'label_attr':
                 {'class': 'text-center'}}) }}
             {{ form_widget(form.domains, {'attr':
@@ -33,24 +54,45 @@
         </div>
         {# Right container #}
         <div class="row-col col-lg-5 vstack gap-1">
+            <div class="form-error">
+                {{ form_errors(form.lastName) }}
+            </div>
             {{ form_label(form.lastName, 'Nom')  }}
             {{ form_widget(form.lastName, {'attr':
                 {'class': 'text-center'}}) }}
+            <div class="form-error">
+                {{ form_errors(form.email) }}
+            </div>
             {{ form_label(form.email) }}
             {{ form_widget(form.email, {'attr':
                 {'class': 'text-center'}}) }}
+            <div class="form-error">
+                {{ form_errors(form.linkedin) }}
+            </div>
             {{ form_label(form.linkedin) }}
             {{ form_widget(form.linkedin, {'attr':
                 {'class': 'text-center'}}) }}
+            <div class="form-error">
+                {{ form_errors(form.disponibilities) }}
+            </div>
             {{ form_label(form.disponibilities, 'Disponibilitée') }}
             {{ form_widget(form.disponibilities, {'attr':
                 {'class': 'text-center'}}) }}
+            <div class="form-error">
+                {{ form_errors(form.telework) }}
+            </div>
             {{ form_label(form.telework) }}
             {{ form_widget(form.telework, {'attr':
                 {'class': 'text-start'}}) }}
             {{ form_label(form.salary) }}
+            <div class="form-error">
+                {{ form_errors(form.salary) }}
+            </div>
             {{ form_widget(form.salary, {'attr':
                 {'class': 'text-center'}}) }}
+            <div class="form-error">
+                {{ form_errors(form.skills) }}
+            </div>
             {{ form_label(form.skills, 'Compétences', {'label_attr':
                 {'class': 'text-center'}}) }}
             {{ form_widget(form.skills, {'attr':
@@ -58,36 +100,52 @@
 
         </div>
     </div>
+            <div class="form-error">
+                {{ form_errors(form.vehicle) }}
+            </div>
             {{ form_label(form.vehicle) }}
             {{ form_widget(form.vehicle) }}
-
         <div class="hstack justify-content-around w-100 ">
 
             <div class=" w-50">
+                <div class="form-error">
+                    {{ form_errors(form.user) }}
+                </div>
                 {{ form_label(form.user, 'Vendeur') }}
                 {{ form_widget(form.user, {'attr':
                     {'class': 'text-center'}}) }}
             </div>
             <div class="w-50">
+                <div class="form-error">
+                    {{ form_errors(form.prime) }}
+                </div>
                 {{ form_label(form.prime, 'Prime vendeur') }}
                 {{ form_widget(form.prime, {'attr':
                     {'class': 'text-center'}}) }}
             </div>
 
         </div>
-
-    <div class="w-100 vstack gap-2">
+        <div class="w-100 vstack gap-2">
+        <div class="form-error">
+            {{ form_errors(form.observation) }}
+        </div>
         {{ form_label(form.observation, 'Observation', {'label_attr':
             {'class': 'w-100 text-center'}}) }}
         {{ form_widget(form.observation) }}
     <div class="d-flex justify-content-between">
         <div class="w-50">
+            <div class="form-error">
+                {{ form_errors(form.validatedBy) }}
+            </div>
             {{ form_label(form.validatedBy, 'Validé par', {'label_attr':
                 {'class': 'w-100 text-center'}}) }}
             {{ form_widget(form.validatedBy, {'attr':
                 {'class': 'text-center'}}) }}
         </div>
         <div class="w-50">
+            <div class="form-error">
+                {{ form_errors(form.validateSheet) }}
+            </div>
             {{ form_label(form.validateSheet, 'Fiche validé', {'label_attr':
                 {'class': 'w-100 text-center'}}) }}
             {{ form_widget(form.validateSheet, {'attr':
@@ -95,6 +153,9 @@
         </div>
     </div>
     <div class="hstack gap-2 mt-3 justify-content-around">
+        <div class="form-error">
+            {{ form_errors(form.archived) }}
+        </div>
         {{ form_label(form.archived) }}
         {{ form_widget(form.archived, {'attr' :
             {'class': 'text-center'}}) }}
