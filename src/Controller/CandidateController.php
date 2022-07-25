@@ -55,4 +55,28 @@ class CandidateController extends AbstractController
 
         return $this->redirectToRoute('app_candidate_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+    #[Route('/candidate/new', name: 'candidate_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, CandidateRepository $candidateRepository): Response
+    {
+        $candidate = new Candidate();
+        $form = $this->createForm(CandidateType::class, $candidate);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $candidateRepository->add($candidate, true);
+
+            $this->addFlash('success', 'Candidat créé');
+
+            return $this->redirectToRoute('candidate_show', [
+                'id' => $candidate->getId(),
+            ], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('candidate/new.html.twig', [
+            'candidate' => $candidate,
+            'form' => $form,
+        ]);
+    }
 }
