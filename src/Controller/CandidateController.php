@@ -41,7 +41,7 @@ class CandidateController extends AbstractController
     #[Route('/candidates/{id}', name: 'candidate_show', methods: ['GET'])]
     public function show(Candidate $candidate): Response
     {
-        return $this->render('candidate/show.html.twig', [
+        return $this->render('Candidate/show.html.twig', [
             'candidate' => $candidate,
         ]);
     }
@@ -74,7 +74,7 @@ class CandidateController extends AbstractController
             ], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('candidate/new.html.twig', [
+        return $this->renderForm('Candidate/new.html.twig', [
             'candidate' => $candidate,
             'form' => $form,
         ]);
