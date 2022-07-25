@@ -428,6 +428,7 @@ class Candidate
     {
         return $this->consultations;
     }
+
     public function addConsultation(Consultation $consultation): self
     {
         if (!$this->consultations->contains($consultation)) {
@@ -437,6 +438,7 @@ class Candidate
 
         return $this;
     }
+
     public function removeConsultation(Consultation $consultation): self
     {
         if ($this->consultations->removeElement($consultation)) {
@@ -551,5 +553,10 @@ class Candidate
         return $this->consultations->filter(function (Consultation $consultation) use ($status): bool {
             return $consultation->getStatus() === $status;
         });
+    }
+
+    public function hasBeen(string $status): bool
+    {
+        return count($this->getConsultationsByStatus($status)) !== 0;
     }
 }

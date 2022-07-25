@@ -1,41 +1,34 @@
-<div class="col-lg-10">
-    {{ form_start(form, {'attr':
-        {'class': 'vstack justify-content-center gap-2'}}) }}
+{{ form_start(form, {'attr':
+    {'class': 'vstack justify-content-center gap-2'}}) }}
 
-                {{ form_widget(form.seller, {'attr':
-                    {'class': 'w-100 rounded-2'}}) }}
-                {{ form_widget(form.buyer,  {'attr':
-                    {'class': 'w-100 rounded-2'}}) }}
-                {{ form_widget(form.candidateName, {'attr':
-                    {'class': 'w-100 rounded-2'}}) }}
-                {{ form_widget(form.status, {'attr':
-                    {'class': 'w-100 rounded-2'}}) }}
+            {{ form_widget(form.seller, {'attr':
+                {'class': 'w-100 rounded-4'}}) }}
+            {{ form_widget(form.buyer,  {'attr':
+                {'class': 'w-100 rounded-4'}}) }}
+            {{ form_widget(form.candidateName, {'attr':
+                {'class': 'w-100 rounded-4'}}) }}
+            {{ form_widget(form.status, {'attr':
+                {'class': 'w-100 rounded-4 outline-dark'}}) }}
 
-                <div class="d-flex justify-content-center">
+            {{ form_label(form.creationDate, 'Date de création', {'label_attr':
+                {'class': 'ser-only col-form-label w-100  m-0 p-0 text-center'}}) }}
+            {{ form_widget(form.creationDate, {'attr':
+                {'class': 'w-100 rounded-4 text-center'}}) }}
 
-                    <div class="flex-column w-100">
-                        {{ form_label(form.creationDate, 'Date de création', {'label_attr':
-                            {'class': 'ser-only col-form-label w-100 hstack justify-content-center'}}) }}
-                        {{ form_widget(form.creationDate, {'attr':
-                            {'class': 'w-100 rounded-2 hstack justify-content-center'}}) }}
-                    </div>
-                    <div class="flex-column w-100">
-                        {{ form_label(form.dateRelance, 'Date de relance', {'label_attr':
-                            {'class': 'ser-only col-form-label w-100 hstack justify-content-center'}}) }}
-                        {{ form_widget(form.dateRelance, {'attr':
-                            {'class': 'w-100 rounded-2 hstack justify-content-center'}}) }}
-                    </div>
-                </div>
+            {{ form_label(form.dateRelance, 'Date de relance', {'label_attr':
+                {'class': 'ser-only col-form-label w-100 m-0 p-0 text-center'}}) }}
+            {{ form_widget(form.dateRelance, {'attr':
+                {'class': 'w-100 rounded-4 text-center'}}) }}
 
-                    {{ form_label(form.endDate, 'Date de fin', {'label_attr':
-                        {'class': 'ser-only col-form-label w-100 hstack justify-content-center'}}) }}
-                    {{ form_widget(form.endDate, {'attr':
-                    {'class': 'w-100 rounded-2 hstack justify-content-center'}}) }}
+            {{ form_label(form.endDate, 'Date de fin', {'label_attr':
+                {'class': 'ser-only col-form-label w-100 m-0 p-0 text-center'}}) }}
+            {{ form_widget(form.endDate, {'attr':
+            {'class': 'w-100 rounded-4 hstack text-center'}}) }}
 
-
-                <div class="hstack justify-content-center">
-                    {{ form_widget(form.send, {'attr':
-                        {'class': 'hstack justify-content-center btn btn-primary m-0 p-1 rounded-2 col-10 col-lg-5'}}) }}
-                </div>
-    {{ form_end(form) }}
-</div>
+            <div class="hstack justify-content-center">
+                {{ form_widget(form.send, {'attr':
+                    {'class': 'hstack justify-content-center btn btn-primary m-2 p-2 rounded-2 w-50 btn-afternoon btn-outline-light'}}) }}
+                {{ form_widget(form.reset, {'attr':
+                    {'class': 'hstack justify-content-center btn btn-primary m-2 p-2 rounded-2 w-50 btn-afternoon btn-outline-light'}}) }}
+            </div>
+{{ form_end(form) }}
