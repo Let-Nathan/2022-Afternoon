@@ -20,5 +20,7 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    upload_directory: '%kernel.project_dir%/public/images/posters/'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

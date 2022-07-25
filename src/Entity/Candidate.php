@@ -7,11 +7,12 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use File;
 use Vich\UploaderBundle\Mapping\Annotation\Uploadable;
 use Vich\UploaderBundle\Mapping\Annotation\UploadableField;
 
-#[Uploadable]
 #[ORM\Entity(repositoryClass: CandidateRepository::class)]
+#[Uploadable]
 class Candidate
 {
     #[ORM\Id]
@@ -20,24 +21,22 @@ class Candidate
     private int $id;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'candidates')]
-    #[ORM\JoinColumn(nullable: false)]
     private ?User $user;
 
-    #[UploadableField(mapping: 'curiculumVitae', fileNameProperty: 'curiculumName', size: 'imageSize')]
-    private ?\File $cvFile = null;
+    #[UploadableField(mapping: 'curiculumVitae', fileNameProperty: 'imageName', size: 'imageSize')]
+    private ?File $cvFile = null;
 
     #[ORM\Column(type: 'integer')]
     private ?int $imageSize;
 
+    #[ORM\Column(type: 'integer')]
+    private ?int $imageName;
+
     #[ORM\Column(type:'datetime')]
     private ?\DateTimeInterface $uploadAt;
 
-    /**
-     * @ORM\Embedded(class="Vich\UploaderBundle\Entity\File")
-     *
-     * @var EmbeddedFile
-     */
-    private $image;
+    #[ORM\Embedded(class: 'User', columnPrefix: false)]
+    private ?string $image;
 
     #[ORM\Column(type: 'string', length: 2500)]
     private string $curiculumVitae;
@@ -75,11 +74,14 @@ class Candidate
     #[ORM\ManyToMany(targetEntity: Skill::class, inversedBy: 'candidates')]
     private Collection $skills;
 
-    #[ORM\ManyToMany(targetEntity: Domain::class, inversedBy: 'candidates')]
+    #[ORM\ManyToMany(targetEntity: Domain::class)]
     private ?Collection $domains;
 
-    #[ORM\Column(type: 'float', nullable: true)]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private ?float $prime;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private int $prixFiche;
 
     #[ORM\ManyToOne(targetEntity: Disponibility::class, inversedBy: 'candidates')]
     private Disponibility $disponibilities;
@@ -94,7 +96,7 @@ class Candidate
     private bool $validateSheet = false;
 
     #[ORM\Column(type: 'string', length: 2500, nullable: true)]
-    private string $observation;
+    private ?string $observation;
 
     #[ORM\Column(type: 'datetime')]
     private DateTime $createdAt;
@@ -125,7 +127,6 @@ class Candidate
         $this->consultations = new ArrayCollection();
         $this->createdAt = new DateTime();
         $this->images = new EmbeddedFile();
-
     }
 
     public function getId(): ?int
@@ -292,9 +293,10 @@ class Candidate
         return $this->prime;
     }
 
-    public function setPrime(?float $prime): self
+    //Prime = 20% du prix de la fiche candidat
+    public function setPrime(?float $prixFiche): self
     {
-        $this->prime = $prime;
+        $this->prime = $prixFiche * 0.2;
 
         return $this;
     }
@@ -498,20 +500,20 @@ class Candidate
         return $this;
     }
 
-    public function setImageFile(?File $imageFile = null): void
+    public function setcvFile(?File $cvFile = null): void
     {
-        $this->imageFile = $imageFile;
+        $this->cvFile = $cvFile;
 
-        if (null !== $imageFile) {
+        if (null !== $cvFile) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTimeImmutable();
+            $this->uploadAt = new \DateTimeImmutable();
         }
     }
 
-    public function getImageFile(): ?File
+    public function getCvFile(): ?File
     {
-        return $this->imageFile;
+        return $this->cvFile;
     }
 
     public function setImageName(?string $imageName): void
@@ -532,5 +534,22 @@ class Candidate
     public function getImageSize(): ?int
     {
         return $this->imageSize;
+    }
+
+    public function getPrixFiche(): ?int
+    {
+        return $this->prixFiche;
+    }
+
+    public function setPrixFiche(?int $prixFiche): void
+    {
+        $this->prixFiche = $prixFiche;
+    }
+
+    public function getConsultationsByStatus(string $status): Collection
+    {
+        return $this->consultations->filter(function (Consultation $consultation) use ($status): bool {
+            return $consultation->getStatus() === $status;
+        });
     }
 }
