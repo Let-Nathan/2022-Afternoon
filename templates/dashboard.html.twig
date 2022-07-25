@@ -122,15 +122,7 @@
                                     {# Nombres de fiches partagés avec status "Accepté" #}
                                     <div class="hstack gap-1">
                                         <p>A partagé {{ user.candidates|length }} fiche(s) et</p>
-                                        {%  set shareAccepted = 0 %}
-                                            {% for  candidat in user.candidates %}
-                                                {% for status in candidat.consultations %}
-                                                    {% if status.status == "Recruté" %}
-                                                        {% set shareAccepted = shareAccepted + status|length %}
-                                                    {% endif %}
-                                                {% endfor %}
-                                            {% endfor %}
-                                        <p> {{ shareAccepted}} on suivit avec un recrutement</p>
+                                        <p> {{ user.getCandidatsByStatus('Recruté') | length }} on suivit avec un recrutement</p>
                                         {# ------------------------------------------------ #}
                                     </div>
 

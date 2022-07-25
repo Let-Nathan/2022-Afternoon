@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
         {{ encore_entry_link_tags('app') }}
         {{ encore_entry_script_tags('app') }}
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <title>{% block title %}Afternoon{% endblock %}</title>
 
@@ -33,7 +32,7 @@
         {% endif %}
 
         {% block body %}
-            <div class="container">
+            <div class="container mb-5">
                 {% if block('h1') is defined %}
                     <h1 class="mb-5">{{ block('h1') }}</h1>
                 {% endif %}

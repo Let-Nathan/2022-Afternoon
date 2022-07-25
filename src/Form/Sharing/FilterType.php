@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
+use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -82,7 +83,12 @@ class FilterType extends AbstractType
                     'required' => false,
                     'widget' => 'single_text',
             ])
-            ->add('send', SubmitType::class);
+            ->add('send', SubmitType::class, [
+                'label' => 'Rechercher'
+            ])
+            ->add('reset', ResetType::class, [
+                'label' => 'Réinitialiser'
+            ]);
     }
     public function configureOptions(OptionsResolver $resolver): void
     {
