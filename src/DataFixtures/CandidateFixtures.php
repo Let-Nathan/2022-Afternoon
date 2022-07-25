@@ -23,6 +23,7 @@ class CandidateFixtures extends Fixture implements DependentFixtureInterface
             'One years',
             'Now',
             'Front-End',
+            50,
 
         ],
         "candidate2" => [
@@ -36,7 +37,8 @@ class CandidateFixtures extends Fixture implements DependentFixtureInterface
             'Php 7/8',
             'More than five years',
             'After three month',
-            'Analyst'
+            'Analyst',
+            300,
         ],
         "candidate3" => [
             "https://cdn-images.zety.fr/pages/cv_developpeur_web_zety_fr_4.jpg",
@@ -49,8 +51,8 @@ class CandidateFixtures extends Fixture implements DependentFixtureInterface
             'Go',
             'Three years',
             'Three month',
-            'Data-scientist'
-
+            'Data-scientist',
+            120,
         ],
 
     ];
@@ -75,6 +77,8 @@ class CandidateFixtures extends Fixture implements DependentFixtureInterface
             $candidate->setArchived(false);
             $candidate->setIsVisible(true);
             $candidate->setGender($faker->boolean);
+            $candidate->setPrixFiche($value[11]);
+            $candidate->setPrime($value[11]);
             $candidate->setExpirationDate($faker->dateTimeThisYear('+4 months'));
             $candidate->setUser($this->getReference('user_' . $value[6]));
             $candidate->addSkills($this->getReference('skill_' . $value[7]));

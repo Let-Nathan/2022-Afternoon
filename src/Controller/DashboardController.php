@@ -23,11 +23,14 @@ class DashboardController extends AbstractController
     ): Response {
 
         return $this->render('dashboard.html.twig', [
-            'countNbrShare' => $candidateRepository->countIsVisible(),
+            'countPartage' => $candidateRepository->countIsVisible(),
             'users' => $userRepository->findAll(),
-            'countNbrRefused' => $cRepo->statusRefused(),
-            'countNbrAccepted' => $cRepo->statusAccepted(),
-            'countNbrJobInterview' => $cRepo->statusJobInteview(),
+            'sumBuyerDue' => $cRepo->sumAcheteurdue(),
+            'sumVendeurDue' => $cRepo->sumVendeurdue(),
+            'comAfternoon' => $cRepo->sumAfternoonCom(),
+            'statusRefused' => $cRepo->statusRefused(),
+            'statusAccepted' => $cRepo->statusAccepted(),
+            'statusPresent' => $cRepo->statusPresent(),
         ]);
     }
 }

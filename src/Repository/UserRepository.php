@@ -38,4 +38,12 @@ class UserRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function sumAcheteudue(): ?int
+    {
+        return $this->createQueryBuilder('u')
+            ->join('u.consultations', 'c')
+            ->select('sum(ca.prixFiche + ca.prime)')
+            ->getQuery()->getSingleScalarResult();
+    }
 }

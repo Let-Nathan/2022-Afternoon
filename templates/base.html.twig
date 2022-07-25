@@ -5,10 +5,10 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
         {{ encore_entry_link_tags('app') }}
         {{ encore_entry_script_tags('app') }}
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <title>{% block title %}Afternoon{% endblock %}</title>
 
@@ -37,7 +37,6 @@
                 {% if block('h1') is defined %}
                     <h1 class="mb-5">{{ block('h1') }}</h1>
                 {% endif %}
-
                 {% block content %}{% endblock %}
             </div>
         {% endblock %}
