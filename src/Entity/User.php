@@ -200,4 +200,11 @@ class User
 
         return $this;
     }
+
+    public function getCandidatsByStatus(string $status): Collection
+    {
+        return $this->candidates->filter(function (Candidate $candidate) use ($status): bool {
+            return $candidate->hasBeen($status);
+        });
+    }
 }
