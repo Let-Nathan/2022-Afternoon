@@ -137,12 +137,9 @@
                             <div class="vstack align-items-start gap-4 m-1">
                                 <div class=acheteur-container"">
                                     <p class="text-black m-0 p-0 fs-5">Candidats :</p>
-                                    <p class="text-muted m-0 p-0" title="rencontrés"> Rencontrés
-                                        : {{ user.getConsultationsByStatus('Entretien') | length }}</p>
-                                    <p class="text-muted m-0 p-0" title="recrutés"> Recrutés
-                                        : {{ user.getConsultationsByStatus('Recruté') | length }}</p>
-                                    <p class="text-muted m-0 p-0" title="recrutés"> Fiches partagées recrutées
-                                        : {# TODO #}</p>
+                                    <p class="text-muted m-0 p-0" title="rencontrés"> Rencontrés : {{ user.getConsultationsByStatus('Entretien') | length }}</p>
+                                    <p class="text-muted m-0 p-0" title="recrutés"> Recrutés : {{ user.getConsultationsByStatus('Recruté') | length }}</p>
+                                    <p class="text-muted m-0 p-0" title="recrutés"> Fiches partagées recrutées : {# TODO #}</p>
                                 </div>
                             </div>
 
@@ -150,15 +147,13 @@
                             <div class="vstack align-items-start gap-4 m-1">
                                 <div class=acheteur-container"">
                                     <p class="text-black m-0 p-0 fs-5">Montants :</p>
-                                    <p class="text-muted m-0 p-0" title="primes"> Primes
-                                        : {{ user.getConsultationsByStatus('Entretien') | length }}</p>
+                                    <p class="text-muted m-0 p-0" title="primes"> Primes : {{ user.getConsultationsByStatus('Entretien') | length }}</p>
                                     {# calcul montant du pour les fiches consultées #}
                                     {% set sumFiche = 0 %}
                                     {% for consultation in user.consultations %}
                                         {% set sumFiche = sumFiche + consultation.candidate.prixFiche + consultation.candidate.prime %}
                                     {% endfor %}
-                                    <p class="text-muted m-0 p-0" title="fiches consultées"> Fiches consultées : {{ sumFiche }}
-                                        €</p>
+                                    <p class="text-muted m-0 p-0" title="fiches consultées"> Fiches consultées : {{ sumFiche }} €</p>
                                     <p class="text-muted m-0 p-0" title="balance des sommes"> Balance des sommes : {# TODO #}</p>
                                 </div>
                             </div>
