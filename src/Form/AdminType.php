@@ -39,13 +39,13 @@ class AdminType extends AbstractType
                 'label' => 'Tel'
             ])
             ->add('password', PasswordType::class, [
-                'label' => 'Password',
+                'label' => 'Mot de passe',
                 'mapped' => false,
                 'help' => $isEdition ? 'Laissez vide pour ne pas changer' : '',
                 'required' => false,
             ])
             ->add('role', ChoiceType::class, [
-                'label' => 'Role',
+                'label' => 'Rôle',
                 'choices' => [
                     'Admin' => 'ROLE_ADMIN',
                     'Super admin' => 'ROLE_SUPER_ADMIN',
