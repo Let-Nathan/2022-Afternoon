@@ -23,14 +23,14 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255)]
     private string $lastName;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private string $compagny;
-
     #[ORM\Column(type: 'string', nullable: false)]
     private string $password;
 
     #[ORM\Column(type: 'string', unique: true)]
     private string $email;
+
+    #[ORM\Column(type: 'string', unique: true)]
+    private string $tel;
 
     #[ORM\Column(type: 'string')]
     private string $role;
@@ -72,17 +72,6 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getCompagny(): ?string
-    {
-        return $this->compagny;
-    }
-
-    public function setCompagny(string $compagny): self
-    {
-        $this->compagny = $compagny;
-
-        return $this;
-    }
 
     public function getCandidates(): Collection
     {
@@ -148,6 +137,18 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getTel(): ?string
+    {
+        return $this->tel;
+    }
+
+    public function setTel(string $tel): self
+    {
+        $this->tel = $tel;
 
         return $this;
     }

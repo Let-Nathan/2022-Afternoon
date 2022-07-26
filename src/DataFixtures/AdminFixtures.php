@@ -13,18 +13,18 @@ class AdminFixtures extends Fixture
         'admin' => [
             'John',
             'Doe',
-            'Thales',
             'azerty',
             'admin@gmail.com',
-            'ROLE_ADMIN'
+            '+33-0-00-00-00-00',
+            'ROLE_ADMIN',
         ],
         'superAdmin' => [
             'François',
             'Mirande',
-            'AfterNoon',
             'azerty',
             'superadmin@gmail.com',
-            'ROLE_SUPER_ADMIN'
+            '+33-1-00-00-00-00',
+            'ROLE_SUPER_ADMIN',
         ]
     ];
 
@@ -41,10 +41,10 @@ class AdminFixtures extends Fixture
             $admin = new Admin();
             $admin->setFirstName($value[0]);
             $admin->setLastName($value[1]);
-            $admin->setCompagny($value[2]);
-            $hashedPassword = $this->passwordHasher->hashPassword($admin, $value[3]);
+            $hashedPassword = $this->passwordHasher->hashPassword($admin, $value[2]);
             $admin->setPassword($hashedPassword);
-            $admin->setEmail($value[4]);
+            $admin->setEmail($value[3]);
+            $admin->setTel($value[4]);
             $admin->setRole($value[5]);
             $manager->persist($admin);
         }
