@@ -5,7 +5,7 @@
 {% block content %}
         <div class="mb-4">
             {%  if is_granted('ROLE_SUPER_ADMIN') %}
-            <a class="btn btn-afternoon btn-outline-light link-white" href="{{ path('admin_new') }}">Ajouter un admin</a>
+            <a class="btn btn-afternoon btn-outline-light link-white col-2" href="{{ path('admin_new') }}">Ajouter un admin</a>
             {% endif %}
         </div>
 

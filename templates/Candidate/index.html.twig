@@ -2,8 +2,8 @@
 {% block h1 %}Dépôt Candidat{% endblock %}
 {% block content %}
     <div class="container-fluid vstack gap-2">
-        <div class="hstack justify-content-end">
-            <a class="btn btn-afternoon btn-outline-primary border-light text-white col-2 " href="{{ path('candidate_new') }}">New</a>
+        <div class="mb-4">
+            <a class="btn btn-afternoon btn-outline-light link-white col-2" href="{{ path('candidate_new') }}">Ajouter un candidat</a>
         </div>
 
         {% for candidate in candidates %}
@@ -13,17 +13,14 @@
                             <div class="left-container vstack gap-1">
                                 <p class="m-0 p-0"> Fiche créée le {{ candidate.createdAt.format('d/m/Y') }}</p>
                                 <div class="vstack">
-                                   <p class="m-0 p-0"> Par
-                                       <strong>{{ candidate.user.firstname }} {{ candidate.user.lastname }} </strong>
-                                       de
-                                   </p>
+                                   <p class="m-0 p-0"> Propriétaire de la fiche : <strong>{{ candidate.user.firstname }} {{ candidate.user.lastname }} </strong></p>
                                     <p class="text-muted m-0 p-0">@{{ candidate.user.compagny }}</p>
                                 </div>
                             </div>
                         </td>
                         <td class="vstack gap-1">
                             <div>
-                                <p class="m-0 p-0">Fiche validée :{{ candidate.validateSheet ? 'Oui' : 'Non' }}</p>
+                                <p class="m-0 p-0">Fiche validée : {{ candidate.validateSheet ? 'Oui' : 'Non' }}</p>
                             </div>
                             <div class="vstack align-items-end">
                                 <a class="btn btn-afternoon btn-outline-light link-white w-50" href="{{ path('candidate_CV', {id: candidate.id}) }}">CV</a>
