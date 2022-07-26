@@ -10,79 +10,43 @@
     <!----------
                   Top card info
                                         ----------->
-        <div class="row">
-            <div class="col-md-12 col-12">
-                <section id="stats-subtitle">
-                    <div class="row">
-                        <div class="col-12 mt-3 mb-1">
-                            <h4 class="text-uppercase">Statistics </h4>
-                        </div>
+    <div class="row">
+        <div class="col-md-12 col-12">
+            <section id="stats-subtitle">
+                <div class="row">
+                    <div class="col-12 mt-3 mb-1">
+                        <h2>Statistiques :</h2>
                     </div>
+                </div>
 
-                    {#  Partages boxe #}
-                    <div class="row">
-                        <div class="col-xl-6 col-md-12">
-                            <div class="card overflow-hidden">
-                                <div class="card-content">
-                                    <div class="card-body ">
-                                        <div class="media align-items-stretch">
-                                            <div class="vstack gap-2">
-                                                <div class="media-body row m-0 p-0">
-                                                    <h4>Partages</h4>
-                                                    <span class="border-bottom w-25"></span>
-                                                </div>
-                                                <div class=" hstack justify-content-around">
-                                                    <div class="vstack align-items-center">
-                                                        <p>Acceptés</p>
-                                                        <p class="h3">{{ statusAccepted }}</p>
-                                                    </div>
-                                                    <div class="vstack align-items-center">
-                                                        <p>Présentés</p>
-                                                        <p class="h3">{{ statusPresent }}</p>
-                                                    </div>
-                                                    <div class="vstack align-items-center">
-                                                        <p>Refusés</p>
-                                                        <p class="h3">{{ statusRefused }}</p>
-                                                    </div>
-                                                    <div class="vstack align-items-center">
-                                                        <p> Total</p>
-                                                        <p class="h3">{{ countPartage }}</p>
-                                                    </div>
-                                                </div>
+                {#  Partages boxe #}
+                <div class="row">
+                    <div class="col-xl-6 col-md-12">
+                        <div class="card overflow-hidden">
+                            <div class="card-content">
+                                <div class="card-body ">
+                                    <div class="media align-items-stretch">
+                                        <div class="vstack gap-2">
+                                            <div class="media-body row m-0 p-0">
+                                                <h4>Partages :</h4>
+                                                <span class="border-bottom w-25"></span>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {# Sommes boxe #}
-                        <div class="col-xl-6 col-md-12">
-                            <div class="card">
-                                <div class="card-content">
-                                    <div class="card-body cleartfix">
-                                        <div class="media align-items-stretch">
-                                            <div class="align-self-center">
-                                                <i class="icon-speech warning font-large-2 mr-2"></i>
-                                            </div>
-                                            <div class="vstack gap-2">
-                                                <div class="media-body row m-0 p-0">
-                                                    <h4>Sommes</h4>
-                                                    <span class="border-bottom w-25"></span>
+                                            <div class=" hstack justify-content-around">
+                                                <div class="vstack align-items-center">
+                                                    <p>Acceptés</p>
+                                                    <p class="h3">{{ statusAccepted }}</p>
                                                 </div>
-                                                <div class=" hstack justify-content-around">
-                                                    <div class="vstack align-items-center">
-                                                        <p>Dûe vendeurs</p>
-                                                        <p class="h3">{{ sumVendeurDue }}€</p>
-                                                    </div>
-                                                    <div class="vstack align-items-center">
-                                                        <p>Dûe acheteurs</p>
-                                                        <p class="h3">{{ sumBuyerDue }}€</p>
-                                                    </div>
-                                                    <div class="vstack align-items-center">
-                                                        <p>Gain Afternon</p>
-                                                        <p class="h3">{{ comAfternoon }}€</p>
-                                                    </div>
+                                                <div class="vstack align-items-center">
+                                                    <p>Présentés</p>
+                                                    <p class="h3">{{ statusPresent }}</p>
+                                                </div>
+                                                <div class="vstack align-items-center">
+                                                    <p>Refusés</p>
+                                                    <p class="h3">{{ statusRefused }}</p>
+                                                </div>
+                                                <div class="vstack align-items-center">
+                                                    <p> Total</p>
+                                                    <p class="h3">{{ countPartage }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -91,68 +55,124 @@
                             </div>
                         </div>
                     </div>
-                </section>
+
+                    {# Sommes boxe #}
+                    <div class="col-xl-6 col-md-12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body cleartfix">
+                                    <div class="media align-items-stretch">
+                                        <div class="align-self-center">
+                                            <i class="icon-speech warning font-large-2 mr-2"></i>
+                                        </div>
+                                        <div class="vstack gap-2">
+                                            <div class="media-body row m-0 p-0">
+                                                <h4>Sommes :</h4>
+                                                <span class="border-bottom w-25"></span>
+                                            </div>
+                                            <div class=" hstack justify-content-around">
+                                                <div class="vstack align-items-center">
+                                                    <p>Dûes vendeurs</p>
+                                                    <p class="h3">{{ sumVendeurDue }}€</p>
+                                                </div>
+                                                <div class="vstack align-items-center">
+                                                    <p>Dûes acheteurs</p>
+                                                    <p class="h3">{{ sumBuyerDue }}€</p>
+                                                </div>
+                                                <div class="vstack align-items-center">
+                                                    <p>Gains Afternon</p>
+                                                    <p class="h3">{{ comAfternoon }}€</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!----------
+                    Card utilisateurs
+                                        ----------->
+    {# TODO balances sommes et somems dûe ? #}
+    <div class="mt-4 vstack gap-4">
+
+    <h2>Utilisateurs : </h2>
+
+    {% for user in users %}
+        <div class="card ">
+
+            <!-- Card image -->
+            <div class="view overlay vstack gap-2">
+                <div class="m-2 p-0">
+                    <strong class="text-gray-dark">{{ user.lastname }} {{ user.firstname }}</strong>
+                    <span class="d-block">@{{ user.compagny }}</span>
+                </div>
+            </div>
+
+            <!-- Card content -->
+            <div class="card-body hstack justify-content-around">
+
+                <div class="container-fluid d-flex justify-content-center ">
+                    <div class="row col-12 mb-4">
+
+                        <div
+                            class="container-fluid hstack justify-content-around col-lg-12 col-12 shadow p-2 rounded-4">
+
+                            {#  Fiches col #}
+                            <div class="vstack align-items-start gap-4 m-1"> {# card #}
+                                <div class=acheteur-container"">
+                                    <p class="text-black m-0 p-0 fs-5">Fiches:</p>
+                                    <p class="text-muted m-0 p-0" title="partagées"> Partagées
+                                        : {{ user.candidates|length }}</p>
+                                    <p class="text-muted m-0 p-0" title="consultées"> Consultées
+                                        : {{ user.consultations|length }}</p>
+                                </div>
+                            </div>
+
+                            {# Candidats col #}
+                            <div class="vstack align-items-start gap-4 m-1">
+                                <div class=acheteur-container"">
+                                    <p class="text-black m-0 p-0 fs-5">Candidats :</p>
+                                    <p class="text-muted m-0 p-0" title="rencontrés"> Rencontrés
+                                        : {{ user.getConsultationsByStatus('Entretien') | length }}</p>
+                                    <p class="text-muted m-0 p-0" title="recrutés"> Recrutés
+                                        : {{ user.getConsultationsByStatus('Recruté') | length }}</p>
+                                    <p class="text-muted m-0 p-0" title="recrutés"> Fiches partagées recrutées
+                                        : {# TODO #}</p>
+                                </div>
+                            </div>
+
+                            {# Montants col #}
+                            <div class="vstack align-items-start gap-4 m-1">
+                                <div class=acheteur-container"">
+                                    <p class="text-black m-0 p-0 fs-5">Montants :</p>
+                                    <p class="text-muted m-0 p-0" title="primes"> Primes
+                                        : {{ user.getConsultationsByStatus('Entretien') | length }}</p>
+                                    {# calcul montant du pour les fiches consultées #}
+                                    {% set sumFiche = 0 %}
+                                    {% for consultation in user.consultations %}
+                                        {% set sumFiche = sumFiche + consultation.candidate.prixFiche + consultation.candidate.prime %}
+                                    {% endfor %}
+                                    <p class="text-muted m-0 p-0" title="fiches consultées"> Fiches consultées : {{ sumFiche }}
+                                        €</p>
+                                    <p class="text-muted m-0 p-0" title="balance des sommes"> Balance des sommes : {# TODO #}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-    <!----------
-                    Card vendeurs
-                                        ----------->
-        {# TODO balances sommes et somems dûe ? #}
-        <div class="mt-4 vstack gap-4">
 
-                {%  for user in users %}
-                    <div class="card ">
+    {% endfor %}
 
-                        <!-- Card image -->
-                        <div class="view overlay vstack gap-2">
-                            <div class="m-2 p-0">
-                                <strong class="text-gray-dark">{{ user.lastname }} {{ user.firstname }}</strong>
-                                <span class="d-block">@{{ user.compagny }}</span>
-                            </div>
-                        </div>
-
-                        <!-- Card content -->
-                        <div class="card-body hstack justify-content-around">
-
-                            <div class="hstack">
-                                {# container fiches #}
-                                <div class="fiche-container vstack">
-
-                                    {# Nombres de fiches partagés avec status "Accepté" #}
-                                    <div class="hstack gap-1">
-                                        <p>A partagé {{ user.candidates|length }} fiche(s) et</p>
-                                        <p> {{ user.getCandidatsByStatus('Recruté') | length }} on suivit avec un recrutement</p>
-                                        {# ------------------------------------------------ #}
-                                    </div>
-
-                                    {# Nombres de fiche consulté & montant total des consultation #}
-                                    <div class="hstack gap-1">
-                                        <p>Il a consulté {{ user.consultations|length }} fiche(s) </p>
-                                        {%  set sumFiche = 0 %}
-                                            {% for consultation in user.consultations %}
-                                                {% set sumFiche = sumFiche + consultation.candidate.prixFiche + consultation.candidate.prime  %}
-                                            {% endfor %}
-                                        <p>pour un montant total de {{ sumFiche }}€</p>
-                                    </div>
-                                    {# ------------------------------------------------ #}
-
-                                </div>
-                            </div>
-                            <div>
-                                {# container candidat #}
-                                <div class="candidats-container hstack">
-                                    <div class="vstack">
-                                        <p>{{ user.getConsultationsByStatus('Entretien') | length }} Candidats sont actuellement en Entretien</p>
-                                        <p>{{ user.getConsultationsByStatus('Recruté') | length }} Candidats ont étés recrutés</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                {% endfor %}
-        </div>
+    </div>
 
     </div>
 {% endblock %}
