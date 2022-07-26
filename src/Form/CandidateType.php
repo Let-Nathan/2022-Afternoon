@@ -202,7 +202,11 @@ class CandidateType extends AbstractType
                     'placeholder' => 'Fiche validé par :'
                 ]
             ])
-            ->add('images', VichImageType::class);
+            ->add('cvFile', VichImageType::class, [
+                'required'      => false,
+                'allow_delete'  => true, // not mandatory, default is true
+                'download_uri' => true, // not mandatory, default is true
+            ]);
             /**
              * @Todo invisible data
              */

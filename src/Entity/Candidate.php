@@ -7,12 +7,11 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use File;
-use Vich\UploaderBundle\Mapping\Annotation\Uploadable;
-use Vich\UploaderBundle\Mapping\Annotation\UploadableField;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: CandidateRepository::class)]
-#[Uploadable]
 class Candidate
 {
     #[ORM\Id]
@@ -23,23 +22,23 @@ class Candidate
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'candidates')]
     private ?User $user;
 
-    #[UploadableField(mapping: 'curiculumVitae', fileNameProperty: 'imageName', size: 'imageSize')]
-    private ?File $cvFile = null;
+    #[ORM\Column(type: 'string', length: 2500)]
+    private string $curiculumVitae;
+
+    #[Vich\UploadableField(mapping: 'candidat_cv', fileNameProperty: 'cv', size: 'cvSize')]
+    private File $cvFile;
 
     #[ORM\Column(type: 'integer')]
-    private ?int $imageSize;
+    private ?int $cvSize;
 
     #[ORM\Column(type: 'integer')]
-    private ?int $imageName;
+    private ?int $cvName;
 
     #[ORM\Column(type:'datetime')]
     private ?\DateTimeInterface $uploadAt;
 
     #[ORM\Embedded(class: 'User', columnPrefix: false)]
     private ?string $image;
-
-    #[ORM\Column(type: 'string', length: 2500)]
-    private string $curiculumVitae;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private string $firstName;
@@ -126,7 +125,6 @@ class Candidate
         $this->mobilities = new ArrayCollection();
         $this->consultations = new ArrayCollection();
         $this->createdAt = new DateTime();
-        $this->images = new EmbeddedFile();
     }
 
     public function getId(): ?int
@@ -502,7 +500,7 @@ class Candidate
         return $this;
     }
 
-    public function setcvFile(?File $cvFile = null): void
+    public function setCvFile(?File $cvFile): void
     {
         $this->cvFile = $cvFile;
 
@@ -513,29 +511,34 @@ class Candidate
         }
     }
 
+    public function getUploadAt(): ?\DateTimeInterface
+    {
+        return $this->uploadAt;
+    }
+
     public function getCvFile(): ?File
     {
         return $this->cvFile;
     }
 
-    public function setImageName(?string $imageName): void
+    public function setCvName(?string $cvName): void
     {
-        $this->imageName = $imageName;
+        $this->cvName = $cvName;
     }
 
-    public function getImageName(): ?string
+    public function getCvName(): ?string
     {
-        return $this->imageName;
+        return $this->cvName;
     }
 
-    public function setImageSize(?int $imageSize): void
+    public function setCvSize(?int $cvSize): void
     {
-        $this->imageSize = $imageSize;
+        $this->cvSize = $cvSize;
     }
 
-    public function getImageSize(): ?int
+    public function getCvSize(): ?int
     {
-        return $this->imageSize;
+        return $this->cvSize;
     }
 
     public function getPrixFiche(): ?int
