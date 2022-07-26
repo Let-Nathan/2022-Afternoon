@@ -80,7 +80,7 @@
 
                                     {# Delete consultation col #}
                                     <div class="remove-consultation vstack align-items-end col">
-                                        <a href="{{ path('app_sharingboard_delete', {id: consultation.id }) }}">
+                                        <a data-confirm href="{{ path('app_sharingboard_delete', {id: consultation.id }) }}">
                                             <i class="bi bi-x-square"></i>
                                         </a>
                                     </div>
