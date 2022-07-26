@@ -4,41 +4,47 @@
 {% block content %}
     <div class="container-fluid vstack gap-2">
         <div class="mb-4">
-            <a class="btn btn-afternoon btn-outline-light link-white col-2" href="{{ path('candidate_new') }}">Ajouter un candidat</a>
+            <a class="btn btn-afternoon btn-outline-light link-white col-2" href="{{ path('candidate_new') }}">Ajouter
+                un candidat</a>
         </div>
 
-                <!-- Container for result --->
-                {% for candidate in candidates %}
-                <div class="container-fluid d-flex justify-content-center">
-                    <div class="row col-12 mb-4">
+        <!-- Container for result --->
+        {% for candidate in candidates %}
+            <div class="container-fluid d-flex justify-content-center">
+                <div class="row col-12 mb-4">
 
-                        <div class="container-fluid hstack justify-content-around col-lg-12 col-12 shadow p-2 rounded-4">
+                    <div class="container-fluid hstack justify-content-around col-lg-12 col-12 shadow p-2 rounded-4">
 
-                            {#  Propriétaire de la fiche #}
-                            <div class="vstack align-items-start gap-4 m-1">
-                                <div class="acheteur-container">
-                                    <p class="text-black m-0 p-0 ">Fiche créée le {{ candidate.createdAt.format('d/m/Y') }}</p>
-                                    <p class="text-black m-0 p-0" data-bs-toggle="tooltip" title="Propiétaire">Propriétaire de la fiche : <strong>{{ candidate.user.firstname }} {{ candidate.user.lastname }} </strong></p>
-                                    <p class="text-muted m-0 p-0" title="entreprise propriétaire"> @{{ candidate.user.compagny }}</p>
-                                </div>
-                            </div>
-
-                            <div class="vstack align-items-start gap-4 m-1">
-                                <div class="acheteur-container">
-                                    <p class="text-black m-0 p-0">Fiche validée : {{ candidate.validateSheet ? 'Oui' : 'Non' }}</p>
-                                </div>
-                            </div>
-
-                            <div class="vstack gap-4 m-1">
-                                <div class="vstack align-items-end">
-                                    <a class="btn btn-afternoon btn-outline-light link-white w-50" href="{{ path('candidate_CV', {id: candidate.id}) }}">CV</a>
-                                    <a class="btn btn-afternoon btn-outline-light link-white w-50" href="{{ path('candidate_show', {'id': candidate.id}) }}">Voir fiche</a>
-                                </div>
+                        {#  Propriétaire de la fiche #}
+                        <div class="vstack align-items-start gap-4 m-1">
+                            <div class="acheteur-container">
+                                <p class="text-black m-0 p-0 ">Fiche créée
+                                    le {{ candidate.createdAt.format('d/m/Y') }}</p>
+                                <p class="text-black m-0 p-0" data-bs-toggle="tooltip" title="Propiétaire">Propriétaire
+                                    de la fiche :
+                                    <strong>{{ candidate.user.firstname }} {{ candidate.user.lastname }} </strong></p>
+                                <p class="text-muted m-0 p-0" title="entreprise propriétaire">@{{ candidate.user.compagny }}</p>
                             </div>
                         </div>
 
+                        {# Validation de la fiche #}
+                        <div class="vstack align-items-start gap-4 m-1">
+                            <div class="acheteur-container">
+                                <p class="text-black m-0 p-0">Fiche validée : {{ candidate.validateSheet ? 'Oui' : 'Non' }}</p>
+                            </div>
+                        </div>
+
+                        {# Actions fiche candidat #}
+                        <div class="vstack gap-4 m-1">
+                            <div class="vstack align-items-end">
+                                <a class="btn btn-afternoon btn-outline-light link-white w-50" href="{{ path('candidate_CV', {id: candidate.id}) }}">CV</a>
+                                <a class="btn btn-afternoon btn-outline-light link-white w-50" href="{{ path('candidate_show', {'id': candidate.id}) }}">Voir fiche</a>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
+            </div>
 
         {% endfor %}
 
