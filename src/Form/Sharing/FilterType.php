@@ -32,14 +32,14 @@ class FilterType extends AbstractType
                 'required' => false,
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Acheteur'
+                    'placeholder' => 'Nom de l\'acheteur'
                 ]
                 ])
             ->add('seller', TextType::class, [
                 'required' => false,
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Vendeur',
+                    'placeholder' => 'Nom du vendeur',
                     'class' => 'm-0'
                 ],
             ])
@@ -65,16 +65,17 @@ class FilterType extends AbstractType
             ])
             ->add('status', ChoiceType::class, [
                 'required' => false,
-                'placeholder' => 'Choix du du status',
+                'placeholder' => 'Choix du statut',
                 'choices' => [
                     'Consultation' => [
-                        'Accepted' => 'accepted',
+                        'Recrutement' => 'recrutement',
                         'Entretien' => 'entretien',
-                        'Refused' => 'refused',
+                        'Consulté' => 'consulté',
+                        'Refusé' => 'refusé',
                     ]
                 ],
                 'attr' => [
-                    'placeholder' => 'Status',
+                    'placeholder' => 'Statut',
                 ],
             ])
             ->add('endDate', DateType::class, [
