@@ -16,8 +16,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -205,13 +207,11 @@ class CandidateType extends AbstractType
                 'required'      => false,
                 'allow_delete'  => false, // not mandatory, default is true
                 'download_uri' => false, // not mandatory, default is true
+            ])
+            ->add('createdAt', DateTimeType::class, [
+                'widget' => 'single_text',
+                'row_attr' => ['hidden'],
             ]);
-            /**
-             * @Todo invisible data
-             */
-//            ->add('expirationDate', DateType::class, [
-//                'label' => 'Date d\'expiration',
-//            ])
 
             // ->add('mobilities')
     }
@@ -219,6 +219,7 @@ class CandidateType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Candidate::class,
+
         ]);
     }
 }
