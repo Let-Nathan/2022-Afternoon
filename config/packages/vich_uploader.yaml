@@ -2,8 +2,8 @@ vich_uploader:
     db_driver: orm
 
     mappings:
-        candidat_cv:
-            uri_prefix: 'app.path.candidat_cv'
+        candidate_cv:
+            uri_prefix: 'app.path.candidate_cv'
             upload_destination: '%kernel.project_dir%/public%app.path.candidat_cv%'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
             inject_on_load: false

@@ -25,8 +25,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Vich\UploaderBundle\Form\Type\VichImageType;
-use function Sodium\add;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class CandidateType extends AbstractType
 {
@@ -107,7 +106,7 @@ class CandidateType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Salaire',
                 ],
-                'required' => false,
+                'required' => true,
             ])
              ->add('validateSheet', ChoiceType::class, [
                  'label' => 'Fiche validée ?',
@@ -202,10 +201,10 @@ class CandidateType extends AbstractType
                     'placeholder' => 'Fiche validé par :'
                 ]
             ])
-            ->add('cvFile', VichImageType::class, [
+            ->add('cvFile', VichFileType::class, [
                 'required'      => false,
-                'allow_delete'  => true, // not mandatory, default is true
-                'download_uri' => true, // not mandatory, default is true
+                'allow_delete'  => false, // not mandatory, default is true
+                'download_uri' => false, // not mandatory, default is true
             ]);
             /**
              * @Todo invisible data

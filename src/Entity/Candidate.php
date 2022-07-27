@@ -8,10 +8,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints\Date;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: CandidateRepository::class)]
+#[Vich\Uploadable]
 class Candidate
 {
     #[ORM\Id]
@@ -22,23 +23,17 @@ class Candidate
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'candidates')]
     private ?User $user;
 
-    #[ORM\Column(type: 'string', length: 2500)]
-    private string $curiculumVitae;
+    #[Vich\UploadableField(mapping: 'candidate_cv', fileNameProperty: 'cvName')]
+    private ?File $cvFile = null;
 
-    #[Vich\UploadableField(mapping: 'candidat_cv', fileNameProperty: 'cv', size: 'cvSize')]
-    private File $cvFile;
-
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private ?int $cvSize;
 
-    #[ORM\Column(type: 'integer')]
-    private ?int $cvName;
+    #[ORM\Column(type: 'string', nullable: true)]
+    private ?string $cvName = null;
 
-    #[ORM\Column(type:'datetime')]
-    private ?\DateTimeInterface $uploadAt;
-
-    #[ORM\Embedded(class: 'User', columnPrefix: false)]
-    private ?string $image;
+    #[ORM\Column(type:'datetime', nullable: true)]
+    private ?\DateTimeInterface $uploadAt = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private string $firstName;
@@ -125,6 +120,7 @@ class Candidate
         $this->mobilities = new ArrayCollection();
         $this->consultations = new ArrayCollection();
         $this->createdAt = new DateTime();
+        $this->expirationDate = new DateTime('+5 month');
     }
 
     public function getId(): ?int
@@ -143,17 +139,6 @@ class Candidate
         return $this;
     }
 
-    public function getCuriculumVitae(): ?string
-    {
-        return $this->curiculumVitae;
-    }
-
-    public function setCuriculumVitae(string $curiculumVitae): self
-    {
-        $this->curiculumVitae = $curiculumVitae;
-
-        return $this;
-    }
 
     public function getFirstName(): ?string
     {
@@ -507,7 +492,7 @@ class Candidate
         if (null !== $cvFile) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
-            $this->uploadAt = new \DateTimeImmutable();
+            $this->uploadAt = new DateTime('now');
         }
     }
 
