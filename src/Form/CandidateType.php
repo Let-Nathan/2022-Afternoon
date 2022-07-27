@@ -10,16 +10,12 @@ use App\Entity\Domain;
 use App\Entity\Experience;
 use App\Entity\Skill;
 use App\Entity\User;
-use Hoa\Compiler\Llk\Rule\Choice;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -210,7 +206,6 @@ class CandidateType extends AbstractType
             ])
             ->add('createdAt', DateTimeType::class, [
                 'widget' => 'single_text',
-                'row_attr' => ['hidden'],
             ]);
 
             // ->add('mobilities')
