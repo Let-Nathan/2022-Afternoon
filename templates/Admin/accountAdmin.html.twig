@@ -5,7 +5,7 @@
 {% block content %}
         <div class="mb-4">
             {%  if is_granted('ROLE_SUPER_ADMIN') %}
-            <a class="btn btn-afternoon btn-outline-light link-white" href="{{ path('admin_new') }}">Ajouter un admin</a>
+            <a class="btn btn-afternoon btn-outline-light link-white col-2" href="{{ path('admin_new') }}">Ajouter un admin</a>
             {% endif %}
         </div>
 
@@ -32,8 +32,8 @@
                 </td>
                 {%  if is_granted('ROLE_SUPER_ADMIN') %}
                     <td>
-                        <a class="btn btn-secondary btn-sm" href="{{ path('edit_admin', {id: admin.id}) }}">Modifier</a>
-                        <a class="btn btn-danger btn-sm" data-confirm href="{{ path('account_admin_delete', {id: admin.id}) }}">Supprimer</a>
+                        <a class="btn btn-afternoon text-white btn-sm" href="{{ path('edit_admin', {id: admin.id}) }}">Modifier</a>
+                        <a class="btn btn-afternoon text-white btn-sm" data-confirm href="{{ path('account_admin_delete', {id: admin.id}) }}">Supprimer</a>
                     </td>
                 {% endif %}
 

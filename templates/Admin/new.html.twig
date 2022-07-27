@@ -4,7 +4,10 @@
 {% block h1 %}Ajouter un compte admin{% endblock %}
 
 {% block content %}
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-    {{ form_end(form) }}
+    <div class="col-10 justify-content-center">
+        {{ form_start(form) }}
+                {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+
 {% endblock %}

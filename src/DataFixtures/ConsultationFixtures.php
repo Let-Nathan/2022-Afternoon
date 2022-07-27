@@ -17,7 +17,7 @@ class ConsultationFixtures extends Fixture implements DependentFixtureInterface
         ],
         'candidate2' => [
             'Cathy',
-            'Recruté'
+            'Recrutement'
         ],
         'candidate3' => [
             'Marc',

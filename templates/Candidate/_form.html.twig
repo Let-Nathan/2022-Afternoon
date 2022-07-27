@@ -33,7 +33,7 @@
             <div class="form-error">
                 {{ form_errors(form.businessRole) }}
             </div>
-            {{ form_label(form.businessRole, 'Role', {'label_attr':
+            {{ form_label(form.businessRole, 'Rôle', {'label_attr':
                 {'class': 'w-100'}}) }}
             {{ form_widget(form.businessRole, {'attr':
                 {'class': 'text-center'}}) }}
@@ -46,12 +46,13 @@
             <div class="form-error">
                 {{ form_errors(form.domains) }}
             </div>
-            {{ form_label(form.domains, 'Domains', {'label_attr':
+            {{ form_label(form.domains, 'Domaines', {'label_attr':
                 {'class': 'text-center'}}) }}
             {{ form_widget(form.domains, {'attr':
                 {'class': 'text-center'}}) }}
 
         </div>
+
         {# Right container #}
         <div class="row-col col-lg-5 vstack gap-1">
             <div class="form-error">
@@ -75,7 +76,7 @@
             <div class="form-error">
                 {{ form_errors(form.disponibilities) }}
             </div>
-            {{ form_label(form.disponibilities, 'Disponibilitée') }}
+            {{ form_label(form.disponibilities, 'Disponibilité') }}
             {{ form_widget(form.disponibilities, {'attr':
                 {'class': 'text-center'}}) }}
             <div class="form-error">
@@ -84,7 +85,7 @@
             {{ form_label(form.telework) }}
             {{ form_widget(form.telework, {'attr':
                 {'class': 'text-start'}}) }}
-            {{ form_label(form.salary) }}
+            {{ form_label(form.salary, 'Salaire (brut annuel)') }}
             <div class="form-error">
                 {{ form_errors(form.salary) }}
             </div>
@@ -113,7 +114,7 @@
                 <div class="form-error">
                     {{ form_errors(form.user) }}
                 </div>
-                {{ form_label(form.user, 'Vendeur') }}
+                {{ form_label(form.user, 'Mail du vendeur') }}
                 {{ form_widget(form.user, {'attr':
                     {'class': 'text-center'}}) }}
             </div>
@@ -121,7 +122,7 @@
                 <div class="form-error">
                     {{ form_errors(form.prime) }}
                 </div>
-                {{ form_label(form.prime, 'Prime vendeur') }}
+                {{ form_label(form.prime, 'Montant de la prime vendeur') }}
                 {{ form_widget(form.prime, {'attr':
                     {'class': 'text-center'}}) }}
             </div>
@@ -131,7 +132,7 @@
         <div class="form-error">
             {{ form_errors(form.observation) }}
         </div>
-        {{ form_label(form.observation, 'Observation', {'label_attr':
+        {{ form_label(form.observation, 'Observations', {'label_attr':
             {'class': 'w-100 text-center'}}) }}
         {{ form_widget(form.observation) }}
     <div class="d-flex justify-content-between">
@@ -139,7 +140,7 @@
             <div class="form-error">
                 {{ form_errors(form.validatedBy) }}
             </div>
-            {{ form_label(form.validatedBy, 'Validé par', {'label_attr':
+            {{ form_label(form.validatedBy, 'Fiche validée par', {'label_attr':
                 {'class': 'w-100 text-center'}}) }}
             {{ form_widget(form.validatedBy, {'attr':
                 {'class': 'text-center'}}) }}
@@ -148,7 +149,7 @@
             <div class="form-error">
                 {{ form_errors(form.validateSheet) }}
             </div>
-            {{ form_label(form.validateSheet, 'Fiche validé', {'label_attr':
+            {{ form_label(form.validateSheet, 'Fiche validée', {'label_attr':
                 {'class': 'w-100 text-center'}}) }}
             {{ form_widget(form.validateSheet, {'attr':
                 {'class': 'text-center'}}) }}

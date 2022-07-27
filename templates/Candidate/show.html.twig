@@ -88,7 +88,7 @@
                     <div>
                         {# Delete if super admin else => edit fiche #}
                         {% if is_granted('ROLE_SUPER_ADMIN') %}
-                            {{ include('candidate/_delete_form.html.twig') }}
+                            <a data-confirm>{{ include('candidate/_delete_form.html.twig') }}</a>
                         {% endif %}
                     </div>
                 </div>

@@ -26,7 +26,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             'Clavier',
             '+33-6-67-58-25',
             'cathy@gmail.com',
-            'Schneinder',
+            'Schneider',
             'azerty'
         ],
         'user3' => [
