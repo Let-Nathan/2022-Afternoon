@@ -5,15 +5,17 @@
 {% block h1 %}Mot de passe oublié{% endblock %}
 
 {% block leftBlock %}
-    <h1 class="my-5">Mot de passe oublié</h1>
+    <h1 class="my-5 text-light">Mot de passe oublié</h1>
 
     {% for flash_error in app.flashes('reset_password_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
 
+    <div class="text-light">
     {{ form_start(requestForm) }}
         {{ form_row(requestForm.email) }}
-        <p class="">
+    </div>
+        <p>
             <button class="btn btn-primary">Valider</button>
         </p>
     {{ form_end(requestForm) }}
