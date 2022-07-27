@@ -99,9 +99,10 @@
             <!--------
                             Cv container
                                                     --------->
-            <div class="col-6">
-                <img width="100%" src="{{ vich_uploader_asset(candidate) }}" alt="Cv du candidat">
-            </div>
+        <div class="col-6">
+            <object data="{{ vich_uploader_asset(candidate, 'cvFile') }}"></object>
+        </div>
+
         </div>
     </div>
 {% endblock %}
