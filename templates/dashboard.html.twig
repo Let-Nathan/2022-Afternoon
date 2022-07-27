@@ -18,7 +18,7 @@
 
                 {#  Statistiques #}
                 <div class="row">
-                    <div class="col-xl-6 col-md-12">
+                    <div class="col-xl-8 col-md-12">
                         <div class="card overflow-hidden">
                             <div class="card-content">
                                 <div class="card-body ">
@@ -83,7 +83,7 @@
     <!----------
                     Card utilisateurs
                                         ----------->
-    {# TODO balances sommes et somems dûe ? #}
+
     <div class="mt-4 vstack gap-4">
 
     <h2>Utilisateurs : </h2>
@@ -111,10 +111,10 @@
                             <div class="vstack align-items-start gap-4 m-1"> {# card #}
                                 <div class=acheteur-container"">
                                     <p class="text-black m-0 p-0 fs-5">Fiches:</p>
-                                    <p class="text-muted m-0 p-0" title="partagées"> Partagées
-                                        : {{ user.candidates|length }}</p>
-                                    <p class="text-muted m-0 p-0" title="consultées"> Consultées
-                                        : {{ user.consultations|length }}</p>
+                                    <p class="text-muted m-0 p-0" title="partagées"> A partagés
+                                        : {{ user.candidates|length }} fiches</p>
+                                    <p class="text-muted m-0 p-0" title="consultées"> A consultées
+                                        : {{ user.consultations|length }} fiches</p>
                                 </div>
                             </div>
 
@@ -122,24 +122,34 @@
                             <div class="vstack align-items-start gap-4 m-1">
                                 <div class=acheteur-container"">
                                     <p class="text-black m-0 p-0 fs-5">Candidats :</p>
-                                    <p class="text-muted m-0 p-0" title="rencontrés"> Rencontrés : {{ user.getConsultationsByStatus('Entretien') | length }}</p>
-                                    <p class="text-muted m-0 p-0" title="recrutés"> Recrutés : {{ user.getConsultationsByStatus('Recruté') | length }}</p>
-                                    <p class="text-muted m-0 p-0" title="recrutés"> Fiches partagées recrutées : {# TODO #}</p>
+                                    <p class="text-muted m-0 p-0" title="rencontrés">A rencontrés : {{ user.getConsultationsByStatus('Entretien') | length }} candidats</p>
+                                    <p class="text-muted m-0 p-0" title="recrutés">A recrutés : {{ user.getConsultationsByStatus('Recruté') | length }} candidats</p>
+                                    <p class="text-muted m-0 p-0" title="recrutés">{{ user.getCandidatsByStatus('Recruté') | length }} Fiches partagées avec recrutement</p>
                                 </div>
                             </div>
+
 
                             {# Montants col #}
                             <div class="vstack align-items-start gap-4 m-1">
                                 <div class=acheteur-container"">
                                     <p class="text-black m-0 p-0 fs-5">Montants :</p>
-                                    <p class="text-muted m-0 p-0" title="primes"> Primes : {{ user.getConsultationsByStatus('Entretien') | length }}</p>
+                                    {% set sumPrime = 0 %}
+                                    {% for candidate in user.candidates %}
+                                        {% set sumPrime = sumPrime + candidate.prime %}
+                                    {% endfor %}
+                                    <p class="text-muted m-0 p-0" title="primes"> Primes afternoon : {{ sumPrime }} €</p>
                                     {# calcul montant du pour les fiches consultées #}
                                     {% set sumFiche = 0 %}
                                     {% for consultation in user.consultations %}
                                         {% set sumFiche = sumFiche + consultation.candidate.prixFiche + consultation.candidate.prime %}
                                     {% endfor %}
                                     <p class="text-muted m-0 p-0" title="fiches consultées"> Fiches consultées : {{ sumFiche }} €</p>
-                                    <p class="text-muted m-0 p-0" title="balance des sommes"> Balance des sommes : {# TODO #}</p>
+                                    {% set balance = 0 %}
+                                    {% for candidate in user.candidates %}
+                                        {% set balance = candidate.prixFiche - candidate.prime %}
+                                    {% endfor %}
+
+                                    <p class="text-muted m-0 p-0" title="balance des sommes"> Somme dû : {{ balance }} €</p>
                                 </div>
                             </div>
                         </div>
@@ -147,11 +157,7 @@
                 </div>
             </div>
         </div>
-
-
     {% endfor %}
-
     </div>
-
     </div>
 {% endblock %}
