@@ -31,6 +31,10 @@
             </div>
         {% endif %}
 
+        <div class="container mb-3">
+            {% block breadcrum %}{% endblock %}
+        </div>
+
         {% block body %}
             <div class="container mb-5">
                 {% if block('h1') is defined %}

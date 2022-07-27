@@ -3,6 +3,17 @@
 {% block title %}Candidate Form{% endblock %}
 {% block h1 %}Créer un candidat{% endblock %}
 
+{% block breadcrum%}
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('candidate_index') }}">Dépôt candidat</a></li>
+            <li class="breadcrumb-item active" aria-current="page">CV Candidat de {{ candidate.firstName }} {{ candidate.lastName }}</li>
+        </ol>
+    </nav>
+
+{% endblock %}
+
 
 {# Add button "Déjà créer" #}
 {% block content %}

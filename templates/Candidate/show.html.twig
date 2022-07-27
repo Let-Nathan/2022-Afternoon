@@ -3,6 +3,17 @@
 {% block title %}Fiche Candidat{% endblock %}
 {% block h1 %}Fiche Candidat{% endblock %}
 
+{% block breadcrum%}
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('candidate_index') }}">Dépôt candidat</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Fiche candidat de {{ candidate.firstName }} {{ candidate.lastName }}</li>
+        </ol>
+    </nav>
+
+{% endblock %}
+
 {% block content %}
     <div class="d-flex flex-column gap-4">
         {#  Whole container  #}

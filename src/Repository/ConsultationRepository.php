@@ -99,18 +99,27 @@ class ConsultationRepository extends ServiceEntityRepository
     public function searchWithFilter(FilterModel $filterModel): array
     {
         $qb = $this->createQueryBuilder('c');
+
         //Filter on buyer //
         if ($filterModel->getBuyer()) {
             $qb->join('c.user', 'u')
                 ->where('u.firstName LIKE :seller OR u.lastName LIKE :seller')
                 ->setParameter('seller', '%' . $filterModel->getBuyer() . '%');
         }
-        //Todo filter seller //
+
+        if ($filterModel->getSeller() || $filterModel->getCandidateName()) {
+            $qb->join('c.candidate', 'ca');
+        }
+
+        if ($filterModel->getSeller()) {
+            $qb->join('ca.user', 'cau')
+                ->andWhere('cau.firstName LIKE :seller OR cau.lastName LIKE :seller')
+                ->setParameter('seller', '%' . $filterModel->getSeller() . '%');
+        }
 
         //  Filter on candidate name    //
         if ($filterModel->getCandidateName()) {
-            $qb->join('c.candidate', 'ca')
-                ->andWhere('ca.firstName LIKE :candidate OR ca.lastName LIKE :candidate')
+            $qb->andWhere('ca.firstName LIKE :candidate OR ca.lastName LIKE :candidate')
                 ->setParameter('candidate', '%' . $filterModel->getCandidateName() . '%');
         }
         //  Filter on status choice   //

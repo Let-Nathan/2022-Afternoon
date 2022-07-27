@@ -3,6 +3,17 @@
 {% block title %}Modifier un admin{% endblock %}
 {% block h1 %}Modifier un admin{% endblock %}
 
+{% block breadcrum%}
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('account_admin') }}">Admin</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Modifier un Admin</li>
+        </ol>
+    </nav>
+
+{% endblock %}
+
 {% block content %}
 
     <div class="col-10 justify-content-center">
