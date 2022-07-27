@@ -1,6 +1,17 @@
 {% extends 'base.html.twig' %}
 {% block h1 %}Nouvelle fiche{% endblock %}
 
+{% block breadcrum%}
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('candidate_index') }}">Dépôt candidat</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ajouter un candidat</li>
+        </ol>
+    </nav>
+
+{% endblock %}
+
 {% block content %}
 
 <div class="w-100 container-fluid vstack align-items-center">
