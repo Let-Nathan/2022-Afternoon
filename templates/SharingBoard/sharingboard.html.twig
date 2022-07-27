@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block h1 %} SharingBoard {% endblock %}
+{% block h1 %} Partages {% endblock %}
 
 {% block content %}
     <div class="container-fluid vstack vstack w-100 ">
@@ -8,14 +8,14 @@
                 <!-- Left container -->
             <div class="row-col col-3 ">
                 <div class="vstack align-items-center m-0 p-0 w-100">
-                    <p class="h2 text-dark mb-4 hstack justify-content-center">Filters</p>
+                    <p class="h2 text-dark mb-4 hstack justify-content-center">Filtres</p>
                     {{ include('SharingBoard/_search.html.twig') }}
                 </div>
             </div>
 
             <!-- Right container-->
             <div class="row-col col-8 col-lg-6 border-start vstack">
-                <p class="h2 text-dark mb-4 d-flex justify-content-center">Partages</p>
+                <p class="h2 text-dark mb-4 ms-4">Liste des partages</p>
                 <div class="container col-12 d-flex align-items-center flex-column">
 
                     <!-- Container for result --->
@@ -28,30 +28,30 @@
                                     {#  Acheteur & Vendeur col #}
                                     <div class="vstack align-items-start gap-4 m-1">
                                         <div class=acheteur-container"">
-                                            <p class="text-black m-0 p-0 fs-5">Acheteur:</p>
-                                            <p class="text-black m-0 p-0" data-bs-toggle="tooltip" title="Acheteur"> {{ consultation.user.firstname }} ~  {{ consultation.user.lastname }}</p>
+                                            <p class="text-black m-0 p-0 fs-5">Acheteur :</p>
+                                            <p class="text-black m-0 p-0" data-bs-toggle="tooltip" title="Acheteur"> {{ consultation.user.firstname }} {{ consultation.user.lastname }}</p>
                                             <p class="text-muted m-0 p-0" title="e-mail acheteur"> {{ consultation.user.email }}</p>
                                         </div>
 
-                                        <div class="vendeur-container">
-                                            <p class="text-black m-0 p-0 fs-5 ">Vendeur:</p>
-                                            <p class="text-black  m-0 p-0" data-bs-toggle="tooltip" title="Vendeur"> {{ consultation.candidate.user.firstname }} ~ {{ consultation.candidate.user.lastName }} </p>
-                                            <p class="text-muted  m-0 p-0" data-bs-toggle="tooltip" title="e-mail vendeur"> {{ consultation.candidate.user.email }} </p>
-                                        </div>
-
+                                            <div class="vendeur-container">
+                                                <p class="text-black m-0 p-0 fs-5 ">Vendeur :</p>
+                                                <p class="text-black  m-0 p-0" data-bs-toggle="tooltip" title="Vendeur"> {{ consultation.candidate.user.firstname }} {{ consultation.candidate.user.lastName }} </p>
+                                                <p class="text-muted  m-0 p-0" data-bs-toggle="tooltip" title="e-mail vendeur"> {{ consultation.candidate.user.email }} </p>
+                                            </div>
+                                            
                                     </div>
                                     {# ------------------ #}
 
                                     {#  Candidat & Prime/Revenu col #}
                                     <div class="vstack align-items-center gap-4 m-1">
                                         <div class="candidat-container">
-                                            <p class="text-black  m-0 p-0 fs-5">Candidat:</p>
-                                            <p class="text-black m-0 p-0" data-bs-toggle="tooltip" title="Candidat"> {{ consultation.candidate.firstName }} ~ {{ consultation.candidate.lastName}}  </p>
+                                            <p class="text-black  m-0 p-0 fs-5">Candidat :</p>
+                                            <p class="text-black m-0 p-0" data-bs-toggle="tooltip" title="Candidat"> {{ consultation.candidate.firstName }} {{ consultation.candidate.lastName}}  </p>
                                             <p class="text-muted text-center"> {{ consultation.candidate.email }}</p>
                                         </div>
                                         <div class="vstack">
                                             <div class="prix-fiche-container hstack justify-content-center gap-1">
-                                                <p class="text-black text-center m-0 p-0" data-bs-toggle="tooltip" title="Prime">La fiche est vendu : </p>
+                                                <p class="text-black text-center m-0 p-0" data-bs-toggle="tooltip" title="Prime">Prix de vente de la fiche : </p>
                                                 <p class="text-center m-0 p-0">{{ consultation.candidate.prixFiche }}</p>
                                                 <i class="bi bi-currency-euro fs-6"></i>
 
@@ -68,11 +68,11 @@
                                     {#  Dates col #}
                                     <div class="dates vstack gap-2 justify-content-around">
                                         <div class="consult-col">
-                                            <p class="text-black text-center m-0 p-0">Date de consultation</p>
+                                            <p class="text-black text-center m-0 p-0">Date de consultation :</p>
                                             <p class="text-black text-center m-0 p-0" data-bs-toggle="tooltip" title="Date de consultation"> {{ consultation.createdAt|date('d-m-Y') }} </p>
                                         </div>
                                         <div class="consult-col">
-                                            <p class="text-black text-center m-0 p-0">Date de relance</p>
+                                            <p class="text-black text-center m-0 p-0">Date de relance :</p>
                                             <p class="text-black text-center m-0 p-0" data-bs-toggle="tooltip" title="Date de relance"> {{ consultation.relanceDate|date('d-m-Y') }} </p>
                                         </div>
                                     </div>
@@ -80,7 +80,7 @@
 
                                     {# Delete consultation col #}
                                     <div class="remove-consultation vstack align-items-end col">
-                                        <a href="{{ path('app_sharingboard_delete', {id: consultation.id }) }}">
+                                        <a data-confirm href="{{ path('app_sharingboard_delete', {id: consultation.id }) }}">
                                             <i class="bi bi-x-square"></i>
                                         </a>
                                     </div>
