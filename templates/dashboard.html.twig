@@ -139,7 +139,13 @@
                                         {% set sumFiche = sumFiche + consultation.candidate.prixFiche + consultation.candidate.prime %}
                                     {% endfor %}
                                     <p class="text-muted m-0 p-0" title="fiches consultées"> Fiches consultées : {{ sumFiche }} €</p>
-                                    <p class="text-muted m-0 p-0" title="balance des sommes"> Balance des sommes : {# TODO #}</p>
+                                    {% set sumBalance = 0 %}
+
+                                    {# {% for consultation in user.consultations %}
+                                        {% set sumBalance = consultation.candidate.prime - sumFiche %}
+                                    {% endfor %} #}
+
+                                    <p class="text-muted m-0 p-0" title="balance des sommes"> Balance des sommes : {# {{ sumBalance }} #}</p>
                                 </div>
                             </div>
                         </div>
