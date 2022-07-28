@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: CandidateRepository::class)]
@@ -24,9 +24,15 @@ class Candidate
     private ?User $user;
 
     #[Vich\UploadableField(mapping: 'candidate_cv', fileNameProperty: 'cvName')]
+    #[Assert\File(
+        maxSize: '1024k',
+        mimeTypes: ['application/pdf', 'application/x-pdf'],
+        mimeTypesMessage: "Wrong file type ! Use 'pdf' or 'x-pdf' instead"
+    )]
     private ?File $cvFile = null;
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Assert\Valid]
     private ?int $cvSize;
 
     #[ORM\Column(type: 'string', nullable: true)]

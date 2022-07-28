@@ -30,7 +30,7 @@ class CandidateController extends AbstractController
             $candidateRepository->add($candidate, true);
 
             $this->addFlash('success', 'Candidat modifié');
-            return $this->redirectToRoute('candidate_index');
+            return $this->redirectToRoute('candidate_show', ['id' => $candidate->getId()]);
         }
 
         return $this->renderForm('Candidate/cv.html.twig', [
