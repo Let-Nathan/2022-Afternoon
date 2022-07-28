@@ -39,7 +39,7 @@ class UserRepository extends ServiceEntityRepository
         }
     }
 
-    public function sumAcheteudue(): ?int
+    public function sumAcheteurdue(): ?int
     {
         return $this->createQueryBuilder('u')
             ->join('u.consultations', 'c')

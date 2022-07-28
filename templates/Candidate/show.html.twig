@@ -19,100 +19,102 @@
         {#  Whole container  #}
         <div class="container-fluid hstack w-100 justify-content-around">
 
-            {# Container Card + button #}
-            <div class="container-fluid vstack gap-2">
 
-            <!--------
-                            Card user
-                                                    --------->
-                <div class="card p-4 col-12">
-                    <div class="image d-flex flex-column justify-content-center align-items-center">
-                        <div class="d-flex justify-content-start w-100">
-                            <div class="hstack col-5 align-items-center gap-2 flex-wrap">
-                                <img class="img-fluid bg-image col-10 rounded-circle" src="{{ candidate.gender ?
-                                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvwBzd38xrCaG7xtQ12zS226Ey552n6umnkg&usqp=CAU' : 'https://www.gefor.com/wp-content/uploads/2018/10/female-306407_960_720.png'
-                                }}" style="max-height: 235px; max-width: 235px; ">
-                                <div class="align-items-start">
-                                    <div class="d-flex align-items-start gap-2">
-                                        <i class="bi bi-person fs-5"></i>
-                                        <p class="name m-0 p-0">{{ candidate.firstName }} {{ candidate.lastName }}</p>
-                                    </div>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <i class="bi bi-linkedin fs-5"></i>
-                                        <span class="idd">{{ candidate.linkedin }}</span>
-                                    </div>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <i class="bi bi-geo-alt-fill fs-5"></i>
-                                        <span class="idd">{{ candidate.city }}</span>
-                                    </div>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <i class="bi bi-currency-exchange fs-5"></i>
-                                        <span class="idd">{{ candidate.salary }}</span>
-                                    </div>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <i class="bi bi-envelope-fill fs-5"></i>
-                                        <span class="idd">{{ candidate.email }}</span>
-                                    </div>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <!--Add icon-->
-                                        <i class="bi bi-car-front-fill fs-5"></i>
-                                        <span class="idd">{{ candidate.vehicle ? 'Véhiculé' : 'Non véhiculé' }}</span>
+            <div class="row">
+
+                <div class="row-col col-5">
+                <!--------
+                                Card user
+                                                        --------->
+                    <div class="card p-4">
+                        <div class="image d-flex flex-column justify-content-center align-items-center">
+                            <div class="d-flex justify-content-start w-100">
+                                <div class="hstack col-5 align-items-center gap-2 flex-wrap">
+                                    <img class="img-fluid bg-image col-10 rounded-circle" src="{{ candidate.gender ?
+                                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvwBzd38xrCaG7xtQ12zS226Ey552n6umnkg&usqp=CAU' : 'https://www.gefor.com/wp-content/uploads/2018/10/female-306407_960_720.png'
+                                    }}" style="max-height: 235px; max-width: 235px; ">
+                                    <div class="align-items-start">
+                                        <div class="d-flex align-items-start gap-2">
+                                            <i class="bi bi-person fs-5"></i>
+                                            <p class="name m-0 p-0">{{ candidate.firstName }} {{ candidate.lastName }}</p>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-linkedin fs-5"></i>
+                                            <span class="idd">{{ candidate.linkedin }}</span>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-geo-alt-fill fs-5"></i>
+                                            <span class="idd">{{ candidate.city }}</span>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-currency-exchange fs-5"></i>
+                                            <span class="idd">{{ candidate.salary }}</span>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-envelope-fill fs-5"></i>
+                                            <span class="idd">{{ candidate.email }}</span>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <!--Add icon-->
+                                            <i class="bi bi-car-front-fill fs-5"></i>
+                                            <span class="idd">{{ candidate.vehicle ? 'Véhiculé' : 'Non véhiculé' }}</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="vstack align-items-center justify-content-around w-100 gap-2">
-                                {% if candidate.observation is not empty %}
-                                    <p class="h5"> Observation </p>
-                                    <div class="text mt-3 card w-75 border gap-2">
-                                        <span class="text-left m-2">
-                                            {{ candidate.observation }}
-                                        </span>
-                                    </div>
-                                {% else %}
-                                    <p class="h6"> Aucune observation pour le moment </p>
-                                    <div class="text mt-3 w-75 gap-2">
-                                        <span class="text-left text-muted m-2 fst-italic">
-                                            "Les observations peuvent être modifiées dans le dépot candidat ou avec le bouton: 'editer la fiche' "
-                                        </span>
-                                    </div>
-                                {% endif %}
-                                <div class="hstack justify-content-end gap-5 ">
-                                    <div class="rounded d-flex flex-column align-items-end gap-0 ">
-                                        <p class="m-0 p-0 text-center">Fiche postée le:</p>
-                                        <span class="join d-flex justify-content-center"> {{ candidate.createdAt ? candidate.createdAt|date('d-m-Y') : '' }}</span>
-                                    </div>
+                                <div class="vstack align-items-center justify-content-around w-100 gap-2">
+                                    {% if candidate.observation is not empty %}
+                                        <p class="h5"> Observation </p>
+                                        <div class="text mt-3 card w-75 border gap-2">
+                                            <span class="text-left m-2">
+                                                {{ candidate.observation }}
+                                            </span>
+                                        </div>
+                                    {% else %}
+                                        <p class="h6"> Aucune observation pour le moment </p>
+                                        <div class="text mt-3 w-75 gap-2">
+                                            <span class="text-left text-muted m-2 fst-italic">
+                                                "Les observations peuvent être modifiées dans le dépot candidat ou avec le bouton: 'editer la fiche' "
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                    <div class="hstack justify-content-end gap-5 ">
+                                        <div class="rounded d-flex flex-column align-items-end gap-0 ">
+                                            <p class="m-0 p-0 text-center">Fiche postée le:</p>
+                                            <span class="join d-flex justify-content-center"> {{ candidate.createdAt ? candidate.createdAt|date('d-m-Y') : '' }}</span>
+                                        </div>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!--------
-                              Button
-                                                        --------->
-                <div class="button-container hstack col-12 gap-1 justify-content-between">
-                    <div>
-                        <a class="btn btn btn-afternoon btn-outline-light link-white" href="{{ path('candidate_index') }}">Retour</a>
-                        <a class="btn btn btn-afternoon btn-outline-light link-white" href="{{ path('candidate_CV', {'id': candidate.id}) }}">Edition</a>
+                    <!--------
+                                  Button
+                                                            --------->
+                    <div class="button-container hstack col-12 gap-1 justify-content-between">
+                        <div>
+                            <a class="btn btn btn-afternoon btn-outline-light link-white" href="{{ path('candidate_index') }}">Retour</a>
+                            <a class="btn btn btn-afternoon btn-outline-light link-white" href="{{ path('candidate_CV', {'id': candidate.id}) }}">Edition</a>
+                        </div>
+                        <div>
+                            {# Delete if super admin else => edit fiche #}
+                            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                <a data-confirm>{{ include('candidate/_delete_form.html.twig') }}</a>
+                            {% endif %}
+                        </div>
                     </div>
-                    <div>
-                        {# Delete if super admin else => edit fiche #}
-                        {% if is_granted('ROLE_SUPER_ADMIN') %}
-                            <a data-confirm>{{ include('candidate/_delete_form.html.twig') }}</a>
-                        {% endif %}
-                    </div>
+
+
                 </div>
-
-
-            </div>
 
             <!--------
                             Cv container
                                                     --------->
-            <div class="col-6">
-                <img width="100%" src="{{ candidate.curiculumVitae }}" alt="Cv du candidat">
+            <div class="vstack row-col col-6">
+                <object class="img-fluid" data="{{ vich_uploader_asset(candidate, 'cvFile') }}" style="min-width: 100%; min-height: 50rem;"></object>
+            </div>
+                </div>
             </div>
         </div>
-    </div>
 {% endblock %}

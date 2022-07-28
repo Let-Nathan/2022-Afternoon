@@ -62,7 +62,6 @@ class CandidateFixtures extends Fixture implements DependentFixtureInterface
         $faker = Factory::create();
         foreach (self::CANDIDATE as $key => $value) {
             $candidate = new Candidate();
-            $candidate->setCuriculumVitae($value[0]);
             $candidate->setFirstName($faker->firstName);
             $candidate->setLastName($faker->lastName);
             $candidate->setCity($faker->city);

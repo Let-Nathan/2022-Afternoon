@@ -106,6 +106,12 @@
             </div>
             {{ form_label(form.vehicle) }}
             {{ form_widget(form.vehicle) }}
+
+            <div class="form-error">
+                {{ form_errors(form.cvFile) }}
+            </div>
+            {{ form_label(form.cvFile) }}
+            {{ form_widget(form.cvFile) }}
         <div class="hstack justify-content-around w-100 ">
 
             <div class=" w-50">
@@ -152,7 +158,10 @@
             {{ form_widget(form.validateSheet, {'attr':
                 {'class': 'text-center'}}) }}
         </div>
+
     </div>
+            {{ form_widget(form.createdAt, {'attr':
+                { 'class': 'd-none' }}) }}
     <div class="hstack gap-2 mt-3 justify-content-around">
         <div class="form-error">
             {{ form_errors(form.archived) }}
@@ -160,7 +169,9 @@
         {{ form_label(form.archived) }}
         {{ form_widget(form.archived, {'attr' :
             {'class': 'text-center'}}) }}
+
         <button class="btn btn-afternoon btn-outline-light btn-block link-white">{{ button_label|default('Save') }}</button>
     </div>
 </div>
+
 {{ form_end(form) }}
